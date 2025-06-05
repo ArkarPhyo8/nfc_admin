@@ -8,11 +8,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 60 * 2, // 7 days
+    maxAge: 60 * 60 * 24 * 7, // 7 days
   },
 
   jwt: {
-    maxAge: 60 * 2,
+    maxAge: 60 * 60 * 24 * 7,
   },
   providers: [
     Credentials({
