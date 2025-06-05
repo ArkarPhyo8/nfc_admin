@@ -39,12 +39,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 database ----> postgresql
 ORM ----> prisma orm
+authentication and authorization -----> auth.js
+ui framework ----> shadcn ui
 
 ## CLI
-
 ->> install prisma, typescript ---> npm install prisma typescript tsx @types/node --save-dev
 ->> to create prism schema ---> npx prisma init --db --output ../generated/prisma
 ->> migrate prisma schema into db ---> npx prisma migrate dev --name init (or) npx prisma db push
 ->> install prisma client ---> npm install @prisma/client
 ->> to generate prisma client ---> npx prisma generate
 ->> to add initial data(eg: for admin table) ---> npx prisma db seed
+->> install auth.js ---> npm install next-auth@beta
+->> to generate AUTH_SECRET --->npx auth secret

@@ -1,17 +1,22 @@
-import { PrismaClient } from "@/generated/prisma";
+import { hashPassword } from "@/actions/general/hashPassword";
+import { Prisma, PrismaClient } from "@/generated/prisma";
 const prisma = new PrismaClient()
 
-async function main() {
-  const superAdmin = await prisma.admin.upsert({
-    where: { email: 'superadmim@gmail.com' },
-    update: {},
-    create: {
+  
+export async function main() {
+  const hash =await hashPassword("admin123");
+  const superAdmin: Prisma.adminCreateInput[] = [
+    {
       email: 'superadmim@gmail.com',
+      password: hash.toString(),
       name: 'superAdmin',
     },
-  })
-  console.log({ superAdmin })
+  ];
+  for (const u of superAdmin) {
+    await prisma.admin.create({ data: u });
+  }
 }
+
 main()
   .then(async () => {
     await prisma.$disconnect()
