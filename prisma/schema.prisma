@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id         String   @id @default(uuid()) @db.Uuid
+  email      String   @unique
+  name       String?
+  role       Role     @default(ADMIN)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model users {
+  id            String          @id @default(uuid()) @db.Uuid
+  username      String          @db.VarChar(50)
+  WebUUID       String
+  phoneNo       Int
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @default(now())
+  cards         cards[]
+  reader_device reader_device[]
+}
+
+model cards {
+  id          String        @id @default(uuid()) @db.Uuid
+  userID      String        @db.Uuid
+  users       users         @relation(fields: [userID], references: [id])
+  cardName    Int
+  cardUUID    String
+  cardType    String
+  status      Boolean
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @default(now())
+  reader_logs reader_logs[]
+}
+
+model reader_device {
+  id               String        @id @default(uuid()) @db.Uuid
+  userID           String        @db.Uuid
+  users            users         @relation(fields: [userID], references: [id])
+  readerDeviceName String
+  DeviceUUID       String
+  created_at       DateTime      @default(now())
+  updated_at       DateTime      @default(now())
+  reader_logs      reader_logs[]
+}
+
+model reader_logs {
+  id              String        @id @default(uuid()) @db.Uuid
+  cardID          String        @db.Uuid
+  cards           cards         @relation(fields: [cardID], references: [id])
+  reader_deviceID String        @db.Uuid
+  reader_device   reader_device @relation(fields: [reader_deviceID], references: [id])
+  status          Boolean
+  readDate        DateTime      @db.Date
+  created_at      DateTime      @default(now())
+  updated_at      DateTime      @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+}
