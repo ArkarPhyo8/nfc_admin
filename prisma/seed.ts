@@ -2,12 +2,11 @@ import { hashPassword } from "@/actions/general/hashPassword";
 import { Prisma, PrismaClient } from "@/generated/prisma";
 const prisma = new PrismaClient()
 
-  
 export async function main() {
   const hash =await hashPassword("admin123");
   const superAdmin: Prisma.adminCreateInput[] = [
     {
-      email: 'superadmim@gmail.com',
+      email: 'superadmin@gmail.com',
       password: hash.toString(),
       name: 'superAdmin',
     },

@@ -1,14 +1,19 @@
 "use client";
 import ProgressBarProvider from "@/context/ProgressBarProvider";
-import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "sonner";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
+  const queryClient = new QueryClient();
   return (
-    <ProgressBarProvider>
-      {children}
-      <Toaster richColors />
-    </ProgressBarProvider>
+    <QueryClientProvider client={queryClient}>
+      <ProgressBarProvider>
+        {children}
+        <Toaster richColors />
+      </ProgressBarProvider>
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
   );
 };
 
