@@ -1,11 +1,16 @@
 import { getAllCard } from "@/services/cardManagement.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
-const useCardQuery = (
-  page: number = 0,
-  limit: number = 10,
-  searchKey: string
-) => {
+type useCardQueryParams = {
+  page?: number;
+  limit?: number;
+  searchKey?: string;
+};
+const useCardQuery = ({
+  page = 1,
+  limit = 10,
+  searchKey = "",
+}: useCardQueryParams = {}) => {
   return useQuery({
     queryKey: ["card", searchKey, page, limit],
     queryFn: () => getAllCard(page, limit, searchKey),

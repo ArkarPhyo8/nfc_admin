@@ -16,11 +16,11 @@ export const CardManagementTable = ({
     pageIndex: 1,
     pageSize: 5,
   });
-  const { data, isFetching } = useCardQuery(
-    pagination.pageIndex,
-    pagination.pageSize,
-    searchKey
-  );
+  const { data, isFetching } = useCardQuery({
+    page: pagination.pageIndex,
+    limit: pagination.pageSize,
+    searchKey,
+  });
 
   return (
     <>
