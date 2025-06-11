@@ -11,7 +11,7 @@ const getAllUserAccount = async (
     const res = await NFC_APi.get(
       `/user?page=${page}&limit=${limit}&searchKey=${searchKey}`
     );
-    console.log("getUserManage Response--->", res.data);
+    // console.log("getUserManage Response--->", res.data);
     if (res.status == 200) {
       return res.data;
     }

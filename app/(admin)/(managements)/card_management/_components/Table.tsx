@@ -21,7 +21,6 @@ export const CardManagementTable = ({
     pagination.pageSize,
     searchKey
   );
-  console.log("data--->", data);
 
   return (
     <>

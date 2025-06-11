@@ -48,7 +48,7 @@ export const CardForm = ({
     defaultValues: {
       cardName: card ? card.cardName : "",
       username: card?.userID ? String(card?.userID) : "",
-      cardType: card?.cardType ? card?.cardType : "",
+      cardType: card?.cardType ? String(card?.cardTypeId) : "",
       status: card?.status ? card?.status : false,
     },
     disabled: cardMutation.isPending,

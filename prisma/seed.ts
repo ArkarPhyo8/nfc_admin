@@ -14,6 +14,19 @@ export async function main() {
   for (const u of superAdmin) {
     await prisma.admin.create({ data: u });
   }
+
+    const cardTypes = [
+    { name: 'Basic' },
+    { name: 'Premium' },
+    { name: 'Gold' }
+  ]
+    for (const type of cardTypes) {
+    await prisma.card_types.upsert({
+      where: { name: type.name },
+      update: {},
+      create: { name: type.name }
+    })
+  }
 }
 
 main()

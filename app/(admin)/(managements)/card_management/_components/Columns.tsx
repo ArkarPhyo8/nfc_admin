@@ -2,7 +2,6 @@ import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import TableAction from "./TableAction";
 import { CardManagementType } from "@/types";
-import { Minus } from "lucide-react";
 
 export const columns: ColumnDef<CardManagementType>[] = [
   {
@@ -17,11 +16,7 @@ export const columns: ColumnDef<CardManagementType>[] = [
       const username = row.original.users.username;
       return (
         <>
-          {username ? (
-            <span>{username}</span>
-          ) : (
-            <Minus className="opacity-50" />
-          )}
+          <span>{username}</span>
         </>
       );
     },
@@ -29,7 +24,30 @@ export const columns: ColumnDef<CardManagementType>[] = [
   {
     id: "Card Type",
     header: "Card Type",
-    accessorKey: "cardType",
+    cell: ({ row }) => {
+      const cardType = row.original.cardType.name;
+      return (
+        <>
+          <span>{cardType}</span>
+        </>
+      );
+    },
+  },
+  {
+    id: "Status",
+    header: "Active",
+    cell: ({ row }) => {
+      const active = row.original.status;
+      return (
+        <>
+          {active && (
+            <span className="bg-green rounded-2xl px-3 py-1 font-bold text-text-color">
+              Active
+            </span>
+          )}
+        </>
+      );
+    },
   },
   {
     id: "createdAt",

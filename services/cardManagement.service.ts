@@ -7,7 +7,7 @@ const getAllCard = async (page: number, limit: number, searchKey: string) => {
     const res = await NFC_APi.get(
       `/card?page=${page}&limit=${limit}&searchKey=${searchKey}`
     );
-    console.log("getCardManage Response--->", res.data);
+    // console.log("getCardManage Response--->", res.data);
     if (res.status == 200) {
       return res.data;
     }
@@ -21,7 +21,7 @@ const getAllCard = async (page: number, limit: number, searchKey: string) => {
 const createCard = async (createData: CardFormType) => {
   try {
     const res = await NFC_APi.post("/card", createData);
-    console.log("create card Response--->", res);
+    // console.log("create card Response--->", res);
     return {
       success: res.data.success ?? true,
       message: res.data.message || "card creating is successfully",
@@ -56,7 +56,7 @@ const createCard = async (createData: CardFormType) => {
 const updateCard = async (id: string, updateData: CardFormType) => {
   try {
     const res = await NFC_APi.patch(`/card/${id}`, updateData);
-    console.log("update card Response--->", res);
+    // console.log("update card Response--->", res);
     return {
       success: res.data.success ?? true,
       message: res.data.message || "card updated successfully",
@@ -87,7 +87,7 @@ const updateCard = async (id: string, updateData: CardFormType) => {
 const deleteCard = async (id: string) => {
   try {
     const res = await NFC_APi.delete(`/card/${id}`);
-    console.log("delete card Response--->", res);
+    // console.log("delete card Response--->", res);
    
     return {
       success: res.data.success ?? true,

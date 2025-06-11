@@ -9,13 +9,13 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await req.json();
-    const { username: userID, cardName, cardType, status } = body;
+    const { username: userID, cardName, cardType: cardTypeId, status } = body;
     const updatedUser = await prisma.cards.update({
       where: { id },
       data: {
         userID,
         cardName,
-        cardType,
+        cardTypeId,
         status,
       },
     });

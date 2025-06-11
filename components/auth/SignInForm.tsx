@@ -40,6 +40,7 @@ const SignInForm = () => {
   const onSubmit = async (value: SignInFormType) => {
     // console.log("value--->", value);
     try {
+      setError("");
       setIsLoading(true);
       const res = await signInAction(value);
       if (res?.error) {

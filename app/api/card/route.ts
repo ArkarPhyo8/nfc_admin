@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     if (searchKey) {
       const results = await prisma.cards.findMany({
         where: {
-          cardType: {
+          cardName: {
             contains: searchKey,
             mode: "insensitive",
           },
@@ -25,6 +25,11 @@ export async function GET(req: NextRequest) {
           users: {
             select: {
               username: true,
+            },
+          },
+          cardType: {
+            select: {
+              name: true,
             },
           },
         },
@@ -37,7 +42,7 @@ export async function GET(req: NextRequest) {
         {
           success: true,
           message: "Search results found",
-          userAccounts: results,
+          cards: results,
           pagination: {
             totalRecords: results.length,
             totalPages: 1,
@@ -56,6 +61,11 @@ export async function GET(req: NextRequest) {
         users: {
           select: {
             username: true,
+          },
+        },
+        cardType: {
+          select: {
+            name: true,
           },
         },
       },
@@ -102,14 +112,14 @@ export async function GET(req: NextRequest) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { username: userID, cardName, cardType, status } = body;
-    console.log(userID, cardName, cardType, status);
+    const { username: userID, cardName, cardType: cardTypeId, status } = body;
+    console.log(userID, cardName, cardTypeId, status);
 
     const newCard = await prisma.cards.create({
       data: {
         userID,
         cardName,
-        cardType,
+        cardTypeId,
         status,
       },
     });

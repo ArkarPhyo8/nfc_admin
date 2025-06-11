@@ -4,4 +4,7 @@ export type CardManagementType = cards & {
   users: {
     username: string;
   };
+  cardType:{
+    name: string;
+  }
 };
