@@ -34,6 +34,16 @@ export type cards = $Result.DefaultSelection<Prisma.$cardsPayload>
  */
 export type card_types = $Result.DefaultSelection<Prisma.$card_typesPayload>
 /**
+ * Model card_sale
+ * 
+ */
+export type card_sale = $Result.DefaultSelection<Prisma.$card_salePayload>
+/**
+ * Model payment_types
+ * 
+ */
+export type payment_types = $Result.DefaultSelection<Prisma.$payment_typesPayload>
+/**
  * Model reader_device
  * 
  */
@@ -225,6 +235,26 @@ export class PrismaClient<
     * ```
     */
   get card_types(): Prisma.card_typesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.card_sale`: Exposes CRUD operations for the **card_sale** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Card_sales
+    * const card_sales = await prisma.card_sale.findMany()
+    * ```
+    */
+  get card_sale(): Prisma.card_saleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.payment_types`: Exposes CRUD operations for the **payment_types** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Payment_types
+    * const payment_types = await prisma.payment_types.findMany()
+    * ```
+    */
+  get payment_types(): Prisma.payment_typesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.reader_device`: Exposes CRUD operations for the **reader_device** model.
@@ -689,6 +719,8 @@ export namespace Prisma {
     users: 'users',
     cards: 'cards',
     card_types: 'card_types',
+    card_sale: 'card_sale',
+    payment_types: 'payment_types',
     reader_device: 'reader_device',
     reader_logs: 'reader_logs'
   };
@@ -709,7 +741,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "users" | "cards" | "card_types" | "reader_device" | "reader_logs"
+      modelProps: "admin" | "users" | "cards" | "card_types" | "card_sale" | "payment_types" | "reader_device" | "reader_logs"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1009,6 +1041,154 @@ export namespace Prisma {
           }
         }
       }
+      card_sale: {
+        payload: Prisma.$card_salePayload<ExtArgs>
+        fields: Prisma.card_saleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.card_saleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.card_saleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          findFirst: {
+            args: Prisma.card_saleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.card_saleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          findMany: {
+            args: Prisma.card_saleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>[]
+          }
+          create: {
+            args: Prisma.card_saleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          createMany: {
+            args: Prisma.card_saleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.card_saleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>[]
+          }
+          delete: {
+            args: Prisma.card_saleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          update: {
+            args: Prisma.card_saleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          deleteMany: {
+            args: Prisma.card_saleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.card_saleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.card_saleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>[]
+          }
+          upsert: {
+            args: Prisma.card_saleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$card_salePayload>
+          }
+          aggregate: {
+            args: Prisma.Card_saleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCard_sale>
+          }
+          groupBy: {
+            args: Prisma.card_saleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Card_saleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.card_saleCountArgs<ExtArgs>
+            result: $Utils.Optional<Card_saleCountAggregateOutputType> | number
+          }
+        }
+      }
+      payment_types: {
+        payload: Prisma.$payment_typesPayload<ExtArgs>
+        fields: Prisma.payment_typesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.payment_typesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.payment_typesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          findFirst: {
+            args: Prisma.payment_typesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.payment_typesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          findMany: {
+            args: Prisma.payment_typesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>[]
+          }
+          create: {
+            args: Prisma.payment_typesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          createMany: {
+            args: Prisma.payment_typesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.payment_typesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>[]
+          }
+          delete: {
+            args: Prisma.payment_typesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          update: {
+            args: Prisma.payment_typesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          deleteMany: {
+            args: Prisma.payment_typesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.payment_typesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.payment_typesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>[]
+          }
+          upsert: {
+            args: Prisma.payment_typesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_typesPayload>
+          }
+          aggregate: {
+            args: Prisma.Payment_typesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePayment_types>
+          }
+          groupBy: {
+            args: Prisma.payment_typesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Payment_typesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.payment_typesCountArgs<ExtArgs>
+            result: $Utils.Optional<Payment_typesCountAggregateOutputType> | number
+          }
+        }
+      }
       reader_device: {
         payload: Prisma.$reader_devicePayload<ExtArgs>
         fields: Prisma.reader_deviceFieldRefs
@@ -1245,6 +1425,8 @@ export namespace Prisma {
     users?: usersOmit
     cards?: cardsOmit
     card_types?: card_typesOmit
+    card_sale?: card_saleOmit
+    payment_types?: payment_typesOmit
     reader_device?: reader_deviceOmit
     reader_logs?: reader_logsOmit
   }
@@ -1335,138 +1517,6 @@ export namespace Prisma {
    * Count Types
    */
 
-
-  /**
-   * Count Type UsersCountOutputType
-   */
-
-  export type UsersCountOutputType = {
-    cards: number
-    reader_device: number
-  }
-
-  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | UsersCountOutputTypeCountCardsArgs
-    reader_device?: boolean | UsersCountOutputTypeCountReader_deviceArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UsersCountOutputType
-     */
-    select?: UsersCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeCountCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: cardsWhereInput
-  }
-
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeCountReader_deviceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: reader_deviceWhereInput
-  }
-
-
-  /**
-   * Count Type CardsCountOutputType
-   */
-
-  export type CardsCountOutputType = {
-    reader_logs: number
-  }
-
-  export type CardsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reader_logs?: boolean | CardsCountOutputTypeCountReader_logsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CardsCountOutputType without action
-   */
-  export type CardsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CardsCountOutputType
-     */
-    select?: CardsCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CardsCountOutputType without action
-   */
-  export type CardsCountOutputTypeCountReader_logsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: reader_logsWhereInput
-  }
-
-
-  /**
-   * Count Type Card_typesCountOutputType
-   */
-
-  export type Card_typesCountOutputType = {
-    cards: number
-  }
-
-  export type Card_typesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | Card_typesCountOutputTypeCountCardsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * Card_typesCountOutputType without action
-   */
-  export type Card_typesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Card_typesCountOutputType
-     */
-    select?: Card_typesCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * Card_typesCountOutputType without action
-   */
-  export type Card_typesCountOutputTypeCountCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: cardsWhereInput
-  }
-
-
-  /**
-   * Count Type Reader_deviceCountOutputType
-   */
-
-  export type Reader_deviceCountOutputType = {
-    reader_logs: number
-  }
-
-  export type Reader_deviceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reader_logs?: boolean | Reader_deviceCountOutputTypeCountReader_logsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * Reader_deviceCountOutputType without action
-   */
-  export type Reader_deviceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Reader_deviceCountOutputType
-     */
-    select?: Reader_deviceCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * Reader_deviceCountOutputType without action
-   */
-  export type Reader_deviceCountOutputTypeCountReader_logsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: reader_logsWhereInput
-  }
 
 
   /**
@@ -2666,9 +2716,6 @@ export namespace Prisma {
     phoneNo?: boolean
     created_at?: boolean
     updated_at?: boolean
-    cards?: boolean | users$cardsArgs<ExtArgs>
-    reader_device?: boolean | users$reader_deviceArgs<ExtArgs>
-    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2699,20 +2746,10 @@ export namespace Prisma {
   }
 
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "WebUUID" | "phoneNo" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
-  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | users$cardsArgs<ExtArgs>
-    reader_device?: boolean | users$reader_deviceArgs<ExtArgs>
-    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type usersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
-    objects: {
-      cards: Prisma.$cardsPayload<ExtArgs>[]
-      reader_device: Prisma.$reader_devicePayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       username: string
@@ -3114,8 +3151,6 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cards<T extends users$cardsArgs<ExtArgs> = {}>(args?: Subset<T, users$cardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cardsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reader_device<T extends users$reader_deviceArgs<ExtArgs> = {}>(args?: Subset<T, users$reader_deviceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$reader_devicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3168,10 +3203,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -3190,10 +3221,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -3211,10 +3238,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * Filter, which users to fetch.
      */
@@ -3264,10 +3287,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -3316,10 +3335,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -3362,10 +3377,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to create a users.
      */
@@ -3414,10 +3425,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to update a users.
      */
@@ -3485,10 +3492,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * The filter to search for the users to update in case it exists.
      */
     where: usersWhereUniqueInput
@@ -3515,10 +3518,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter which users to delete.
      */
     where: usersWhereUniqueInput
@@ -3539,54 +3538,6 @@ export namespace Prisma {
   }
 
   /**
-   * users.cards
-   */
-  export type users$cardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the cards
-     */
-    select?: cardsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the cards
-     */
-    omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    where?: cardsWhereInput
-    orderBy?: cardsOrderByWithRelationInput | cardsOrderByWithRelationInput[]
-    cursor?: cardsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CardsScalarFieldEnum | CardsScalarFieldEnum[]
-  }
-
-  /**
-   * users.reader_device
-   */
-  export type users$reader_deviceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the reader_device
-     */
-    select?: reader_deviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the reader_device
-     */
-    omit?: reader_deviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    where?: reader_deviceWhereInput
-    orderBy?: reader_deviceOrderByWithRelationInput | reader_deviceOrderByWithRelationInput[]
-    cursor?: reader_deviceWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Reader_deviceScalarFieldEnum | Reader_deviceScalarFieldEnum[]
-  }
-
-  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3598,10 +3549,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
   }
 
 
@@ -3620,7 +3567,7 @@ export namespace Prisma {
     userID: string | null
     cardName: string | null
     cardUUID: string | null
-    cardTypeId: string | null
+    cardType: string | null
     status: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -3631,7 +3578,7 @@ export namespace Prisma {
     userID: string | null
     cardName: string | null
     cardUUID: string | null
-    cardTypeId: string | null
+    cardType: string | null
     status: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -3642,7 +3589,7 @@ export namespace Prisma {
     userID: number
     cardName: number
     cardUUID: number
-    cardTypeId: number
+    cardType: number
     status: number
     created_at: number
     updated_at: number
@@ -3655,7 +3602,7 @@ export namespace Prisma {
     userID?: true
     cardName?: true
     cardUUID?: true
-    cardTypeId?: true
+    cardType?: true
     status?: true
     created_at?: true
     updated_at?: true
@@ -3666,7 +3613,7 @@ export namespace Prisma {
     userID?: true
     cardName?: true
     cardUUID?: true
-    cardTypeId?: true
+    cardType?: true
     status?: true
     created_at?: true
     updated_at?: true
@@ -3677,7 +3624,7 @@ export namespace Prisma {
     userID?: true
     cardName?: true
     cardUUID?: true
-    cardTypeId?: true
+    cardType?: true
     status?: true
     created_at?: true
     updated_at?: true
@@ -3758,10 +3705,10 @@ export namespace Prisma {
 
   export type CardsGroupByOutputType = {
     id: string
-    userID: string
+    userID: string | null
     cardName: string
     cardUUID: string
-    cardTypeId: string
+    cardType: string
     status: boolean
     created_at: Date
     updated_at: Date
@@ -3789,14 +3736,10 @@ export namespace Prisma {
     userID?: boolean
     cardName?: boolean
     cardUUID?: boolean
-    cardTypeId?: boolean
+    cardType?: boolean
     status?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
-    reader_logs?: boolean | cards$reader_logsArgs<ExtArgs>
-    _count?: boolean | CardsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cards"]>
 
   export type cardsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3804,12 +3747,10 @@ export namespace Prisma {
     userID?: boolean
     cardName?: boolean
     cardUUID?: boolean
-    cardTypeId?: boolean
+    cardType?: boolean
     status?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cards"]>
 
   export type cardsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3817,12 +3758,10 @@ export namespace Prisma {
     userID?: boolean
     cardName?: boolean
     cardUUID?: boolean
-    cardTypeId?: boolean
+    cardType?: boolean
     status?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cards"]>
 
   export type cardsSelectScalar = {
@@ -3830,41 +3769,23 @@ export namespace Prisma {
     userID?: boolean
     cardName?: boolean
     cardUUID?: boolean
-    cardTypeId?: boolean
+    cardType?: boolean
     status?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type cardsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userID" | "cardName" | "cardUUID" | "cardTypeId" | "status" | "created_at" | "updated_at", ExtArgs["result"]["cards"]>
-  export type cardsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
-    reader_logs?: boolean | cards$reader_logsArgs<ExtArgs>
-    _count?: boolean | CardsCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type cardsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
-  }
-  export type cardsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    cardType?: boolean | card_typesDefaultArgs<ExtArgs>
-  }
+  export type cardsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userID" | "cardName" | "cardUUID" | "cardType" | "status" | "created_at" | "updated_at", ExtArgs["result"]["cards"]>
 
   export type $cardsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "cards"
-    objects: {
-      users: Prisma.$usersPayload<ExtArgs>
-      cardType: Prisma.$card_typesPayload<ExtArgs>
-      reader_logs: Prisma.$reader_logsPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userID: string
+      userID: string | null
       cardName: string
       cardUUID: string
-      cardTypeId: string
+      cardType: string
       status: boolean
       created_at: Date
       updated_at: Date
@@ -4262,9 +4183,6 @@ export namespace Prisma {
    */
   export interface Prisma__cardsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    cardType<T extends card_typesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, card_typesDefaultArgs<ExtArgs>>): Prisma__card_typesClient<$Result.GetResult<Prisma.$card_typesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    reader_logs<T extends cards$reader_logsArgs<ExtArgs> = {}>(args?: Subset<T, cards$reader_logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$reader_logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4298,7 +4216,7 @@ export namespace Prisma {
     readonly userID: FieldRef<"cards", 'String'>
     readonly cardName: FieldRef<"cards", 'String'>
     readonly cardUUID: FieldRef<"cards", 'String'>
-    readonly cardTypeId: FieldRef<"cards", 'String'>
+    readonly cardType: FieldRef<"cards", 'String'>
     readonly status: FieldRef<"cards", 'Boolean'>
     readonly created_at: FieldRef<"cards", 'DateTime'>
     readonly updated_at: FieldRef<"cards", 'DateTime'>
@@ -4319,10 +4237,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * Filter, which cards to fetch.
      */
     where: cardsWhereUniqueInput
@@ -4341,10 +4255,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * Filter, which cards to fetch.
      */
     where: cardsWhereUniqueInput
@@ -4362,10 +4272,6 @@ export namespace Prisma {
      * Omit specific fields from the cards
      */
     omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
     /**
      * Filter, which cards to fetch.
      */
@@ -4415,10 +4321,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * Filter, which cards to fetch.
      */
     where?: cardsWhereInput
@@ -4467,10 +4369,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * Filter, which cards to fetch.
      */
     where?: cardsWhereInput
@@ -4514,10 +4412,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * The data needed to create a cards.
      */
     data: XOR<cardsCreateInput, cardsUncheckedCreateInput>
@@ -4551,10 +4445,6 @@ export namespace Prisma {
      */
     data: cardsCreateManyInput | cardsCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4569,10 +4459,6 @@ export namespace Prisma {
      * Omit specific fields from the cards
      */
     omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
     /**
      * The data needed to update a cards.
      */
@@ -4625,10 +4511,6 @@ export namespace Prisma {
      * Limit how many cards to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4643,10 +4525,6 @@ export namespace Prisma {
      * Omit specific fields from the cards
      */
     omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
     /**
      * The filter to search for the cards to update in case it exists.
      */
@@ -4674,10 +4552,6 @@ export namespace Prisma {
      */
     omit?: cardsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    /**
      * Filter which cards to delete.
      */
     where: cardsWhereUniqueInput
@@ -4698,30 +4572,6 @@ export namespace Prisma {
   }
 
   /**
-   * cards.reader_logs
-   */
-  export type cards$reader_logsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the reader_logs
-     */
-    select?: reader_logsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the reader_logs
-     */
-    omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    where?: reader_logsWhereInput
-    orderBy?: reader_logsOrderByWithRelationInput | reader_logsOrderByWithRelationInput[]
-    cursor?: reader_logsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Reader_logsScalarFieldEnum | Reader_logsScalarFieldEnum[]
-  }
-
-  /**
    * cards without action
    */
   export type cardsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4733,10 +4583,6 @@ export namespace Prisma {
      * Omit specific fields from the cards
      */
     omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
   }
 
 
@@ -4896,8 +4742,6 @@ export namespace Prisma {
     name?: boolean
     created_at?: boolean
     updated_at?: boolean
-    cards?: boolean | card_types$cardsArgs<ExtArgs>
-    _count?: boolean | Card_typesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card_types"]>
 
   export type card_typesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4922,18 +4766,10 @@ export namespace Prisma {
   }
 
   export type card_typesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at" | "updated_at", ExtArgs["result"]["card_types"]>
-  export type card_typesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | card_types$cardsArgs<ExtArgs>
-    _count?: boolean | Card_typesCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type card_typesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type card_typesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $card_typesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "card_types"
-    objects: {
-      cards: Prisma.$cardsPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -5333,7 +5169,6 @@ export namespace Prisma {
    */
   export interface Prisma__card_typesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cards<T extends card_types$cardsArgs<ExtArgs> = {}>(args?: Subset<T, card_types$cardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cardsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5384,10 +5219,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * Filter, which card_types to fetch.
      */
     where: card_typesWhereUniqueInput
@@ -5406,10 +5237,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * Filter, which card_types to fetch.
      */
     where: card_typesWhereUniqueInput
@@ -5427,10 +5254,6 @@ export namespace Prisma {
      * Omit specific fields from the card_types
      */
     omit?: card_typesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
     /**
      * Filter, which card_types to fetch.
      */
@@ -5480,10 +5303,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * Filter, which card_types to fetch.
      */
     where?: card_typesWhereInput
@@ -5532,10 +5351,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * Filter, which card_types to fetch.
      */
     where?: card_typesWhereInput
@@ -5578,10 +5393,6 @@ export namespace Prisma {
      * Omit specific fields from the card_types
      */
     omit?: card_typesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
     /**
      * The data needed to create a card_types.
      */
@@ -5630,10 +5441,6 @@ export namespace Prisma {
      * Omit specific fields from the card_types
      */
     omit?: card_typesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
     /**
      * The data needed to update a card_types.
      */
@@ -5701,10 +5508,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * The filter to search for the card_types to update in case it exists.
      */
     where: card_typesWhereUniqueInput
@@ -5731,10 +5534,6 @@ export namespace Prisma {
      */
     omit?: card_typesOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: card_typesInclude<ExtArgs> | null
-    /**
      * Filter which card_types to delete.
      */
     where: card_typesWhereUniqueInput
@@ -5755,30 +5554,6 @@ export namespace Prisma {
   }
 
   /**
-   * card_types.cards
-   */
-  export type card_types$cardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the cards
-     */
-    select?: cardsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the cards
-     */
-    omit?: cardsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: cardsInclude<ExtArgs> | null
-    where?: cardsWhereInput
-    orderBy?: cardsOrderByWithRelationInput | cardsOrderByWithRelationInput[]
-    cursor?: cardsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CardsScalarFieldEnum | CardsScalarFieldEnum[]
-  }
-
-  /**
    * card_types without action
    */
   export type card_typesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5790,10 +5565,2095 @@ export namespace Prisma {
      * Omit specific fields from the card_types
      */
     omit?: card_typesOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model card_sale
+   */
+
+  export type AggregateCard_sale = {
+    _count: Card_saleCountAggregateOutputType | null
+    _avg: Card_saleAvgAggregateOutputType | null
+    _sum: Card_saleSumAggregateOutputType | null
+    _min: Card_saleMinAggregateOutputType | null
+    _max: Card_saleMaxAggregateOutputType | null
+  }
+
+  export type Card_saleAvgAggregateOutputType = {
+    price: Decimal | null
+    quantity: number | null
+  }
+
+  export type Card_saleSumAggregateOutputType = {
+    price: Decimal | null
+    quantity: number | null
+  }
+
+  export type Card_saleMinAggregateOutputType = {
+    id: string | null
+    customer_name: string | null
+    address: string | null
+    phone: string | null
+    sale_date: Date | null
+    price: Decimal | null
+    quantity: number | null
+    payment_status: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Card_saleMaxAggregateOutputType = {
+    id: string | null
+    customer_name: string | null
+    address: string | null
+    phone: string | null
+    sale_date: Date | null
+    price: Decimal | null
+    quantity: number | null
+    payment_status: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Card_saleCountAggregateOutputType = {
+    id: number
+    cardID: number
+    customer_name: number
+    address: number
+    phone: number
+    sale_date: number
+    price: number
+    quantity: number
+    payment_status: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Card_saleAvgAggregateInputType = {
+    price?: true
+    quantity?: true
+  }
+
+  export type Card_saleSumAggregateInputType = {
+    price?: true
+    quantity?: true
+  }
+
+  export type Card_saleMinAggregateInputType = {
+    id?: true
+    customer_name?: true
+    address?: true
+    phone?: true
+    sale_date?: true
+    price?: true
+    quantity?: true
+    payment_status?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Card_saleMaxAggregateInputType = {
+    id?: true
+    customer_name?: true
+    address?: true
+    phone?: true
+    sale_date?: true
+    price?: true
+    quantity?: true
+    payment_status?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Card_saleCountAggregateInputType = {
+    id?: true
+    cardID?: true
+    customer_name?: true
+    address?: true
+    phone?: true
+    sale_date?: true
+    price?: true
+    quantity?: true
+    payment_status?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Card_saleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter which card_sale to aggregate.
      */
-    include?: card_typesInclude<ExtArgs> | null
+    where?: card_saleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of card_sales to fetch.
+     */
+    orderBy?: card_saleOrderByWithRelationInput | card_saleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: card_saleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` card_sales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` card_sales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned card_sales
+    **/
+    _count?: true | Card_saleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Card_saleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Card_saleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Card_saleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Card_saleMaxAggregateInputType
+  }
+
+  export type GetCard_saleAggregateType<T extends Card_saleAggregateArgs> = {
+        [P in keyof T & keyof AggregateCard_sale]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCard_sale[P]>
+      : GetScalarType<T[P], AggregateCard_sale[P]>
+  }
+
+
+
+
+  export type card_saleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: card_saleWhereInput
+    orderBy?: card_saleOrderByWithAggregationInput | card_saleOrderByWithAggregationInput[]
+    by: Card_saleScalarFieldEnum[] | Card_saleScalarFieldEnum
+    having?: card_saleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Card_saleCountAggregateInputType | true
+    _avg?: Card_saleAvgAggregateInputType
+    _sum?: Card_saleSumAggregateInputType
+    _min?: Card_saleMinAggregateInputType
+    _max?: Card_saleMaxAggregateInputType
+  }
+
+  export type Card_saleGroupByOutputType = {
+    id: string
+    cardID: string[]
+    customer_name: string
+    address: string
+    phone: string
+    sale_date: Date
+    price: Decimal
+    quantity: number
+    payment_status: string
+    created_at: Date
+    updated_at: Date
+    _count: Card_saleCountAggregateOutputType | null
+    _avg: Card_saleAvgAggregateOutputType | null
+    _sum: Card_saleSumAggregateOutputType | null
+    _min: Card_saleMinAggregateOutputType | null
+    _max: Card_saleMaxAggregateOutputType | null
+  }
+
+  type GetCard_saleGroupByPayload<T extends card_saleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Card_saleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Card_saleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Card_saleGroupByOutputType[P]>
+            : GetScalarType<T[P], Card_saleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type card_saleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    customer_name?: boolean
+    address?: boolean
+    phone?: boolean
+    sale_date?: boolean
+    price?: boolean
+    quantity?: boolean
+    payment_status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["card_sale"]>
+
+  export type card_saleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    customer_name?: boolean
+    address?: boolean
+    phone?: boolean
+    sale_date?: boolean
+    price?: boolean
+    quantity?: boolean
+    payment_status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["card_sale"]>
+
+  export type card_saleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    customer_name?: boolean
+    address?: boolean
+    phone?: boolean
+    sale_date?: boolean
+    price?: boolean
+    quantity?: boolean
+    payment_status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["card_sale"]>
+
+  export type card_saleSelectScalar = {
+    id?: boolean
+    cardID?: boolean
+    customer_name?: boolean
+    address?: boolean
+    phone?: boolean
+    sale_date?: boolean
+    price?: boolean
+    quantity?: boolean
+    payment_status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type card_saleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cardID" | "customer_name" | "address" | "phone" | "sale_date" | "price" | "quantity" | "payment_status" | "created_at" | "updated_at", ExtArgs["result"]["card_sale"]>
+
+  export type $card_salePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "card_sale"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      cardID: string[]
+      customer_name: string
+      address: string
+      phone: string
+      sale_date: Date
+      price: Prisma.Decimal
+      quantity: number
+      payment_status: string
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["card_sale"]>
+    composites: {}
+  }
+
+  type card_saleGetPayload<S extends boolean | null | undefined | card_saleDefaultArgs> = $Result.GetResult<Prisma.$card_salePayload, S>
+
+  type card_saleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<card_saleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Card_saleCountAggregateInputType | true
+    }
+
+  export interface card_saleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['card_sale'], meta: { name: 'card_sale' } }
+    /**
+     * Find zero or one Card_sale that matches the filter.
+     * @param {card_saleFindUniqueArgs} args - Arguments to find a Card_sale
+     * @example
+     * // Get one Card_sale
+     * const card_sale = await prisma.card_sale.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends card_saleFindUniqueArgs>(args: SelectSubset<T, card_saleFindUniqueArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Card_sale that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {card_saleFindUniqueOrThrowArgs} args - Arguments to find a Card_sale
+     * @example
+     * // Get one Card_sale
+     * const card_sale = await prisma.card_sale.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends card_saleFindUniqueOrThrowArgs>(args: SelectSubset<T, card_saleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Card_sale that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleFindFirstArgs} args - Arguments to find a Card_sale
+     * @example
+     * // Get one Card_sale
+     * const card_sale = await prisma.card_sale.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends card_saleFindFirstArgs>(args?: SelectSubset<T, card_saleFindFirstArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Card_sale that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleFindFirstOrThrowArgs} args - Arguments to find a Card_sale
+     * @example
+     * // Get one Card_sale
+     * const card_sale = await prisma.card_sale.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends card_saleFindFirstOrThrowArgs>(args?: SelectSubset<T, card_saleFindFirstOrThrowArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Card_sales that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Card_sales
+     * const card_sales = await prisma.card_sale.findMany()
+     * 
+     * // Get first 10 Card_sales
+     * const card_sales = await prisma.card_sale.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const card_saleWithIdOnly = await prisma.card_sale.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends card_saleFindManyArgs>(args?: SelectSubset<T, card_saleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Card_sale.
+     * @param {card_saleCreateArgs} args - Arguments to create a Card_sale.
+     * @example
+     * // Create one Card_sale
+     * const Card_sale = await prisma.card_sale.create({
+     *   data: {
+     *     // ... data to create a Card_sale
+     *   }
+     * })
+     * 
+     */
+    create<T extends card_saleCreateArgs>(args: SelectSubset<T, card_saleCreateArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Card_sales.
+     * @param {card_saleCreateManyArgs} args - Arguments to create many Card_sales.
+     * @example
+     * // Create many Card_sales
+     * const card_sale = await prisma.card_sale.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends card_saleCreateManyArgs>(args?: SelectSubset<T, card_saleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Card_sales and returns the data saved in the database.
+     * @param {card_saleCreateManyAndReturnArgs} args - Arguments to create many Card_sales.
+     * @example
+     * // Create many Card_sales
+     * const card_sale = await prisma.card_sale.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Card_sales and only return the `id`
+     * const card_saleWithIdOnly = await prisma.card_sale.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends card_saleCreateManyAndReturnArgs>(args?: SelectSubset<T, card_saleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Card_sale.
+     * @param {card_saleDeleteArgs} args - Arguments to delete one Card_sale.
+     * @example
+     * // Delete one Card_sale
+     * const Card_sale = await prisma.card_sale.delete({
+     *   where: {
+     *     // ... filter to delete one Card_sale
+     *   }
+     * })
+     * 
+     */
+    delete<T extends card_saleDeleteArgs>(args: SelectSubset<T, card_saleDeleteArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Card_sale.
+     * @param {card_saleUpdateArgs} args - Arguments to update one Card_sale.
+     * @example
+     * // Update one Card_sale
+     * const card_sale = await prisma.card_sale.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends card_saleUpdateArgs>(args: SelectSubset<T, card_saleUpdateArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Card_sales.
+     * @param {card_saleDeleteManyArgs} args - Arguments to filter Card_sales to delete.
+     * @example
+     * // Delete a few Card_sales
+     * const { count } = await prisma.card_sale.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends card_saleDeleteManyArgs>(args?: SelectSubset<T, card_saleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Card_sales.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Card_sales
+     * const card_sale = await prisma.card_sale.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends card_saleUpdateManyArgs>(args: SelectSubset<T, card_saleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Card_sales and returns the data updated in the database.
+     * @param {card_saleUpdateManyAndReturnArgs} args - Arguments to update many Card_sales.
+     * @example
+     * // Update many Card_sales
+     * const card_sale = await prisma.card_sale.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Card_sales and only return the `id`
+     * const card_saleWithIdOnly = await prisma.card_sale.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends card_saleUpdateManyAndReturnArgs>(args: SelectSubset<T, card_saleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Card_sale.
+     * @param {card_saleUpsertArgs} args - Arguments to update or create a Card_sale.
+     * @example
+     * // Update or create a Card_sale
+     * const card_sale = await prisma.card_sale.upsert({
+     *   create: {
+     *     // ... data to create a Card_sale
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Card_sale we want to update
+     *   }
+     * })
+     */
+    upsert<T extends card_saleUpsertArgs>(args: SelectSubset<T, card_saleUpsertArgs<ExtArgs>>): Prisma__card_saleClient<$Result.GetResult<Prisma.$card_salePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Card_sales.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleCountArgs} args - Arguments to filter Card_sales to count.
+     * @example
+     * // Count the number of Card_sales
+     * const count = await prisma.card_sale.count({
+     *   where: {
+     *     // ... the filter for the Card_sales we want to count
+     *   }
+     * })
+    **/
+    count<T extends card_saleCountArgs>(
+      args?: Subset<T, card_saleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Card_saleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Card_sale.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Card_saleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Card_saleAggregateArgs>(args: Subset<T, Card_saleAggregateArgs>): Prisma.PrismaPromise<GetCard_saleAggregateType<T>>
+
+    /**
+     * Group by Card_sale.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {card_saleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends card_saleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: card_saleGroupByArgs['orderBy'] }
+        : { orderBy?: card_saleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, card_saleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCard_saleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the card_sale model
+   */
+  readonly fields: card_saleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for card_sale.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__card_saleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the card_sale model
+   */
+  interface card_saleFieldRefs {
+    readonly id: FieldRef<"card_sale", 'String'>
+    readonly cardID: FieldRef<"card_sale", 'String[]'>
+    readonly customer_name: FieldRef<"card_sale", 'String'>
+    readonly address: FieldRef<"card_sale", 'String'>
+    readonly phone: FieldRef<"card_sale", 'String'>
+    readonly sale_date: FieldRef<"card_sale", 'DateTime'>
+    readonly price: FieldRef<"card_sale", 'Decimal'>
+    readonly quantity: FieldRef<"card_sale", 'Int'>
+    readonly payment_status: FieldRef<"card_sale", 'String'>
+    readonly created_at: FieldRef<"card_sale", 'DateTime'>
+    readonly updated_at: FieldRef<"card_sale", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * card_sale findUnique
+   */
+  export type card_saleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter, which card_sale to fetch.
+     */
+    where: card_saleWhereUniqueInput
+  }
+
+  /**
+   * card_sale findUniqueOrThrow
+   */
+  export type card_saleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter, which card_sale to fetch.
+     */
+    where: card_saleWhereUniqueInput
+  }
+
+  /**
+   * card_sale findFirst
+   */
+  export type card_saleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter, which card_sale to fetch.
+     */
+    where?: card_saleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of card_sales to fetch.
+     */
+    orderBy?: card_saleOrderByWithRelationInput | card_saleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for card_sales.
+     */
+    cursor?: card_saleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` card_sales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` card_sales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of card_sales.
+     */
+    distinct?: Card_saleScalarFieldEnum | Card_saleScalarFieldEnum[]
+  }
+
+  /**
+   * card_sale findFirstOrThrow
+   */
+  export type card_saleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter, which card_sale to fetch.
+     */
+    where?: card_saleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of card_sales to fetch.
+     */
+    orderBy?: card_saleOrderByWithRelationInput | card_saleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for card_sales.
+     */
+    cursor?: card_saleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` card_sales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` card_sales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of card_sales.
+     */
+    distinct?: Card_saleScalarFieldEnum | Card_saleScalarFieldEnum[]
+  }
+
+  /**
+   * card_sale findMany
+   */
+  export type card_saleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter, which card_sales to fetch.
+     */
+    where?: card_saleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of card_sales to fetch.
+     */
+    orderBy?: card_saleOrderByWithRelationInput | card_saleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing card_sales.
+     */
+    cursor?: card_saleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` card_sales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` card_sales.
+     */
+    skip?: number
+    distinct?: Card_saleScalarFieldEnum | Card_saleScalarFieldEnum[]
+  }
+
+  /**
+   * card_sale create
+   */
+  export type card_saleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * The data needed to create a card_sale.
+     */
+    data: XOR<card_saleCreateInput, card_saleUncheckedCreateInput>
+  }
+
+  /**
+   * card_sale createMany
+   */
+  export type card_saleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many card_sales.
+     */
+    data: card_saleCreateManyInput | card_saleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * card_sale createManyAndReturn
+   */
+  export type card_saleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * The data used to create many card_sales.
+     */
+    data: card_saleCreateManyInput | card_saleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * card_sale update
+   */
+  export type card_saleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * The data needed to update a card_sale.
+     */
+    data: XOR<card_saleUpdateInput, card_saleUncheckedUpdateInput>
+    /**
+     * Choose, which card_sale to update.
+     */
+    where: card_saleWhereUniqueInput
+  }
+
+  /**
+   * card_sale updateMany
+   */
+  export type card_saleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update card_sales.
+     */
+    data: XOR<card_saleUpdateManyMutationInput, card_saleUncheckedUpdateManyInput>
+    /**
+     * Filter which card_sales to update
+     */
+    where?: card_saleWhereInput
+    /**
+     * Limit how many card_sales to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * card_sale updateManyAndReturn
+   */
+  export type card_saleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * The data used to update card_sales.
+     */
+    data: XOR<card_saleUpdateManyMutationInput, card_saleUncheckedUpdateManyInput>
+    /**
+     * Filter which card_sales to update
+     */
+    where?: card_saleWhereInput
+    /**
+     * Limit how many card_sales to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * card_sale upsert
+   */
+  export type card_saleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * The filter to search for the card_sale to update in case it exists.
+     */
+    where: card_saleWhereUniqueInput
+    /**
+     * In case the card_sale found by the `where` argument doesn't exist, create a new card_sale with this data.
+     */
+    create: XOR<card_saleCreateInput, card_saleUncheckedCreateInput>
+    /**
+     * In case the card_sale was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<card_saleUpdateInput, card_saleUncheckedUpdateInput>
+  }
+
+  /**
+   * card_sale delete
+   */
+  export type card_saleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+    /**
+     * Filter which card_sale to delete.
+     */
+    where: card_saleWhereUniqueInput
+  }
+
+  /**
+   * card_sale deleteMany
+   */
+  export type card_saleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which card_sales to delete
+     */
+    where?: card_saleWhereInput
+    /**
+     * Limit how many card_sales to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * card_sale without action
+   */
+  export type card_saleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_sale
+     */
+    select?: card_saleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_sale
+     */
+    omit?: card_saleOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model payment_types
+   */
+
+  export type AggregatePayment_types = {
+    _count: Payment_typesCountAggregateOutputType | null
+    _min: Payment_typesMinAggregateOutputType | null
+    _max: Payment_typesMaxAggregateOutputType | null
+  }
+
+  export type Payment_typesMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Payment_typesMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Payment_typesCountAggregateOutputType = {
+    id: number
+    name: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Payment_typesMinAggregateInputType = {
+    id?: true
+    name?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Payment_typesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Payment_typesCountAggregateInputType = {
+    id?: true
+    name?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Payment_typesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which payment_types to aggregate.
+     */
+    where?: payment_typesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_types to fetch.
+     */
+    orderBy?: payment_typesOrderByWithRelationInput | payment_typesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: payment_typesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_types from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_types.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned payment_types
+    **/
+    _count?: true | Payment_typesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Payment_typesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Payment_typesMaxAggregateInputType
+  }
+
+  export type GetPayment_typesAggregateType<T extends Payment_typesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePayment_types]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePayment_types[P]>
+      : GetScalarType<T[P], AggregatePayment_types[P]>
+  }
+
+
+
+
+  export type payment_typesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: payment_typesWhereInput
+    orderBy?: payment_typesOrderByWithAggregationInput | payment_typesOrderByWithAggregationInput[]
+    by: Payment_typesScalarFieldEnum[] | Payment_typesScalarFieldEnum
+    having?: payment_typesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Payment_typesCountAggregateInputType | true
+    _min?: Payment_typesMinAggregateInputType
+    _max?: Payment_typesMaxAggregateInputType
+  }
+
+  export type Payment_typesGroupByOutputType = {
+    id: string
+    name: string
+    created_at: Date
+    updated_at: Date
+    _count: Payment_typesCountAggregateOutputType | null
+    _min: Payment_typesMinAggregateOutputType | null
+    _max: Payment_typesMaxAggregateOutputType | null
+  }
+
+  type GetPayment_typesGroupByPayload<T extends payment_typesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Payment_typesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Payment_typesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Payment_typesGroupByOutputType[P]>
+            : GetScalarType<T[P], Payment_typesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type payment_typesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["payment_types"]>
+
+  export type payment_typesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["payment_types"]>
+
+  export type payment_typesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["payment_types"]>
+
+  export type payment_typesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type payment_typesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at" | "updated_at", ExtArgs["result"]["payment_types"]>
+
+  export type $payment_typesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "payment_types"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["payment_types"]>
+    composites: {}
+  }
+
+  type payment_typesGetPayload<S extends boolean | null | undefined | payment_typesDefaultArgs> = $Result.GetResult<Prisma.$payment_typesPayload, S>
+
+  type payment_typesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<payment_typesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Payment_typesCountAggregateInputType | true
+    }
+
+  export interface payment_typesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['payment_types'], meta: { name: 'payment_types' } }
+    /**
+     * Find zero or one Payment_types that matches the filter.
+     * @param {payment_typesFindUniqueArgs} args - Arguments to find a Payment_types
+     * @example
+     * // Get one Payment_types
+     * const payment_types = await prisma.payment_types.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends payment_typesFindUniqueArgs>(args: SelectSubset<T, payment_typesFindUniqueArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Payment_types that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {payment_typesFindUniqueOrThrowArgs} args - Arguments to find a Payment_types
+     * @example
+     * // Get one Payment_types
+     * const payment_types = await prisma.payment_types.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends payment_typesFindUniqueOrThrowArgs>(args: SelectSubset<T, payment_typesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment_types that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesFindFirstArgs} args - Arguments to find a Payment_types
+     * @example
+     * // Get one Payment_types
+     * const payment_types = await prisma.payment_types.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends payment_typesFindFirstArgs>(args?: SelectSubset<T, payment_typesFindFirstArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment_types that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesFindFirstOrThrowArgs} args - Arguments to find a Payment_types
+     * @example
+     * // Get one Payment_types
+     * const payment_types = await prisma.payment_types.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends payment_typesFindFirstOrThrowArgs>(args?: SelectSubset<T, payment_typesFindFirstOrThrowArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Payment_types that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Payment_types
+     * const payment_types = await prisma.payment_types.findMany()
+     * 
+     * // Get first 10 Payment_types
+     * const payment_types = await prisma.payment_types.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const payment_typesWithIdOnly = await prisma.payment_types.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends payment_typesFindManyArgs>(args?: SelectSubset<T, payment_typesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Payment_types.
+     * @param {payment_typesCreateArgs} args - Arguments to create a Payment_types.
+     * @example
+     * // Create one Payment_types
+     * const Payment_types = await prisma.payment_types.create({
+     *   data: {
+     *     // ... data to create a Payment_types
+     *   }
+     * })
+     * 
+     */
+    create<T extends payment_typesCreateArgs>(args: SelectSubset<T, payment_typesCreateArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Payment_types.
+     * @param {payment_typesCreateManyArgs} args - Arguments to create many Payment_types.
+     * @example
+     * // Create many Payment_types
+     * const payment_types = await prisma.payment_types.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends payment_typesCreateManyArgs>(args?: SelectSubset<T, payment_typesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Payment_types and returns the data saved in the database.
+     * @param {payment_typesCreateManyAndReturnArgs} args - Arguments to create many Payment_types.
+     * @example
+     * // Create many Payment_types
+     * const payment_types = await prisma.payment_types.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Payment_types and only return the `id`
+     * const payment_typesWithIdOnly = await prisma.payment_types.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends payment_typesCreateManyAndReturnArgs>(args?: SelectSubset<T, payment_typesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Payment_types.
+     * @param {payment_typesDeleteArgs} args - Arguments to delete one Payment_types.
+     * @example
+     * // Delete one Payment_types
+     * const Payment_types = await prisma.payment_types.delete({
+     *   where: {
+     *     // ... filter to delete one Payment_types
+     *   }
+     * })
+     * 
+     */
+    delete<T extends payment_typesDeleteArgs>(args: SelectSubset<T, payment_typesDeleteArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Payment_types.
+     * @param {payment_typesUpdateArgs} args - Arguments to update one Payment_types.
+     * @example
+     * // Update one Payment_types
+     * const payment_types = await prisma.payment_types.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends payment_typesUpdateArgs>(args: SelectSubset<T, payment_typesUpdateArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Payment_types.
+     * @param {payment_typesDeleteManyArgs} args - Arguments to filter Payment_types to delete.
+     * @example
+     * // Delete a few Payment_types
+     * const { count } = await prisma.payment_types.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends payment_typesDeleteManyArgs>(args?: SelectSubset<T, payment_typesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payment_types.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Payment_types
+     * const payment_types = await prisma.payment_types.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends payment_typesUpdateManyArgs>(args: SelectSubset<T, payment_typesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payment_types and returns the data updated in the database.
+     * @param {payment_typesUpdateManyAndReturnArgs} args - Arguments to update many Payment_types.
+     * @example
+     * // Update many Payment_types
+     * const payment_types = await prisma.payment_types.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Payment_types and only return the `id`
+     * const payment_typesWithIdOnly = await prisma.payment_types.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends payment_typesUpdateManyAndReturnArgs>(args: SelectSubset<T, payment_typesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Payment_types.
+     * @param {payment_typesUpsertArgs} args - Arguments to update or create a Payment_types.
+     * @example
+     * // Update or create a Payment_types
+     * const payment_types = await prisma.payment_types.upsert({
+     *   create: {
+     *     // ... data to create a Payment_types
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Payment_types we want to update
+     *   }
+     * })
+     */
+    upsert<T extends payment_typesUpsertArgs>(args: SelectSubset<T, payment_typesUpsertArgs<ExtArgs>>): Prisma__payment_typesClient<$Result.GetResult<Prisma.$payment_typesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Payment_types.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesCountArgs} args - Arguments to filter Payment_types to count.
+     * @example
+     * // Count the number of Payment_types
+     * const count = await prisma.payment_types.count({
+     *   where: {
+     *     // ... the filter for the Payment_types we want to count
+     *   }
+     * })
+    **/
+    count<T extends payment_typesCountArgs>(
+      args?: Subset<T, payment_typesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Payment_typesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Payment_types.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Payment_typesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Payment_typesAggregateArgs>(args: Subset<T, Payment_typesAggregateArgs>): Prisma.PrismaPromise<GetPayment_typesAggregateType<T>>
+
+    /**
+     * Group by Payment_types.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_typesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends payment_typesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: payment_typesGroupByArgs['orderBy'] }
+        : { orderBy?: payment_typesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, payment_typesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPayment_typesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the payment_types model
+   */
+  readonly fields: payment_typesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for payment_types.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__payment_typesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the payment_types model
+   */
+  interface payment_typesFieldRefs {
+    readonly id: FieldRef<"payment_types", 'String'>
+    readonly name: FieldRef<"payment_types", 'String'>
+    readonly created_at: FieldRef<"payment_types", 'DateTime'>
+    readonly updated_at: FieldRef<"payment_types", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * payment_types findUnique
+   */
+  export type payment_typesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_types to fetch.
+     */
+    where: payment_typesWhereUniqueInput
+  }
+
+  /**
+   * payment_types findUniqueOrThrow
+   */
+  export type payment_typesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_types to fetch.
+     */
+    where: payment_typesWhereUniqueInput
+  }
+
+  /**
+   * payment_types findFirst
+   */
+  export type payment_typesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_types to fetch.
+     */
+    where?: payment_typesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_types to fetch.
+     */
+    orderBy?: payment_typesOrderByWithRelationInput | payment_typesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for payment_types.
+     */
+    cursor?: payment_typesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_types from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_types.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of payment_types.
+     */
+    distinct?: Payment_typesScalarFieldEnum | Payment_typesScalarFieldEnum[]
+  }
+
+  /**
+   * payment_types findFirstOrThrow
+   */
+  export type payment_typesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_types to fetch.
+     */
+    where?: payment_typesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_types to fetch.
+     */
+    orderBy?: payment_typesOrderByWithRelationInput | payment_typesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for payment_types.
+     */
+    cursor?: payment_typesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_types from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_types.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of payment_types.
+     */
+    distinct?: Payment_typesScalarFieldEnum | Payment_typesScalarFieldEnum[]
+  }
+
+  /**
+   * payment_types findMany
+   */
+  export type payment_typesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_types to fetch.
+     */
+    where?: payment_typesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_types to fetch.
+     */
+    orderBy?: payment_typesOrderByWithRelationInput | payment_typesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing payment_types.
+     */
+    cursor?: payment_typesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_types from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_types.
+     */
+    skip?: number
+    distinct?: Payment_typesScalarFieldEnum | Payment_typesScalarFieldEnum[]
+  }
+
+  /**
+   * payment_types create
+   */
+  export type payment_typesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a payment_types.
+     */
+    data: XOR<payment_typesCreateInput, payment_typesUncheckedCreateInput>
+  }
+
+  /**
+   * payment_types createMany
+   */
+  export type payment_typesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many payment_types.
+     */
+    data: payment_typesCreateManyInput | payment_typesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * payment_types createManyAndReturn
+   */
+  export type payment_typesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * The data used to create many payment_types.
+     */
+    data: payment_typesCreateManyInput | payment_typesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * payment_types update
+   */
+  export type payment_typesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a payment_types.
+     */
+    data: XOR<payment_typesUpdateInput, payment_typesUncheckedUpdateInput>
+    /**
+     * Choose, which payment_types to update.
+     */
+    where: payment_typesWhereUniqueInput
+  }
+
+  /**
+   * payment_types updateMany
+   */
+  export type payment_typesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update payment_types.
+     */
+    data: XOR<payment_typesUpdateManyMutationInput, payment_typesUncheckedUpdateManyInput>
+    /**
+     * Filter which payment_types to update
+     */
+    where?: payment_typesWhereInput
+    /**
+     * Limit how many payment_types to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_types updateManyAndReturn
+   */
+  export type payment_typesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * The data used to update payment_types.
+     */
+    data: XOR<payment_typesUpdateManyMutationInput, payment_typesUncheckedUpdateManyInput>
+    /**
+     * Filter which payment_types to update
+     */
+    where?: payment_typesWhereInput
+    /**
+     * Limit how many payment_types to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_types upsert
+   */
+  export type payment_typesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the payment_types to update in case it exists.
+     */
+    where: payment_typesWhereUniqueInput
+    /**
+     * In case the payment_types found by the `where` argument doesn't exist, create a new payment_types with this data.
+     */
+    create: XOR<payment_typesCreateInput, payment_typesUncheckedCreateInput>
+    /**
+     * In case the payment_types was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<payment_typesUpdateInput, payment_typesUncheckedUpdateInput>
+  }
+
+  /**
+   * payment_types delete
+   */
+  export type payment_typesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
+    /**
+     * Filter which payment_types to delete.
+     */
+    where: payment_typesWhereUniqueInput
+  }
+
+  /**
+   * payment_types deleteMany
+   */
+  export type payment_typesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which payment_types to delete
+     */
+    where?: payment_typesWhereInput
+    /**
+     * Limit how many payment_types to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_types without action
+   */
+  export type payment_typesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_types
+     */
+    select?: payment_typesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_types
+     */
+    omit?: payment_typesOmit<ExtArgs> | null
   }
 
 
@@ -5938,7 +7798,7 @@ export namespace Prisma {
 
   export type Reader_deviceGroupByOutputType = {
     id: string
-    userID: string
+    userID: string | null
     readerDeviceName: string
     DeviceUUID: string
     created_at: Date
@@ -5969,9 +7829,6 @@ export namespace Prisma {
     DeviceUUID?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    reader_logs?: boolean | reader_device$reader_logsArgs<ExtArgs>
-    _count?: boolean | Reader_deviceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_device"]>
 
   export type reader_deviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5981,7 +7838,6 @@ export namespace Prisma {
     DeviceUUID?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_device"]>
 
   export type reader_deviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5991,7 +7847,6 @@ export namespace Prisma {
     DeviceUUID?: boolean
     created_at?: boolean
     updated_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_device"]>
 
   export type reader_deviceSelectScalar = {
@@ -6004,27 +7859,13 @@ export namespace Prisma {
   }
 
   export type reader_deviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userID" | "readerDeviceName" | "DeviceUUID" | "created_at" | "updated_at", ExtArgs["result"]["reader_device"]>
-  export type reader_deviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    reader_logs?: boolean | reader_device$reader_logsArgs<ExtArgs>
-    _count?: boolean | Reader_deviceCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type reader_deviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }
-  export type reader_deviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }
 
   export type $reader_devicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "reader_device"
-    objects: {
-      users: Prisma.$usersPayload<ExtArgs>
-      reader_logs: Prisma.$reader_logsPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userID: string
+      userID: string | null
       readerDeviceName: string
       DeviceUUID: string
       created_at: Date
@@ -6423,8 +8264,6 @@ export namespace Prisma {
    */
   export interface Prisma__reader_deviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    reader_logs<T extends reader_device$reader_logsArgs<ExtArgs> = {}>(args?: Subset<T, reader_device$reader_logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$reader_logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6477,10 +8316,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * Filter, which reader_device to fetch.
      */
     where: reader_deviceWhereUniqueInput
@@ -6499,10 +8334,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * Filter, which reader_device to fetch.
      */
     where: reader_deviceWhereUniqueInput
@@ -6520,10 +8351,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_device
      */
     omit?: reader_deviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
     /**
      * Filter, which reader_device to fetch.
      */
@@ -6573,10 +8400,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * Filter, which reader_device to fetch.
      */
     where?: reader_deviceWhereInput
@@ -6625,10 +8448,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * Filter, which reader_devices to fetch.
      */
     where?: reader_deviceWhereInput
@@ -6672,10 +8491,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * The data needed to create a reader_device.
      */
     data: XOR<reader_deviceCreateInput, reader_deviceUncheckedCreateInput>
@@ -6709,10 +8524,6 @@ export namespace Prisma {
      */
     data: reader_deviceCreateManyInput | reader_deviceCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6727,10 +8538,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_device
      */
     omit?: reader_deviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
     /**
      * The data needed to update a reader_device.
      */
@@ -6783,10 +8590,6 @@ export namespace Prisma {
      * Limit how many reader_devices to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6801,10 +8604,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_device
      */
     omit?: reader_deviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
     /**
      * The filter to search for the reader_device to update in case it exists.
      */
@@ -6832,10 +8631,6 @@ export namespace Prisma {
      */
     omit?: reader_deviceOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
-    /**
      * Filter which reader_device to delete.
      */
     where: reader_deviceWhereUniqueInput
@@ -6856,30 +8651,6 @@ export namespace Prisma {
   }
 
   /**
-   * reader_device.reader_logs
-   */
-  export type reader_device$reader_logsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the reader_logs
-     */
-    select?: reader_logsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the reader_logs
-     */
-    omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    where?: reader_logsWhereInput
-    orderBy?: reader_logsOrderByWithRelationInput | reader_logsOrderByWithRelationInput[]
-    cursor?: reader_logsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Reader_logsScalarFieldEnum | Reader_logsScalarFieldEnum[]
-  }
-
-  /**
    * reader_device without action
    */
   export type reader_deviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6891,10 +8662,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_device
      */
     omit?: reader_deviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_deviceInclude<ExtArgs> | null
   }
 
 
@@ -7045,7 +8812,7 @@ export namespace Prisma {
 
   export type Reader_logsGroupByOutputType = {
     id: string
-    cardID: string
+    cardID: string | null
     reader_deviceID: string
     status: boolean
     readDate: Date
@@ -7078,8 +8845,6 @@ export namespace Prisma {
     readDate?: boolean
     created_at?: boolean
     updated_at?: boolean
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_logs"]>
 
   export type reader_logsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7090,8 +8855,6 @@ export namespace Prisma {
     readDate?: boolean
     created_at?: boolean
     updated_at?: boolean
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_logs"]>
 
   export type reader_logsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7102,8 +8865,6 @@ export namespace Prisma {
     readDate?: boolean
     created_at?: boolean
     updated_at?: boolean
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reader_logs"]>
 
   export type reader_logsSelectScalar = {
@@ -7117,28 +8878,13 @@ export namespace Prisma {
   }
 
   export type reader_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cardID" | "reader_deviceID" | "status" | "readDate" | "created_at" | "updated_at", ExtArgs["result"]["reader_logs"]>
-  export type reader_logsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
-  }
-  export type reader_logsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
-  }
-  export type reader_logsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cards?: boolean | cardsDefaultArgs<ExtArgs>
-    reader_device?: boolean | reader_deviceDefaultArgs<ExtArgs>
-  }
 
   export type $reader_logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "reader_logs"
-    objects: {
-      cards: Prisma.$cardsPayload<ExtArgs>
-      reader_device: Prisma.$reader_devicePayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      cardID: string
+      cardID: string | null
       reader_deviceID: string
       status: boolean
       readDate: Date
@@ -7538,8 +9284,6 @@ export namespace Prisma {
    */
   export interface Prisma__reader_logsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cards<T extends cardsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, cardsDefaultArgs<ExtArgs>>): Prisma__cardsClient<$Result.GetResult<Prisma.$cardsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    reader_device<T extends reader_deviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, reader_deviceDefaultArgs<ExtArgs>>): Prisma__reader_deviceClient<$Result.GetResult<Prisma.$reader_devicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7593,10 +9337,6 @@ export namespace Prisma {
      */
     omit?: reader_logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    /**
      * Filter, which reader_logs to fetch.
      */
     where: reader_logsWhereUniqueInput
@@ -7615,10 +9355,6 @@ export namespace Prisma {
      */
     omit?: reader_logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    /**
      * Filter, which reader_logs to fetch.
      */
     where: reader_logsWhereUniqueInput
@@ -7636,10 +9372,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_logs
      */
     omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
     /**
      * Filter, which reader_logs to fetch.
      */
@@ -7689,10 +9421,6 @@ export namespace Prisma {
      */
     omit?: reader_logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    /**
      * Filter, which reader_logs to fetch.
      */
     where?: reader_logsWhereInput
@@ -7741,10 +9469,6 @@ export namespace Prisma {
      */
     omit?: reader_logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    /**
      * Filter, which reader_logs to fetch.
      */
     where?: reader_logsWhereInput
@@ -7788,10 +9512,6 @@ export namespace Prisma {
      */
     omit?: reader_logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
-    /**
      * The data needed to create a reader_logs.
      */
     data: XOR<reader_logsCreateInput, reader_logsUncheckedCreateInput>
@@ -7825,10 +9545,6 @@ export namespace Prisma {
      */
     data: reader_logsCreateManyInput | reader_logsCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7843,10 +9559,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_logs
      */
     omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
     /**
      * The data needed to update a reader_logs.
      */
@@ -7899,10 +9611,6 @@ export namespace Prisma {
      * Limit how many reader_logs to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7917,10 +9625,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_logs
      */
     omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
     /**
      * The filter to search for the reader_logs to update in case it exists.
      */
@@ -7947,10 +9651,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_logs
      */
     omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
     /**
      * Filter which reader_logs to delete.
      */
@@ -7983,10 +9683,6 @@ export namespace Prisma {
      * Omit specific fields from the reader_logs
      */
     omit?: reader_logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: reader_logsInclude<ExtArgs> | null
   }
 
 
@@ -8034,7 +9730,7 @@ export namespace Prisma {
     userID: 'userID',
     cardName: 'cardName',
     cardUUID: 'cardUUID',
-    cardTypeId: 'cardTypeId',
+    cardType: 'cardType',
     status: 'status',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -8051,6 +9747,33 @@ export namespace Prisma {
   };
 
   export type Card_typesScalarFieldEnum = (typeof Card_typesScalarFieldEnum)[keyof typeof Card_typesScalarFieldEnum]
+
+
+  export const Card_saleScalarFieldEnum: {
+    id: 'id',
+    cardID: 'cardID',
+    customer_name: 'customer_name',
+    address: 'address',
+    phone: 'phone',
+    sale_date: 'sale_date',
+    price: 'price',
+    quantity: 'quantity',
+    payment_status: 'payment_status',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type Card_saleScalarFieldEnum = (typeof Card_saleScalarFieldEnum)[keyof typeof Card_saleScalarFieldEnum]
+
+
+  export const Payment_typesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type Payment_typesScalarFieldEnum = (typeof Payment_typesScalarFieldEnum)[keyof typeof Payment_typesScalarFieldEnum]
 
 
   export const Reader_deviceScalarFieldEnum: {
@@ -8157,6 +9880,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -8167,6 +9904,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -8245,8 +9996,6 @@ export namespace Prisma {
     phoneNo?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     updated_at?: DateTimeFilter<"users"> | Date | string
-    cards?: CardsListRelationFilter
-    reader_device?: Reader_deviceListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -8256,8 +10005,6 @@ export namespace Prisma {
     phoneNo?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    cards?: cardsOrderByRelationAggregateInput
-    reader_device?: reader_deviceOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -8270,8 +10017,6 @@ export namespace Prisma {
     phoneNo?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     updated_at?: DateTimeFilter<"users"> | Date | string
-    cards?: CardsListRelationFilter
-    reader_device?: Reader_deviceListRelationFilter
   }, "id" | "WebUUID">
 
   export type usersOrderByWithAggregationInput = {
@@ -8303,30 +10048,24 @@ export namespace Prisma {
     OR?: cardsWhereInput[]
     NOT?: cardsWhereInput | cardsWhereInput[]
     id?: UuidFilter<"cards"> | string
-    userID?: UuidFilter<"cards"> | string
+    userID?: StringNullableFilter<"cards"> | string | null
     cardName?: StringFilter<"cards"> | string
     cardUUID?: StringFilter<"cards"> | string
-    cardTypeId?: UuidFilter<"cards"> | string
+    cardType?: UuidFilter<"cards"> | string
     status?: BoolFilter<"cards"> | boolean
     created_at?: DateTimeFilter<"cards"> | Date | string
     updated_at?: DateTimeFilter<"cards"> | Date | string
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    cardType?: XOR<Card_typesScalarRelationFilter, card_typesWhereInput>
-    reader_logs?: Reader_logsListRelationFilter
   }
 
   export type cardsOrderByWithRelationInput = {
     id?: SortOrder
-    userID?: SortOrder
+    userID?: SortOrderInput | SortOrder
     cardName?: SortOrder
     cardUUID?: SortOrder
-    cardTypeId?: SortOrder
+    cardType?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    users?: usersOrderByWithRelationInput
-    cardType?: card_typesOrderByWithRelationInput
-    reader_logs?: reader_logsOrderByRelationAggregateInput
   }
 
   export type cardsWhereUniqueInput = Prisma.AtLeast<{
@@ -8335,23 +10074,20 @@ export namespace Prisma {
     AND?: cardsWhereInput | cardsWhereInput[]
     OR?: cardsWhereInput[]
     NOT?: cardsWhereInput | cardsWhereInput[]
-    userID?: UuidFilter<"cards"> | string
+    userID?: StringNullableFilter<"cards"> | string | null
     cardName?: StringFilter<"cards"> | string
-    cardTypeId?: UuidFilter<"cards"> | string
+    cardType?: UuidFilter<"cards"> | string
     status?: BoolFilter<"cards"> | boolean
     created_at?: DateTimeFilter<"cards"> | Date | string
     updated_at?: DateTimeFilter<"cards"> | Date | string
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    cardType?: XOR<Card_typesScalarRelationFilter, card_typesWhereInput>
-    reader_logs?: Reader_logsListRelationFilter
   }, "id" | "cardUUID">
 
   export type cardsOrderByWithAggregationInput = {
     id?: SortOrder
-    userID?: SortOrder
+    userID?: SortOrderInput | SortOrder
     cardName?: SortOrder
     cardUUID?: SortOrder
-    cardTypeId?: SortOrder
+    cardType?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -8365,10 +10101,10 @@ export namespace Prisma {
     OR?: cardsScalarWhereWithAggregatesInput[]
     NOT?: cardsScalarWhereWithAggregatesInput | cardsScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"cards"> | string
-    userID?: UuidWithAggregatesFilter<"cards"> | string
+    userID?: StringNullableWithAggregatesFilter<"cards"> | string | null
     cardName?: StringWithAggregatesFilter<"cards"> | string
     cardUUID?: StringWithAggregatesFilter<"cards"> | string
-    cardTypeId?: UuidWithAggregatesFilter<"cards"> | string
+    cardType?: UuidWithAggregatesFilter<"cards"> | string
     status?: BoolWithAggregatesFilter<"cards"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"cards"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"cards"> | Date | string
@@ -8382,7 +10118,6 @@ export namespace Prisma {
     name?: StringFilter<"card_types"> | string
     created_at?: DateTimeFilter<"card_types"> | Date | string
     updated_at?: DateTimeFilter<"card_types"> | Date | string
-    cards?: CardsListRelationFilter
   }
 
   export type card_typesOrderByWithRelationInput = {
@@ -8390,7 +10125,6 @@ export namespace Prisma {
     name?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    cards?: cardsOrderByRelationAggregateInput
   }
 
   export type card_typesWhereUniqueInput = Prisma.AtLeast<{
@@ -8401,7 +10135,6 @@ export namespace Prisma {
     NOT?: card_typesWhereInput | card_typesWhereInput[]
     created_at?: DateTimeFilter<"card_types"> | Date | string
     updated_at?: DateTimeFilter<"card_types"> | Date | string
-    cards?: CardsListRelationFilter
   }, "id" | "name">
 
   export type card_typesOrderByWithAggregationInput = {
@@ -8424,29 +10157,156 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"card_types"> | Date | string
   }
 
+  export type card_saleWhereInput = {
+    AND?: card_saleWhereInput | card_saleWhereInput[]
+    OR?: card_saleWhereInput[]
+    NOT?: card_saleWhereInput | card_saleWhereInput[]
+    id?: UuidFilter<"card_sale"> | string
+    cardID?: StringNullableListFilter<"card_sale">
+    customer_name?: StringFilter<"card_sale"> | string
+    address?: StringFilter<"card_sale"> | string
+    phone?: StringFilter<"card_sale"> | string
+    sale_date?: DateTimeFilter<"card_sale"> | Date | string
+    price?: DecimalFilter<"card_sale"> | Decimal | DecimalJsLike | number | string
+    quantity?: IntFilter<"card_sale"> | number
+    payment_status?: UuidFilter<"card_sale"> | string
+    created_at?: DateTimeFilter<"card_sale"> | Date | string
+    updated_at?: DateTimeFilter<"card_sale"> | Date | string
+  }
+
+  export type card_saleOrderByWithRelationInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    customer_name?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    sale_date?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    payment_status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type card_saleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: card_saleWhereInput | card_saleWhereInput[]
+    OR?: card_saleWhereInput[]
+    NOT?: card_saleWhereInput | card_saleWhereInput[]
+    cardID?: StringNullableListFilter<"card_sale">
+    customer_name?: StringFilter<"card_sale"> | string
+    address?: StringFilter<"card_sale"> | string
+    phone?: StringFilter<"card_sale"> | string
+    sale_date?: DateTimeFilter<"card_sale"> | Date | string
+    price?: DecimalFilter<"card_sale"> | Decimal | DecimalJsLike | number | string
+    quantity?: IntFilter<"card_sale"> | number
+    payment_status?: UuidFilter<"card_sale"> | string
+    created_at?: DateTimeFilter<"card_sale"> | Date | string
+    updated_at?: DateTimeFilter<"card_sale"> | Date | string
+  }, "id">
+
+  export type card_saleOrderByWithAggregationInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    customer_name?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    sale_date?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    payment_status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: card_saleCountOrderByAggregateInput
+    _avg?: card_saleAvgOrderByAggregateInput
+    _max?: card_saleMaxOrderByAggregateInput
+    _min?: card_saleMinOrderByAggregateInput
+    _sum?: card_saleSumOrderByAggregateInput
+  }
+
+  export type card_saleScalarWhereWithAggregatesInput = {
+    AND?: card_saleScalarWhereWithAggregatesInput | card_saleScalarWhereWithAggregatesInput[]
+    OR?: card_saleScalarWhereWithAggregatesInput[]
+    NOT?: card_saleScalarWhereWithAggregatesInput | card_saleScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"card_sale"> | string
+    cardID?: StringNullableListFilter<"card_sale">
+    customer_name?: StringWithAggregatesFilter<"card_sale"> | string
+    address?: StringWithAggregatesFilter<"card_sale"> | string
+    phone?: StringWithAggregatesFilter<"card_sale"> | string
+    sale_date?: DateTimeWithAggregatesFilter<"card_sale"> | Date | string
+    price?: DecimalWithAggregatesFilter<"card_sale"> | Decimal | DecimalJsLike | number | string
+    quantity?: IntWithAggregatesFilter<"card_sale"> | number
+    payment_status?: UuidWithAggregatesFilter<"card_sale"> | string
+    created_at?: DateTimeWithAggregatesFilter<"card_sale"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"card_sale"> | Date | string
+  }
+
+  export type payment_typesWhereInput = {
+    AND?: payment_typesWhereInput | payment_typesWhereInput[]
+    OR?: payment_typesWhereInput[]
+    NOT?: payment_typesWhereInput | payment_typesWhereInput[]
+    id?: UuidFilter<"payment_types"> | string
+    name?: StringFilter<"payment_types"> | string
+    created_at?: DateTimeFilter<"payment_types"> | Date | string
+    updated_at?: DateTimeFilter<"payment_types"> | Date | string
+  }
+
+  export type payment_typesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type payment_typesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: payment_typesWhereInput | payment_typesWhereInput[]
+    OR?: payment_typesWhereInput[]
+    NOT?: payment_typesWhereInput | payment_typesWhereInput[]
+    created_at?: DateTimeFilter<"payment_types"> | Date | string
+    updated_at?: DateTimeFilter<"payment_types"> | Date | string
+  }, "id" | "name">
+
+  export type payment_typesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: payment_typesCountOrderByAggregateInput
+    _max?: payment_typesMaxOrderByAggregateInput
+    _min?: payment_typesMinOrderByAggregateInput
+  }
+
+  export type payment_typesScalarWhereWithAggregatesInput = {
+    AND?: payment_typesScalarWhereWithAggregatesInput | payment_typesScalarWhereWithAggregatesInput[]
+    OR?: payment_typesScalarWhereWithAggregatesInput[]
+    NOT?: payment_typesScalarWhereWithAggregatesInput | payment_typesScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"payment_types"> | string
+    name?: StringWithAggregatesFilter<"payment_types"> | string
+    created_at?: DateTimeWithAggregatesFilter<"payment_types"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"payment_types"> | Date | string
+  }
+
   export type reader_deviceWhereInput = {
     AND?: reader_deviceWhereInput | reader_deviceWhereInput[]
     OR?: reader_deviceWhereInput[]
     NOT?: reader_deviceWhereInput | reader_deviceWhereInput[]
     id?: UuidFilter<"reader_device"> | string
-    userID?: UuidFilter<"reader_device"> | string
+    userID?: StringNullableFilter<"reader_device"> | string | null
     readerDeviceName?: StringFilter<"reader_device"> | string
     DeviceUUID?: StringFilter<"reader_device"> | string
     created_at?: DateTimeFilter<"reader_device"> | Date | string
     updated_at?: DateTimeFilter<"reader_device"> | Date | string
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    reader_logs?: Reader_logsListRelationFilter
   }
 
   export type reader_deviceOrderByWithRelationInput = {
     id?: SortOrder
-    userID?: SortOrder
+    userID?: SortOrderInput | SortOrder
     readerDeviceName?: SortOrder
     DeviceUUID?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    users?: usersOrderByWithRelationInput
-    reader_logs?: reader_logsOrderByRelationAggregateInput
   }
 
   export type reader_deviceWhereUniqueInput = Prisma.AtLeast<{
@@ -8454,18 +10314,16 @@ export namespace Prisma {
     AND?: reader_deviceWhereInput | reader_deviceWhereInput[]
     OR?: reader_deviceWhereInput[]
     NOT?: reader_deviceWhereInput | reader_deviceWhereInput[]
-    userID?: UuidFilter<"reader_device"> | string
+    userID?: StringNullableFilter<"reader_device"> | string | null
     readerDeviceName?: StringFilter<"reader_device"> | string
     DeviceUUID?: StringFilter<"reader_device"> | string
     created_at?: DateTimeFilter<"reader_device"> | Date | string
     updated_at?: DateTimeFilter<"reader_device"> | Date | string
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    reader_logs?: Reader_logsListRelationFilter
   }, "id">
 
   export type reader_deviceOrderByWithAggregationInput = {
     id?: SortOrder
-    userID?: SortOrder
+    userID?: SortOrderInput | SortOrder
     readerDeviceName?: SortOrder
     DeviceUUID?: SortOrder
     created_at?: SortOrder
@@ -8480,7 +10338,7 @@ export namespace Prisma {
     OR?: reader_deviceScalarWhereWithAggregatesInput[]
     NOT?: reader_deviceScalarWhereWithAggregatesInput | reader_deviceScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"reader_device"> | string
-    userID?: UuidWithAggregatesFilter<"reader_device"> | string
+    userID?: StringNullableWithAggregatesFilter<"reader_device"> | string | null
     readerDeviceName?: StringWithAggregatesFilter<"reader_device"> | string
     DeviceUUID?: StringWithAggregatesFilter<"reader_device"> | string
     created_at?: DateTimeWithAggregatesFilter<"reader_device"> | Date | string
@@ -8492,26 +10350,22 @@ export namespace Prisma {
     OR?: reader_logsWhereInput[]
     NOT?: reader_logsWhereInput | reader_logsWhereInput[]
     id?: UuidFilter<"reader_logs"> | string
-    cardID?: UuidFilter<"reader_logs"> | string
+    cardID?: StringNullableFilter<"reader_logs"> | string | null
     reader_deviceID?: UuidFilter<"reader_logs"> | string
     status?: BoolFilter<"reader_logs"> | boolean
     readDate?: DateTimeFilter<"reader_logs"> | Date | string
     created_at?: DateTimeFilter<"reader_logs"> | Date | string
     updated_at?: DateTimeFilter<"reader_logs"> | Date | string
-    cards?: XOR<CardsScalarRelationFilter, cardsWhereInput>
-    reader_device?: XOR<Reader_deviceScalarRelationFilter, reader_deviceWhereInput>
   }
 
   export type reader_logsOrderByWithRelationInput = {
     id?: SortOrder
-    cardID?: SortOrder
+    cardID?: SortOrderInput | SortOrder
     reader_deviceID?: SortOrder
     status?: SortOrder
     readDate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    cards?: cardsOrderByWithRelationInput
-    reader_device?: reader_deviceOrderByWithRelationInput
   }
 
   export type reader_logsWhereUniqueInput = Prisma.AtLeast<{
@@ -8519,19 +10373,17 @@ export namespace Prisma {
     AND?: reader_logsWhereInput | reader_logsWhereInput[]
     OR?: reader_logsWhereInput[]
     NOT?: reader_logsWhereInput | reader_logsWhereInput[]
-    cardID?: UuidFilter<"reader_logs"> | string
+    cardID?: StringNullableFilter<"reader_logs"> | string | null
     reader_deviceID?: UuidFilter<"reader_logs"> | string
     status?: BoolFilter<"reader_logs"> | boolean
     readDate?: DateTimeFilter<"reader_logs"> | Date | string
     created_at?: DateTimeFilter<"reader_logs"> | Date | string
     updated_at?: DateTimeFilter<"reader_logs"> | Date | string
-    cards?: XOR<CardsScalarRelationFilter, cardsWhereInput>
-    reader_device?: XOR<Reader_deviceScalarRelationFilter, reader_deviceWhereInput>
   }, "id">
 
   export type reader_logsOrderByWithAggregationInput = {
     id?: SortOrder
-    cardID?: SortOrder
+    cardID?: SortOrderInput | SortOrder
     reader_deviceID?: SortOrder
     status?: SortOrder
     readDate?: SortOrder
@@ -8547,7 +10399,7 @@ export namespace Prisma {
     OR?: reader_logsScalarWhereWithAggregatesInput[]
     NOT?: reader_logsScalarWhereWithAggregatesInput | reader_logsScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"reader_logs"> | string
-    cardID?: UuidWithAggregatesFilter<"reader_logs"> | string
+    cardID?: StringNullableWithAggregatesFilter<"reader_logs"> | string | null
     reader_deviceID?: UuidWithAggregatesFilter<"reader_logs"> | string
     status?: BoolWithAggregatesFilter<"reader_logs"> | boolean
     readDate?: DateTimeWithAggregatesFilter<"reader_logs"> | Date | string
@@ -8632,8 +10484,6 @@ export namespace Prisma {
     phoneNo: string
     created_at?: Date | string
     updated_at?: Date | string
-    cards?: cardsCreateNestedManyWithoutUsersInput
-    reader_device?: reader_deviceCreateNestedManyWithoutUsersInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -8643,8 +10493,6 @@ export namespace Prisma {
     phoneNo: string
     created_at?: Date | string
     updated_at?: Date | string
-    cards?: cardsUncheckedCreateNestedManyWithoutUsersInput
-    reader_device?: reader_deviceUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersUpdateInput = {
@@ -8654,8 +10502,6 @@ export namespace Prisma {
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUpdateManyWithoutUsersNestedInput
-    reader_device?: reader_deviceUpdateManyWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -8665,8 +10511,6 @@ export namespace Prisma {
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUncheckedUpdateManyWithoutUsersNestedInput
-    reader_device?: reader_deviceUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -8698,58 +10542,54 @@ export namespace Prisma {
 
   export type cardsCreateInput = {
     id?: string
+    userID?: string | null
     cardName: string
     cardUUID?: string
+    cardType: string
     status: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    users: usersCreateNestedOneWithoutCardsInput
-    cardType: card_typesCreateNestedOneWithoutCardsInput
-    reader_logs?: reader_logsCreateNestedManyWithoutCardsInput
   }
 
   export type cardsUncheckedCreateInput = {
     id?: string
-    userID: string
+    userID?: string | null
     cardName: string
     cardUUID?: string
-    cardTypeId: string
+    cardType: string
     status: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    reader_logs?: reader_logsUncheckedCreateNestedManyWithoutCardsInput
   }
 
   export type cardsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     cardName?: StringFieldUpdateOperationsInput | string
     cardUUID?: StringFieldUpdateOperationsInput | string
+    cardType?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneRequiredWithoutCardsNestedInput
-    cardType?: card_typesUpdateOneRequiredWithoutCardsNestedInput
-    reader_logs?: reader_logsUpdateManyWithoutCardsNestedInput
   }
 
   export type cardsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     cardName?: StringFieldUpdateOperationsInput | string
     cardUUID?: StringFieldUpdateOperationsInput | string
-    cardTypeId?: StringFieldUpdateOperationsInput | string
+    cardType?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUncheckedUpdateManyWithoutCardsNestedInput
   }
 
   export type cardsCreateManyInput = {
     id?: string
-    userID: string
+    userID?: string | null
     cardName: string
     cardUUID?: string
-    cardTypeId: string
+    cardType: string
     status: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -8757,8 +10597,10 @@ export namespace Prisma {
 
   export type cardsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     cardName?: StringFieldUpdateOperationsInput | string
     cardUUID?: StringFieldUpdateOperationsInput | string
+    cardType?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8766,10 +10608,10 @@ export namespace Prisma {
 
   export type cardsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     cardName?: StringFieldUpdateOperationsInput | string
     cardUUID?: StringFieldUpdateOperationsInput | string
-    cardTypeId?: StringFieldUpdateOperationsInput | string
+    cardType?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8780,7 +10622,6 @@ export namespace Prisma {
     name: string
     created_at?: Date | string
     updated_at?: Date | string
-    cards?: cardsCreateNestedManyWithoutCardTypeInput
   }
 
   export type card_typesUncheckedCreateInput = {
@@ -8788,7 +10629,6 @@ export namespace Prisma {
     name: string
     created_at?: Date | string
     updated_at?: Date | string
-    cards?: cardsUncheckedCreateNestedManyWithoutCardTypeInput
   }
 
   export type card_typesUpdateInput = {
@@ -8796,7 +10636,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUpdateManyWithoutCardTypeNestedInput
   }
 
   export type card_typesUncheckedUpdateInput = {
@@ -8804,7 +10643,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUncheckedUpdateManyWithoutCardTypeNestedInput
   }
 
   export type card_typesCreateManyInput = {
@@ -8828,49 +10666,192 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type card_saleCreateInput = {
+    id?: string
+    cardID?: card_saleCreatecardIDInput | string[]
+    customer_name: string
+    address: string
+    phone: string
+    sale_date?: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    quantity: number
+    payment_status: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type card_saleUncheckedCreateInput = {
+    id?: string
+    cardID?: card_saleCreatecardIDInput | string[]
+    customer_name: string
+    address: string
+    phone: string
+    sale_date?: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    quantity: number
+    payment_status: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type card_saleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: card_saleUpdatecardIDInput | string[]
+    customer_name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    payment_status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type card_saleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: card_saleUpdatecardIDInput | string[]
+    customer_name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    payment_status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type card_saleCreateManyInput = {
+    id?: string
+    cardID?: card_saleCreatecardIDInput | string[]
+    customer_name: string
+    address: string
+    phone: string
+    sale_date?: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    quantity: number
+    payment_status: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type card_saleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: card_saleUpdatecardIDInput | string[]
+    customer_name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    payment_status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type card_saleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: card_saleUpdatecardIDInput | string[]
+    customer_name?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    payment_status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type payment_typesCreateInput = {
+    id?: string
+    name: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type payment_typesUncheckedCreateInput = {
+    id?: string
+    name: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type payment_typesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type payment_typesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type payment_typesCreateManyInput = {
+    id?: string
+    name: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type payment_typesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type payment_typesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type reader_deviceCreateInput = {
     id?: string
+    userID?: string | null
     readerDeviceName: string
     DeviceUUID: string
     created_at?: Date | string
     updated_at?: Date | string
-    users: usersCreateNestedOneWithoutReader_deviceInput
-    reader_logs?: reader_logsCreateNestedManyWithoutReader_deviceInput
   }
 
   export type reader_deviceUncheckedCreateInput = {
     id?: string
-    userID: string
+    userID?: string | null
     readerDeviceName: string
     DeviceUUID: string
     created_at?: Date | string
     updated_at?: Date | string
-    reader_logs?: reader_logsUncheckedCreateNestedManyWithoutReader_deviceInput
   }
 
   export type reader_deviceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     readerDeviceName?: StringFieldUpdateOperationsInput | string
     DeviceUUID?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneRequiredWithoutReader_deviceNestedInput
-    reader_logs?: reader_logsUpdateManyWithoutReader_deviceNestedInput
   }
 
   export type reader_deviceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     readerDeviceName?: StringFieldUpdateOperationsInput | string
     DeviceUUID?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUncheckedUpdateManyWithoutReader_deviceNestedInput
   }
 
   export type reader_deviceCreateManyInput = {
     id?: string
-    userID: string
+    userID?: string | null
     readerDeviceName: string
     DeviceUUID: string
     created_at?: Date | string
@@ -8879,6 +10860,7 @@ export namespace Prisma {
 
   export type reader_deviceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     readerDeviceName?: StringFieldUpdateOperationsInput | string
     DeviceUUID?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8887,7 +10869,7 @@ export namespace Prisma {
 
   export type reader_deviceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
+    userID?: NullableStringFieldUpdateOperationsInput | string | null
     readerDeviceName?: StringFieldUpdateOperationsInput | string
     DeviceUUID?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8896,17 +10878,17 @@ export namespace Prisma {
 
   export type reader_logsCreateInput = {
     id?: string
+    cardID?: string | null
+    reader_deviceID: string
     status: boolean
     readDate: Date | string
     created_at?: Date | string
     updated_at?: Date | string
-    cards: cardsCreateNestedOneWithoutReader_logsInput
-    reader_device: reader_deviceCreateNestedOneWithoutReader_logsInput
   }
 
   export type reader_logsUncheckedCreateInput = {
     id?: string
-    cardID: string
+    cardID?: string | null
     reader_deviceID: string
     status: boolean
     readDate: Date | string
@@ -8916,17 +10898,17 @@ export namespace Prisma {
 
   export type reader_logsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    cardID?: NullableStringFieldUpdateOperationsInput | string | null
+    reader_deviceID?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     readDate?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUpdateOneRequiredWithoutReader_logsNestedInput
-    reader_device?: reader_deviceUpdateOneRequiredWithoutReader_logsNestedInput
   }
 
   export type reader_logsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    cardID?: StringFieldUpdateOperationsInput | string
+    cardID?: NullableStringFieldUpdateOperationsInput | string | null
     reader_deviceID?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     readDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8936,7 +10918,7 @@ export namespace Prisma {
 
   export type reader_logsCreateManyInput = {
     id?: string
-    cardID: string
+    cardID?: string | null
     reader_deviceID: string
     status: boolean
     readDate: Date | string
@@ -8946,6 +10928,8 @@ export namespace Prisma {
 
   export type reader_logsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    cardID?: NullableStringFieldUpdateOperationsInput | string | null
+    reader_deviceID?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     readDate?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8954,7 +10938,7 @@ export namespace Prisma {
 
   export type reader_logsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    cardID?: StringFieldUpdateOperationsInput | string
+    cardID?: NullableStringFieldUpdateOperationsInput | string | null
     reader_deviceID?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     readDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9132,26 +11116,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type CardsListRelationFilter = {
-    every?: cardsWhereInput
-    some?: cardsWhereInput
-    none?: cardsWhereInput
-  }
-
-  export type Reader_deviceListRelationFilter = {
-    every?: reader_deviceWhereInput
-    some?: reader_deviceWhereInput
-    none?: reader_deviceWhereInput
-  }
-
-  export type cardsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type reader_deviceOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type usersCountOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
@@ -9184,32 +11148,12 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type UsersScalarRelationFilter = {
-    is?: usersWhereInput
-    isNot?: usersWhereInput
-  }
-
-  export type Card_typesScalarRelationFilter = {
-    is?: card_typesWhereInput
-    isNot?: card_typesWhereInput
-  }
-
-  export type Reader_logsListRelationFilter = {
-    every?: reader_logsWhereInput
-    some?: reader_logsWhereInput
-    none?: reader_logsWhereInput
-  }
-
-  export type reader_logsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type cardsCountOrderByAggregateInput = {
     id?: SortOrder
     userID?: SortOrder
     cardName?: SortOrder
     cardUUID?: SortOrder
-    cardTypeId?: SortOrder
+    cardType?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9220,7 +11164,7 @@ export namespace Prisma {
     userID?: SortOrder
     cardName?: SortOrder
     cardUUID?: SortOrder
-    cardTypeId?: SortOrder
+    cardType?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9231,7 +11175,7 @@ export namespace Prisma {
     userID?: SortOrder
     cardName?: SortOrder
     cardUUID?: SortOrder
-    cardTypeId?: SortOrder
+    cardType?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9266,6 +11210,139 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type card_saleCountOrderByAggregateInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    customer_name?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    sale_date?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    payment_status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type card_saleAvgOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
+  }
+
+  export type card_saleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    customer_name?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    sale_date?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    payment_status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type card_saleMinOrderByAggregateInput = {
+    id?: SortOrder
+    customer_name?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    sale_date?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    payment_status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type card_saleSumOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type payment_typesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type payment_typesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type payment_typesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
   export type reader_deviceCountOrderByAggregateInput = {
     id?: SortOrder
     userID?: SortOrder
@@ -9291,16 +11368,6 @@ export namespace Prisma {
     DeviceUUID?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-  }
-
-  export type CardsScalarRelationFilter = {
-    is?: cardsWhereInput
-    isNot?: cardsWhereInput
-  }
-
-  export type Reader_deviceScalarRelationFilter = {
-    is?: reader_deviceWhereInput
-    isNot?: reader_deviceWhereInput
   }
 
   export type reader_logsCountOrderByAggregateInput = {
@@ -9349,288 +11416,33 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type cardsCreateNestedManyWithoutUsersInput = {
-    create?: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput> | cardsCreateWithoutUsersInput[] | cardsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutUsersInput | cardsCreateOrConnectWithoutUsersInput[]
-    createMany?: cardsCreateManyUsersInputEnvelope
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-  }
-
-  export type reader_deviceCreateNestedManyWithoutUsersInput = {
-    create?: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput> | reader_deviceCreateWithoutUsersInput[] | reader_deviceUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutUsersInput | reader_deviceCreateOrConnectWithoutUsersInput[]
-    createMany?: reader_deviceCreateManyUsersInputEnvelope
-    connect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-  }
-
-  export type cardsUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput> | cardsCreateWithoutUsersInput[] | cardsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutUsersInput | cardsCreateOrConnectWithoutUsersInput[]
-    createMany?: cardsCreateManyUsersInputEnvelope
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-  }
-
-  export type reader_deviceUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput> | reader_deviceCreateWithoutUsersInput[] | reader_deviceUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutUsersInput | reader_deviceCreateOrConnectWithoutUsersInput[]
-    createMany?: reader_deviceCreateManyUsersInputEnvelope
-    connect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-  }
-
-  export type cardsUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput> | cardsCreateWithoutUsersInput[] | cardsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutUsersInput | cardsCreateOrConnectWithoutUsersInput[]
-    upsert?: cardsUpsertWithWhereUniqueWithoutUsersInput | cardsUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: cardsCreateManyUsersInputEnvelope
-    set?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    disconnect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    delete?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    update?: cardsUpdateWithWhereUniqueWithoutUsersInput | cardsUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: cardsUpdateManyWithWhereWithoutUsersInput | cardsUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: cardsScalarWhereInput | cardsScalarWhereInput[]
-  }
-
-  export type reader_deviceUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput> | reader_deviceCreateWithoutUsersInput[] | reader_deviceUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutUsersInput | reader_deviceCreateOrConnectWithoutUsersInput[]
-    upsert?: reader_deviceUpsertWithWhereUniqueWithoutUsersInput | reader_deviceUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: reader_deviceCreateManyUsersInputEnvelope
-    set?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    disconnect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    delete?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    connect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    update?: reader_deviceUpdateWithWhereUniqueWithoutUsersInput | reader_deviceUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: reader_deviceUpdateManyWithWhereWithoutUsersInput | reader_deviceUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: reader_deviceScalarWhereInput | reader_deviceScalarWhereInput[]
-  }
-
-  export type cardsUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput> | cardsCreateWithoutUsersInput[] | cardsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutUsersInput | cardsCreateOrConnectWithoutUsersInput[]
-    upsert?: cardsUpsertWithWhereUniqueWithoutUsersInput | cardsUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: cardsCreateManyUsersInputEnvelope
-    set?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    disconnect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    delete?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    update?: cardsUpdateWithWhereUniqueWithoutUsersInput | cardsUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: cardsUpdateManyWithWhereWithoutUsersInput | cardsUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: cardsScalarWhereInput | cardsScalarWhereInput[]
-  }
-
-  export type reader_deviceUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput> | reader_deviceCreateWithoutUsersInput[] | reader_deviceUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutUsersInput | reader_deviceCreateOrConnectWithoutUsersInput[]
-    upsert?: reader_deviceUpsertWithWhereUniqueWithoutUsersInput | reader_deviceUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: reader_deviceCreateManyUsersInputEnvelope
-    set?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    disconnect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    delete?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    connect?: reader_deviceWhereUniqueInput | reader_deviceWhereUniqueInput[]
-    update?: reader_deviceUpdateWithWhereUniqueWithoutUsersInput | reader_deviceUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: reader_deviceUpdateManyWithWhereWithoutUsersInput | reader_deviceUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: reader_deviceScalarWhereInput | reader_deviceScalarWhereInput[]
-  }
-
-  export type usersCreateNestedOneWithoutCardsInput = {
-    create?: XOR<usersCreateWithoutCardsInput, usersUncheckedCreateWithoutCardsInput>
-    connectOrCreate?: usersCreateOrConnectWithoutCardsInput
-    connect?: usersWhereUniqueInput
-  }
-
-  export type card_typesCreateNestedOneWithoutCardsInput = {
-    create?: XOR<card_typesCreateWithoutCardsInput, card_typesUncheckedCreateWithoutCardsInput>
-    connectOrCreate?: card_typesCreateOrConnectWithoutCardsInput
-    connect?: card_typesWhereUniqueInput
-  }
-
-  export type reader_logsCreateNestedManyWithoutCardsInput = {
-    create?: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput> | reader_logsCreateWithoutCardsInput[] | reader_logsUncheckedCreateWithoutCardsInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutCardsInput | reader_logsCreateOrConnectWithoutCardsInput[]
-    createMany?: reader_logsCreateManyCardsInputEnvelope
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-  }
-
-  export type reader_logsUncheckedCreateNestedManyWithoutCardsInput = {
-    create?: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput> | reader_logsCreateWithoutCardsInput[] | reader_logsUncheckedCreateWithoutCardsInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutCardsInput | reader_logsCreateOrConnectWithoutCardsInput[]
-    createMany?: reader_logsCreateManyCardsInputEnvelope
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
-  export type usersUpdateOneRequiredWithoutCardsNestedInput = {
-    create?: XOR<usersCreateWithoutCardsInput, usersUncheckedCreateWithoutCardsInput>
-    connectOrCreate?: usersCreateOrConnectWithoutCardsInput
-    upsert?: usersUpsertWithoutCardsInput
-    connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutCardsInput, usersUpdateWithoutCardsInput>, usersUncheckedUpdateWithoutCardsInput>
+  export type card_saleCreatecardIDInput = {
+    set: string[]
   }
 
-  export type card_typesUpdateOneRequiredWithoutCardsNestedInput = {
-    create?: XOR<card_typesCreateWithoutCardsInput, card_typesUncheckedCreateWithoutCardsInput>
-    connectOrCreate?: card_typesCreateOrConnectWithoutCardsInput
-    upsert?: card_typesUpsertWithoutCardsInput
-    connect?: card_typesWhereUniqueInput
-    update?: XOR<XOR<card_typesUpdateToOneWithWhereWithoutCardsInput, card_typesUpdateWithoutCardsInput>, card_typesUncheckedUpdateWithoutCardsInput>
+  export type card_saleUpdatecardIDInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
-  export type reader_logsUpdateManyWithoutCardsNestedInput = {
-    create?: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput> | reader_logsCreateWithoutCardsInput[] | reader_logsUncheckedCreateWithoutCardsInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutCardsInput | reader_logsCreateOrConnectWithoutCardsInput[]
-    upsert?: reader_logsUpsertWithWhereUniqueWithoutCardsInput | reader_logsUpsertWithWhereUniqueWithoutCardsInput[]
-    createMany?: reader_logsCreateManyCardsInputEnvelope
-    set?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    disconnect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    delete?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    update?: reader_logsUpdateWithWhereUniqueWithoutCardsInput | reader_logsUpdateWithWhereUniqueWithoutCardsInput[]
-    updateMany?: reader_logsUpdateManyWithWhereWithoutCardsInput | reader_logsUpdateManyWithWhereWithoutCardsInput[]
-    deleteMany?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type reader_logsUncheckedUpdateManyWithoutCardsNestedInput = {
-    create?: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput> | reader_logsCreateWithoutCardsInput[] | reader_logsUncheckedCreateWithoutCardsInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutCardsInput | reader_logsCreateOrConnectWithoutCardsInput[]
-    upsert?: reader_logsUpsertWithWhereUniqueWithoutCardsInput | reader_logsUpsertWithWhereUniqueWithoutCardsInput[]
-    createMany?: reader_logsCreateManyCardsInputEnvelope
-    set?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    disconnect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    delete?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    update?: reader_logsUpdateWithWhereUniqueWithoutCardsInput | reader_logsUpdateWithWhereUniqueWithoutCardsInput[]
-    updateMany?: reader_logsUpdateManyWithWhereWithoutCardsInput | reader_logsUpdateManyWithWhereWithoutCardsInput[]
-    deleteMany?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
-  }
-
-  export type cardsCreateNestedManyWithoutCardTypeInput = {
-    create?: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput> | cardsCreateWithoutCardTypeInput[] | cardsUncheckedCreateWithoutCardTypeInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutCardTypeInput | cardsCreateOrConnectWithoutCardTypeInput[]
-    createMany?: cardsCreateManyCardTypeInputEnvelope
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-  }
-
-  export type cardsUncheckedCreateNestedManyWithoutCardTypeInput = {
-    create?: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput> | cardsCreateWithoutCardTypeInput[] | cardsUncheckedCreateWithoutCardTypeInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutCardTypeInput | cardsCreateOrConnectWithoutCardTypeInput[]
-    createMany?: cardsCreateManyCardTypeInputEnvelope
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-  }
-
-  export type cardsUpdateManyWithoutCardTypeNestedInput = {
-    create?: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput> | cardsCreateWithoutCardTypeInput[] | cardsUncheckedCreateWithoutCardTypeInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutCardTypeInput | cardsCreateOrConnectWithoutCardTypeInput[]
-    upsert?: cardsUpsertWithWhereUniqueWithoutCardTypeInput | cardsUpsertWithWhereUniqueWithoutCardTypeInput[]
-    createMany?: cardsCreateManyCardTypeInputEnvelope
-    set?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    disconnect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    delete?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    update?: cardsUpdateWithWhereUniqueWithoutCardTypeInput | cardsUpdateWithWhereUniqueWithoutCardTypeInput[]
-    updateMany?: cardsUpdateManyWithWhereWithoutCardTypeInput | cardsUpdateManyWithWhereWithoutCardTypeInput[]
-    deleteMany?: cardsScalarWhereInput | cardsScalarWhereInput[]
-  }
-
-  export type cardsUncheckedUpdateManyWithoutCardTypeNestedInput = {
-    create?: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput> | cardsCreateWithoutCardTypeInput[] | cardsUncheckedCreateWithoutCardTypeInput[]
-    connectOrCreate?: cardsCreateOrConnectWithoutCardTypeInput | cardsCreateOrConnectWithoutCardTypeInput[]
-    upsert?: cardsUpsertWithWhereUniqueWithoutCardTypeInput | cardsUpsertWithWhereUniqueWithoutCardTypeInput[]
-    createMany?: cardsCreateManyCardTypeInputEnvelope
-    set?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    disconnect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    delete?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    connect?: cardsWhereUniqueInput | cardsWhereUniqueInput[]
-    update?: cardsUpdateWithWhereUniqueWithoutCardTypeInput | cardsUpdateWithWhereUniqueWithoutCardTypeInput[]
-    updateMany?: cardsUpdateManyWithWhereWithoutCardTypeInput | cardsUpdateManyWithWhereWithoutCardTypeInput[]
-    deleteMany?: cardsScalarWhereInput | cardsScalarWhereInput[]
-  }
-
-  export type usersCreateNestedOneWithoutReader_deviceInput = {
-    create?: XOR<usersCreateWithoutReader_deviceInput, usersUncheckedCreateWithoutReader_deviceInput>
-    connectOrCreate?: usersCreateOrConnectWithoutReader_deviceInput
-    connect?: usersWhereUniqueInput
-  }
-
-  export type reader_logsCreateNestedManyWithoutReader_deviceInput = {
-    create?: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput> | reader_logsCreateWithoutReader_deviceInput[] | reader_logsUncheckedCreateWithoutReader_deviceInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutReader_deviceInput | reader_logsCreateOrConnectWithoutReader_deviceInput[]
-    createMany?: reader_logsCreateManyReader_deviceInputEnvelope
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-  }
-
-  export type reader_logsUncheckedCreateNestedManyWithoutReader_deviceInput = {
-    create?: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput> | reader_logsCreateWithoutReader_deviceInput[] | reader_logsUncheckedCreateWithoutReader_deviceInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutReader_deviceInput | reader_logsCreateOrConnectWithoutReader_deviceInput[]
-    createMany?: reader_logsCreateManyReader_deviceInputEnvelope
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-  }
-
-  export type usersUpdateOneRequiredWithoutReader_deviceNestedInput = {
-    create?: XOR<usersCreateWithoutReader_deviceInput, usersUncheckedCreateWithoutReader_deviceInput>
-    connectOrCreate?: usersCreateOrConnectWithoutReader_deviceInput
-    upsert?: usersUpsertWithoutReader_deviceInput
-    connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutReader_deviceInput, usersUpdateWithoutReader_deviceInput>, usersUncheckedUpdateWithoutReader_deviceInput>
-  }
-
-  export type reader_logsUpdateManyWithoutReader_deviceNestedInput = {
-    create?: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput> | reader_logsCreateWithoutReader_deviceInput[] | reader_logsUncheckedCreateWithoutReader_deviceInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutReader_deviceInput | reader_logsCreateOrConnectWithoutReader_deviceInput[]
-    upsert?: reader_logsUpsertWithWhereUniqueWithoutReader_deviceInput | reader_logsUpsertWithWhereUniqueWithoutReader_deviceInput[]
-    createMany?: reader_logsCreateManyReader_deviceInputEnvelope
-    set?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    disconnect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    delete?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    update?: reader_logsUpdateWithWhereUniqueWithoutReader_deviceInput | reader_logsUpdateWithWhereUniqueWithoutReader_deviceInput[]
-    updateMany?: reader_logsUpdateManyWithWhereWithoutReader_deviceInput | reader_logsUpdateManyWithWhereWithoutReader_deviceInput[]
-    deleteMany?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
-  }
-
-  export type reader_logsUncheckedUpdateManyWithoutReader_deviceNestedInput = {
-    create?: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput> | reader_logsCreateWithoutReader_deviceInput[] | reader_logsUncheckedCreateWithoutReader_deviceInput[]
-    connectOrCreate?: reader_logsCreateOrConnectWithoutReader_deviceInput | reader_logsCreateOrConnectWithoutReader_deviceInput[]
-    upsert?: reader_logsUpsertWithWhereUniqueWithoutReader_deviceInput | reader_logsUpsertWithWhereUniqueWithoutReader_deviceInput[]
-    createMany?: reader_logsCreateManyReader_deviceInputEnvelope
-    set?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    disconnect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    delete?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    connect?: reader_logsWhereUniqueInput | reader_logsWhereUniqueInput[]
-    update?: reader_logsUpdateWithWhereUniqueWithoutReader_deviceInput | reader_logsUpdateWithWhereUniqueWithoutReader_deviceInput[]
-    updateMany?: reader_logsUpdateManyWithWhereWithoutReader_deviceInput | reader_logsUpdateManyWithWhereWithoutReader_deviceInput[]
-    deleteMany?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
-  }
-
-  export type cardsCreateNestedOneWithoutReader_logsInput = {
-    create?: XOR<cardsCreateWithoutReader_logsInput, cardsUncheckedCreateWithoutReader_logsInput>
-    connectOrCreate?: cardsCreateOrConnectWithoutReader_logsInput
-    connect?: cardsWhereUniqueInput
-  }
-
-  export type reader_deviceCreateNestedOneWithoutReader_logsInput = {
-    create?: XOR<reader_deviceCreateWithoutReader_logsInput, reader_deviceUncheckedCreateWithoutReader_logsInput>
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutReader_logsInput
-    connect?: reader_deviceWhereUniqueInput
-  }
-
-  export type cardsUpdateOneRequiredWithoutReader_logsNestedInput = {
-    create?: XOR<cardsCreateWithoutReader_logsInput, cardsUncheckedCreateWithoutReader_logsInput>
-    connectOrCreate?: cardsCreateOrConnectWithoutReader_logsInput
-    upsert?: cardsUpsertWithoutReader_logsInput
-    connect?: cardsWhereUniqueInput
-    update?: XOR<XOR<cardsUpdateToOneWithWhereWithoutReader_logsInput, cardsUpdateWithoutReader_logsInput>, cardsUncheckedUpdateWithoutReader_logsInput>
-  }
-
-  export type reader_deviceUpdateOneRequiredWithoutReader_logsNestedInput = {
-    create?: XOR<reader_deviceCreateWithoutReader_logsInput, reader_deviceUncheckedCreateWithoutReader_logsInput>
-    connectOrCreate?: reader_deviceCreateOrConnectWithoutReader_logsInput
-    upsert?: reader_deviceUpsertWithoutReader_logsInput
-    connect?: reader_deviceWhereUniqueInput
-    update?: XOR<XOR<reader_deviceUpdateToOneWithWhereWithoutReader_logsInput, reader_deviceUpdateWithoutReader_logsInput>, reader_deviceUncheckedUpdateWithoutReader_logsInput>
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -9797,729 +11609,58 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type cardsCreateWithoutUsersInput = {
-    id?: string
-    cardName: string
-    cardUUID?: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    cardType: card_typesCreateNestedOneWithoutCardsInput
-    reader_logs?: reader_logsCreateNestedManyWithoutCardsInput
-  }
-
-  export type cardsUncheckedCreateWithoutUsersInput = {
-    id?: string
-    cardName: string
-    cardUUID?: string
-    cardTypeId: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_logs?: reader_logsUncheckedCreateNestedManyWithoutCardsInput
-  }
-
-  export type cardsCreateOrConnectWithoutUsersInput = {
-    where: cardsWhereUniqueInput
-    create: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput>
-  }
-
-  export type cardsCreateManyUsersInputEnvelope = {
-    data: cardsCreateManyUsersInput | cardsCreateManyUsersInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type reader_deviceCreateWithoutUsersInput = {
-    id?: string
-    readerDeviceName: string
-    DeviceUUID: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_logs?: reader_logsCreateNestedManyWithoutReader_deviceInput
-  }
-
-  export type reader_deviceUncheckedCreateWithoutUsersInput = {
-    id?: string
-    readerDeviceName: string
-    DeviceUUID: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_logs?: reader_logsUncheckedCreateNestedManyWithoutReader_deviceInput
-  }
-
-  export type reader_deviceCreateOrConnectWithoutUsersInput = {
-    where: reader_deviceWhereUniqueInput
-    create: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput>
-  }
-
-  export type reader_deviceCreateManyUsersInputEnvelope = {
-    data: reader_deviceCreateManyUsersInput | reader_deviceCreateManyUsersInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type cardsUpsertWithWhereUniqueWithoutUsersInput = {
-    where: cardsWhereUniqueInput
-    update: XOR<cardsUpdateWithoutUsersInput, cardsUncheckedUpdateWithoutUsersInput>
-    create: XOR<cardsCreateWithoutUsersInput, cardsUncheckedCreateWithoutUsersInput>
-  }
-
-  export type cardsUpdateWithWhereUniqueWithoutUsersInput = {
-    where: cardsWhereUniqueInput
-    data: XOR<cardsUpdateWithoutUsersInput, cardsUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type cardsUpdateManyWithWhereWithoutUsersInput = {
-    where: cardsScalarWhereInput
-    data: XOR<cardsUpdateManyMutationInput, cardsUncheckedUpdateManyWithoutUsersInput>
-  }
-
-  export type cardsScalarWhereInput = {
-    AND?: cardsScalarWhereInput | cardsScalarWhereInput[]
-    OR?: cardsScalarWhereInput[]
-    NOT?: cardsScalarWhereInput | cardsScalarWhereInput[]
-    id?: UuidFilter<"cards"> | string
-    userID?: UuidFilter<"cards"> | string
-    cardName?: StringFilter<"cards"> | string
-    cardUUID?: StringFilter<"cards"> | string
-    cardTypeId?: UuidFilter<"cards"> | string
-    status?: BoolFilter<"cards"> | boolean
-    created_at?: DateTimeFilter<"cards"> | Date | string
-    updated_at?: DateTimeFilter<"cards"> | Date | string
-  }
-
-  export type reader_deviceUpsertWithWhereUniqueWithoutUsersInput = {
-    where: reader_deviceWhereUniqueInput
-    update: XOR<reader_deviceUpdateWithoutUsersInput, reader_deviceUncheckedUpdateWithoutUsersInput>
-    create: XOR<reader_deviceCreateWithoutUsersInput, reader_deviceUncheckedCreateWithoutUsersInput>
-  }
-
-  export type reader_deviceUpdateWithWhereUniqueWithoutUsersInput = {
-    where: reader_deviceWhereUniqueInput
-    data: XOR<reader_deviceUpdateWithoutUsersInput, reader_deviceUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type reader_deviceUpdateManyWithWhereWithoutUsersInput = {
-    where: reader_deviceScalarWhereInput
-    data: XOR<reader_deviceUpdateManyMutationInput, reader_deviceUncheckedUpdateManyWithoutUsersInput>
-  }
-
-  export type reader_deviceScalarWhereInput = {
-    AND?: reader_deviceScalarWhereInput | reader_deviceScalarWhereInput[]
-    OR?: reader_deviceScalarWhereInput[]
-    NOT?: reader_deviceScalarWhereInput | reader_deviceScalarWhereInput[]
-    id?: UuidFilter<"reader_device"> | string
-    userID?: UuidFilter<"reader_device"> | string
-    readerDeviceName?: StringFilter<"reader_device"> | string
-    DeviceUUID?: StringFilter<"reader_device"> | string
-    created_at?: DateTimeFilter<"reader_device"> | Date | string
-    updated_at?: DateTimeFilter<"reader_device"> | Date | string
-  }
-
-  export type usersCreateWithoutCardsInput = {
-    id?: string
-    username: string
-    WebUUID?: string
-    phoneNo: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_device?: reader_deviceCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersUncheckedCreateWithoutCardsInput = {
-    id?: string
-    username: string
-    WebUUID?: string
-    phoneNo: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_device?: reader_deviceUncheckedCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersCreateOrConnectWithoutCardsInput = {
-    where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutCardsInput, usersUncheckedCreateWithoutCardsInput>
-  }
-
-  export type card_typesCreateWithoutCardsInput = {
-    id?: string
-    name: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type card_typesUncheckedCreateWithoutCardsInput = {
-    id?: string
-    name: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type card_typesCreateOrConnectWithoutCardsInput = {
-    where: card_typesWhereUniqueInput
-    create: XOR<card_typesCreateWithoutCardsInput, card_typesUncheckedCreateWithoutCardsInput>
-  }
-
-  export type reader_logsCreateWithoutCardsInput = {
-    id?: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_device: reader_deviceCreateNestedOneWithoutReader_logsInput
-  }
-
-  export type reader_logsUncheckedCreateWithoutCardsInput = {
-    id?: string
-    reader_deviceID: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_logsCreateOrConnectWithoutCardsInput = {
-    where: reader_logsWhereUniqueInput
-    create: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput>
-  }
-
-  export type reader_logsCreateManyCardsInputEnvelope = {
-    data: reader_logsCreateManyCardsInput | reader_logsCreateManyCardsInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type usersUpsertWithoutCardsInput = {
-    update: XOR<usersUpdateWithoutCardsInput, usersUncheckedUpdateWithoutCardsInput>
-    create: XOR<usersCreateWithoutCardsInput, usersUncheckedCreateWithoutCardsInput>
-    where?: usersWhereInput
-  }
-
-  export type usersUpdateToOneWithWhereWithoutCardsInput = {
-    where?: usersWhereInput
-    data: XOR<usersUpdateWithoutCardsInput, usersUncheckedUpdateWithoutCardsInput>
-  }
-
-  export type usersUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    WebUUID?: StringFieldUpdateOperationsInput | string
-    phoneNo?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_device?: reader_deviceUpdateManyWithoutUsersNestedInput
-  }
-
-  export type usersUncheckedUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    WebUUID?: StringFieldUpdateOperationsInput | string
-    phoneNo?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_device?: reader_deviceUncheckedUpdateManyWithoutUsersNestedInput
-  }
-
-  export type card_typesUpsertWithoutCardsInput = {
-    update: XOR<card_typesUpdateWithoutCardsInput, card_typesUncheckedUpdateWithoutCardsInput>
-    create: XOR<card_typesCreateWithoutCardsInput, card_typesUncheckedCreateWithoutCardsInput>
-    where?: card_typesWhereInput
-  }
-
-  export type card_typesUpdateToOneWithWhereWithoutCardsInput = {
-    where?: card_typesWhereInput
-    data: XOR<card_typesUpdateWithoutCardsInput, card_typesUncheckedUpdateWithoutCardsInput>
-  }
-
-  export type card_typesUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type card_typesUncheckedUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_logsUpsertWithWhereUniqueWithoutCardsInput = {
-    where: reader_logsWhereUniqueInput
-    update: XOR<reader_logsUpdateWithoutCardsInput, reader_logsUncheckedUpdateWithoutCardsInput>
-    create: XOR<reader_logsCreateWithoutCardsInput, reader_logsUncheckedCreateWithoutCardsInput>
-  }
-
-  export type reader_logsUpdateWithWhereUniqueWithoutCardsInput = {
-    where: reader_logsWhereUniqueInput
-    data: XOR<reader_logsUpdateWithoutCardsInput, reader_logsUncheckedUpdateWithoutCardsInput>
-  }
-
-  export type reader_logsUpdateManyWithWhereWithoutCardsInput = {
-    where: reader_logsScalarWhereInput
-    data: XOR<reader_logsUpdateManyMutationInput, reader_logsUncheckedUpdateManyWithoutCardsInput>
-  }
-
-  export type reader_logsScalarWhereInput = {
-    AND?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
-    OR?: reader_logsScalarWhereInput[]
-    NOT?: reader_logsScalarWhereInput | reader_logsScalarWhereInput[]
-    id?: UuidFilter<"reader_logs"> | string
-    cardID?: UuidFilter<"reader_logs"> | string
-    reader_deviceID?: UuidFilter<"reader_logs"> | string
-    status?: BoolFilter<"reader_logs"> | boolean
-    readDate?: DateTimeFilter<"reader_logs"> | Date | string
-    created_at?: DateTimeFilter<"reader_logs"> | Date | string
-    updated_at?: DateTimeFilter<"reader_logs"> | Date | string
-  }
-
-  export type cardsCreateWithoutCardTypeInput = {
-    id?: string
-    cardName: string
-    cardUUID?: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    users: usersCreateNestedOneWithoutCardsInput
-    reader_logs?: reader_logsCreateNestedManyWithoutCardsInput
-  }
-
-  export type cardsUncheckedCreateWithoutCardTypeInput = {
-    id?: string
-    userID: string
-    cardName: string
-    cardUUID?: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    reader_logs?: reader_logsUncheckedCreateNestedManyWithoutCardsInput
-  }
-
-  export type cardsCreateOrConnectWithoutCardTypeInput = {
-    where: cardsWhereUniqueInput
-    create: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput>
-  }
-
-  export type cardsCreateManyCardTypeInputEnvelope = {
-    data: cardsCreateManyCardTypeInput | cardsCreateManyCardTypeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type cardsUpsertWithWhereUniqueWithoutCardTypeInput = {
-    where: cardsWhereUniqueInput
-    update: XOR<cardsUpdateWithoutCardTypeInput, cardsUncheckedUpdateWithoutCardTypeInput>
-    create: XOR<cardsCreateWithoutCardTypeInput, cardsUncheckedCreateWithoutCardTypeInput>
-  }
-
-  export type cardsUpdateWithWhereUniqueWithoutCardTypeInput = {
-    where: cardsWhereUniqueInput
-    data: XOR<cardsUpdateWithoutCardTypeInput, cardsUncheckedUpdateWithoutCardTypeInput>
-  }
-
-  export type cardsUpdateManyWithWhereWithoutCardTypeInput = {
-    where: cardsScalarWhereInput
-    data: XOR<cardsUpdateManyMutationInput, cardsUncheckedUpdateManyWithoutCardTypeInput>
-  }
-
-  export type usersCreateWithoutReader_deviceInput = {
-    id?: string
-    username: string
-    WebUUID?: string
-    phoneNo: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    cards?: cardsCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersUncheckedCreateWithoutReader_deviceInput = {
-    id?: string
-    username: string
-    WebUUID?: string
-    phoneNo: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    cards?: cardsUncheckedCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersCreateOrConnectWithoutReader_deviceInput = {
-    where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutReader_deviceInput, usersUncheckedCreateWithoutReader_deviceInput>
-  }
-
-  export type reader_logsCreateWithoutReader_deviceInput = {
-    id?: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-    cards: cardsCreateNestedOneWithoutReader_logsInput
-  }
-
-  export type reader_logsUncheckedCreateWithoutReader_deviceInput = {
-    id?: string
-    cardID: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_logsCreateOrConnectWithoutReader_deviceInput = {
-    where: reader_logsWhereUniqueInput
-    create: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput>
-  }
-
-  export type reader_logsCreateManyReader_deviceInputEnvelope = {
-    data: reader_logsCreateManyReader_deviceInput | reader_logsCreateManyReader_deviceInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type usersUpsertWithoutReader_deviceInput = {
-    update: XOR<usersUpdateWithoutReader_deviceInput, usersUncheckedUpdateWithoutReader_deviceInput>
-    create: XOR<usersCreateWithoutReader_deviceInput, usersUncheckedCreateWithoutReader_deviceInput>
-    where?: usersWhereInput
-  }
-
-  export type usersUpdateToOneWithWhereWithoutReader_deviceInput = {
-    where?: usersWhereInput
-    data: XOR<usersUpdateWithoutReader_deviceInput, usersUncheckedUpdateWithoutReader_deviceInput>
-  }
-
-  export type usersUpdateWithoutReader_deviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    WebUUID?: StringFieldUpdateOperationsInput | string
-    phoneNo?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUpdateManyWithoutUsersNestedInput
-  }
-
-  export type usersUncheckedUpdateWithoutReader_deviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    WebUUID?: StringFieldUpdateOperationsInput | string
-    phoneNo?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUncheckedUpdateManyWithoutUsersNestedInput
-  }
-
-  export type reader_logsUpsertWithWhereUniqueWithoutReader_deviceInput = {
-    where: reader_logsWhereUniqueInput
-    update: XOR<reader_logsUpdateWithoutReader_deviceInput, reader_logsUncheckedUpdateWithoutReader_deviceInput>
-    create: XOR<reader_logsCreateWithoutReader_deviceInput, reader_logsUncheckedCreateWithoutReader_deviceInput>
-  }
-
-  export type reader_logsUpdateWithWhereUniqueWithoutReader_deviceInput = {
-    where: reader_logsWhereUniqueInput
-    data: XOR<reader_logsUpdateWithoutReader_deviceInput, reader_logsUncheckedUpdateWithoutReader_deviceInput>
-  }
-
-  export type reader_logsUpdateManyWithWhereWithoutReader_deviceInput = {
-    where: reader_logsScalarWhereInput
-    data: XOR<reader_logsUpdateManyMutationInput, reader_logsUncheckedUpdateManyWithoutReader_deviceInput>
-  }
-
-  export type cardsCreateWithoutReader_logsInput = {
-    id?: string
-    cardName: string
-    cardUUID?: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    users: usersCreateNestedOneWithoutCardsInput
-    cardType: card_typesCreateNestedOneWithoutCardsInput
-  }
-
-  export type cardsUncheckedCreateWithoutReader_logsInput = {
-    id?: string
-    userID: string
-    cardName: string
-    cardUUID?: string
-    cardTypeId: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type cardsCreateOrConnectWithoutReader_logsInput = {
-    where: cardsWhereUniqueInput
-    create: XOR<cardsCreateWithoutReader_logsInput, cardsUncheckedCreateWithoutReader_logsInput>
-  }
-
-  export type reader_deviceCreateWithoutReader_logsInput = {
-    id?: string
-    readerDeviceName: string
-    DeviceUUID: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    users: usersCreateNestedOneWithoutReader_deviceInput
-  }
-
-  export type reader_deviceUncheckedCreateWithoutReader_logsInput = {
-    id?: string
-    userID: string
-    readerDeviceName: string
-    DeviceUUID: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_deviceCreateOrConnectWithoutReader_logsInput = {
-    where: reader_deviceWhereUniqueInput
-    create: XOR<reader_deviceCreateWithoutReader_logsInput, reader_deviceUncheckedCreateWithoutReader_logsInput>
-  }
-
-  export type cardsUpsertWithoutReader_logsInput = {
-    update: XOR<cardsUpdateWithoutReader_logsInput, cardsUncheckedUpdateWithoutReader_logsInput>
-    create: XOR<cardsCreateWithoutReader_logsInput, cardsUncheckedCreateWithoutReader_logsInput>
-    where?: cardsWhereInput
-  }
-
-  export type cardsUpdateToOneWithWhereWithoutReader_logsInput = {
-    where?: cardsWhereInput
-    data: XOR<cardsUpdateWithoutReader_logsInput, cardsUncheckedUpdateWithoutReader_logsInput>
-  }
-
-  export type cardsUpdateWithoutReader_logsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneRequiredWithoutCardsNestedInput
-    cardType?: card_typesUpdateOneRequiredWithoutCardsNestedInput
-  }
-
-  export type cardsUncheckedUpdateWithoutReader_logsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    cardTypeId?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_deviceUpsertWithoutReader_logsInput = {
-    update: XOR<reader_deviceUpdateWithoutReader_logsInput, reader_deviceUncheckedUpdateWithoutReader_logsInput>
-    create: XOR<reader_deviceCreateWithoutReader_logsInput, reader_deviceUncheckedCreateWithoutReader_logsInput>
-    where?: reader_deviceWhereInput
-  }
-
-  export type reader_deviceUpdateToOneWithWhereWithoutReader_logsInput = {
-    where?: reader_deviceWhereInput
-    data: XOR<reader_deviceUpdateWithoutReader_logsInput, reader_deviceUncheckedUpdateWithoutReader_logsInput>
-  }
-
-  export type reader_deviceUpdateWithoutReader_logsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    readerDeviceName?: StringFieldUpdateOperationsInput | string
-    DeviceUUID?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneRequiredWithoutReader_deviceNestedInput
-  }
-
-  export type reader_deviceUncheckedUpdateWithoutReader_logsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
-    readerDeviceName?: StringFieldUpdateOperationsInput | string
-    DeviceUUID?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type cardsCreateManyUsersInput = {
-    id?: string
-    cardName: string
-    cardUUID?: string
-    cardTypeId: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_deviceCreateManyUsersInput = {
-    id?: string
-    readerDeviceName: string
-    DeviceUUID: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type cardsUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cardType?: card_typesUpdateOneRequiredWithoutCardsNestedInput
-    reader_logs?: reader_logsUpdateManyWithoutCardsNestedInput
-  }
-
-  export type cardsUncheckedUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    cardTypeId?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUncheckedUpdateManyWithoutCardsNestedInput
-  }
-
-  export type cardsUncheckedUpdateManyWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    cardTypeId?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_deviceUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    readerDeviceName?: StringFieldUpdateOperationsInput | string
-    DeviceUUID?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUpdateManyWithoutReader_deviceNestedInput
-  }
-
-  export type reader_deviceUncheckedUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    readerDeviceName?: StringFieldUpdateOperationsInput | string
-    DeviceUUID?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUncheckedUpdateManyWithoutReader_deviceNestedInput
-  }
-
-  export type reader_deviceUncheckedUpdateManyWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    readerDeviceName?: StringFieldUpdateOperationsInput | string
-    DeviceUUID?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_logsCreateManyCardsInput = {
-    id?: string
-    reader_deviceID: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_logsUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_device?: reader_deviceUpdateOneRequiredWithoutReader_logsNestedInput
-  }
-
-  export type reader_logsUncheckedUpdateWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    reader_deviceID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_logsUncheckedUpdateManyWithoutCardsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    reader_deviceID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type cardsCreateManyCardTypeInput = {
-    id?: string
-    userID: string
-    cardName: string
-    cardUUID?: string
-    status: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type cardsUpdateWithoutCardTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneRequiredWithoutCardsNestedInput
-    reader_logs?: reader_logsUpdateManyWithoutCardsNestedInput
-  }
-
-  export type cardsUncheckedUpdateWithoutCardTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reader_logs?: reader_logsUncheckedUpdateManyWithoutCardsNestedInput
-  }
-
-  export type cardsUncheckedUpdateManyWithoutCardTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userID?: StringFieldUpdateOperationsInput | string
-    cardName?: StringFieldUpdateOperationsInput | string
-    cardUUID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_logsCreateManyReader_deviceInput = {
-    id?: string
-    cardID: string
-    status: boolean
-    readDate: Date | string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type reader_logsUpdateWithoutReader_deviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    cards?: cardsUpdateOneRequiredWithoutReader_logsNestedInput
-  }
-
-  export type reader_logsUncheckedUpdateWithoutReader_deviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type reader_logsUncheckedUpdateManyWithoutReader_deviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    cardID?: StringFieldUpdateOperationsInput | string
-    status?: BoolFieldUpdateOperationsInput | boolean
-    readDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
 

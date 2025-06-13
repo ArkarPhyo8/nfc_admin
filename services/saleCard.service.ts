@@ -1,17 +1,13 @@
 import { NFC_APi } from "@/lib/apiInstance";
-import { UserAccountFormType } from "@/schemas/userManagement";
+import { SaleCardFormType } from "@/schemas/saleCard";
 import axios from "axios";
 
-const getAllUserAccount = async (
-  page: number,
-  limit: number,
-  searchKey: string
-) => {
+const getAllSaleCard = async (page: number, limit: number, searchKey: string) => {
   try {
     const res = await NFC_APi.get(
-      `/user?page=${page}&limit=${limit}&searchKey=${searchKey}`
+      `/sale_card?page=${page}&limit=${limit}&searchKey=${searchKey}`
     );
-    // console.log("getUserManage Response--->", res.data);
+    // console.log("getCardManage Response--->", res.data);
     if (res.status == 200) {
       return res.data;
     }
@@ -22,19 +18,19 @@ const getAllUserAccount = async (
   }
 };
 
-const createUserAccount = async (createData: UserAccountFormType) => {
+const createSaleCard = async (createData: SaleCardFormType) => {
   try {
-    const res = await NFC_APi.post("/user", createData);
-    // console.log("createUserAccount Response--->", res);
+    const res = await NFC_APi.post("/sale_card", createData);
+    // console.log("create card Response--->", res);
     return {
       success: res.data.success ?? true,
-      message: res.data.message || "User Account creating is successfully",
+      message: res.data.message || "Sale card creating is successfully",
     };
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       const status = error.response?.status;
       const message = error.response?.data?.message || "Server error occurred";
-      
+
       if (status === 409) {
         return {
           success: false,
@@ -57,16 +53,13 @@ const createUserAccount = async (createData: UserAccountFormType) => {
   }
 };
 
-const updateUserAccount = async (
-  id: string,
-  updateData: UserAccountFormType
-) => {
+const updateSaleCard = async (id: string, updateData: SaleCardFormType) => {
   try {
-    const res = await NFC_APi.patch(`/user/${id}`, updateData);
-    // console.log("updateUserAccount Response--->", res);
+    const res = await NFC_APi.patch(`/sale_card/${id}`, updateData);
+    // console.log("update card Response--->", res);
     return {
       success: res.data.success ?? true,
-      message: res.data.message || "User Account updated successfully",
+      message: res.data.message || "Sale card updated successfully",
     };
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
@@ -91,14 +84,14 @@ const updateUserAccount = async (
   }
 };
 
-const deleteUserAccount = async (id: string) => {
+const deleteSaleCard = async (id: string) => {
   try {
-    const res = await NFC_APi.delete(`/user/${id}`);
-    // console.log("deleteUserAccount Response--->", res);
-
+    const res = await NFC_APi.delete(`/sale_card/${id}`);
+    // console.log("delete card Response--->", res);
+   
     return {
       success: res.data.success ?? true,
-      message: res.data.message || "User account deleted successfully",
+      message: res.data.message || "Sale card deleted successfully",
     };
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -123,9 +116,4 @@ const deleteUserAccount = async (id: string) => {
   }
 };
 
-export {
-  getAllUserAccount,
-  createUserAccount,
-  updateUserAccount,
-  deleteUserAccount,
-};
+export { getAllSaleCard, createSaleCard, updateSaleCard, deleteSaleCard };

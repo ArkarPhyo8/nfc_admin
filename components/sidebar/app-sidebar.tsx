@@ -36,15 +36,16 @@ const data = {
       icon: Users,
     },
     {
-      title: "Sales Management",
-      url: "/sale_management",
-      icon: LineChart,
-    },
-    {
       title: "Cards Management",
       url: "/card_management",
       icon: CreditCard,
     },
+    {
+      title: "Sales Management",
+      url: "/sale_management",
+      icon: LineChart,
+    },
+
     {
       title: "Lost Cards Information",
       url: "/lost_card",

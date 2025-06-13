@@ -22,8 +22,8 @@ export async function PATCH(
     return NextResponse.json(
       {
         success: true,
-        message: "User account updated successfully",
-        userAccounts: updatedUser,
+        message: "User updated successfully",
+        user: updatedUser,
       },
       { status: 200 }
     );
@@ -43,7 +43,7 @@ export async function PATCH(
       }
     }
     return NextResponse.json(
-      { success: false, message: "Failed to update user account" },
+      { success: false, message: "Failed to update user" },
       { status: 500 }
     );
   }
@@ -62,8 +62,8 @@ export async function DELETE(
     return NextResponse.json(
       {
         success: true,
-        message: "User account deleted successfully",
-        userAccounts: deletedAdmin,
+        message: "User deleted successfully",
+        user: deletedAdmin,
       },
       { status: 200 }
     );
@@ -77,7 +77,7 @@ export async function DELETE(
     ) {
       if (error.code === "P2025") {
         return NextResponse.json(
-          { success: false, message: "User account not found" },
+          { success: false, message: "User not found" },
           { status: 404 }
         );
       }
@@ -93,7 +93,7 @@ export async function DELETE(
     }
 
     return NextResponse.json(
-      { success: false, message: "Failed to delete user account" },
+      { success: false, message: "Failed to delete user" },
       { status: 500 }
     );
   }

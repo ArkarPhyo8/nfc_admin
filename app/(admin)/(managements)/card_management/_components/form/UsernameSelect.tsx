@@ -18,10 +18,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { users } from "@/generated/prisma";
-import { useUserAccountQuery } from "@/hooks/userManagement/useQuery";
+import { useUserQuery } from "@/hooks/user/useQuery";
 import { cn } from "@/lib/utils";
 import LoadingUI from "@/reusable/LoadingUI";
+import { UserType } from "@/types";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -40,13 +40,18 @@ const UsernameSelect = ({ value, onChange }: UsernameSelectProps) => {
   }, []);
 
   //this is getting user accounts for username select option
-  const { data: userData, isFetching } = useUserAccountQuery();
+  const { data: userData, isFetching } = useUserQuery();
+  const isUserData = userData?.users.length;
+
+  const findUserData = userData?.users.find(
+    (user: UserType) => user.id === value
+  );
   return (
     <>
       <FormItem className="w-full flex flex-col">
-        <FormLabel>Username</FormLabel>
+        <FormLabel>Username (option)</FormLabel>
         <Popover>
-          <PopoverTrigger asChild>
+          <PopoverTrigger disabled={!isUserData} asChild>
             <FormControl>
               <Button
                 ref={triggerRef}
@@ -54,14 +59,10 @@ const UsernameSelect = ({ value, onChange }: UsernameSelectProps) => {
                 role="combobox"
                 className={cn(
                   "w-full justify-between",
-                  !value && "text-muted-foreground"
+                  !findUserData && "text-muted-foreground"
                 )}
               >
-                {value
-                  ? userData?.userAccounts.find(
-                      (user: users) => user.id === value
-                    )?.username
-                  : "Select Username"}
+                {findUserData ? findUserData.username : "Select Username"}
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </FormControl>
@@ -83,7 +84,7 @@ const UsernameSelect = ({ value, onChange }: UsernameSelectProps) => {
                 <CommandList>
                   <CommandEmpty>No username found.</CommandEmpty>
                   <CommandGroup className="w-full">
-                    {userData?.userAccounts.map((user: users) => (
+                    {userData?.users.map((user: UserType) => (
                       <CommandItem
                         key={user.id}
                         value={user.id}

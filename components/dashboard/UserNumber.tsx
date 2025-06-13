@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import DashboardCardWrapper from "./CardWrapper";
-import { useUserAccountQuery } from "@/hooks/userManagement/useQuery";
+import { useUserQuery } from "@/hooks/user/useQuery";
 import { CardContent } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 
 const DashboardUserNumber = () => {
-  const { data, isFetching } = useUserAccountQuery();
-  const userCount = data?.userAccounts?.length;
+  const { data, isFetching } = useUserQuery();
+  const userCount = data?.users?.length;
 
   return (
     <>

@@ -9,13 +9,13 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await req.json();
-    const { username: userID, cardName, cardType: cardTypeId, status } = body;
-    const updatedUser = await prisma.cards.update({
+    const { username: userID, cardName, cardType, status } = body;
+    const updatedCard = await prisma.cards.update({
       where: { id },
       data: {
         userID,
         cardName,
-        cardTypeId,
+        cardType,
         status,
       },
     });
@@ -24,7 +24,7 @@ export async function PATCH(
       {
         success: true,
         message: "Card updated successfully",
-        userAccounts: updatedUser,
+        card: updatedCard,
       },
       { status: 200 }
     );
@@ -57,14 +57,14 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const deletedAdmin = await prisma.cards.delete({
+    const deletedCard = await prisma.cards.delete({
       where: { id },
     });
     return NextResponse.json(
       {
         success: true,
         message: "card deleted successfully",
-        userAccounts: deletedAdmin,
+        card: deletedCard,
       },
       { status: 200 }
     );

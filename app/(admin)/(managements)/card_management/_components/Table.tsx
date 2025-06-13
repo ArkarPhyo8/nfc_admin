@@ -4,7 +4,7 @@ import { columns } from "./Columns";
 import { PaginationProps } from "@/types";
 import { DataTable } from "@/reusable/DataTable";
 import { Pagination } from "@/reusable/Pagination";
-import { useCardQuery } from "@/hooks/cardManagement/useQuery";
+import { useCardQuery } from "@/hooks/card/useQuery";
 
 interface CardManagementTableProps {
   searchKey: string;

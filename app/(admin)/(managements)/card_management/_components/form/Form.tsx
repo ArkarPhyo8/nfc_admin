@@ -18,18 +18,18 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { CardManagementType } from "@/types";
-import { CardFormSchema, CardFormType } from "@/schemas/cardManagement";
+import { CardType } from "@/types";
 import CardTypeSelect from "./CardTypeSelect";
 import UsernameSelect from "./UsernameSelect";
 import { Switch } from "@/components/ui/switch";
-import { useCardMutation } from "@/hooks/cardManagement/useMutation";
+import { useCardMutation } from "@/hooks/card/useMutation";
+import { CardFormSchema, CardFormType } from "@/schemas/card";
 
 interface CardFormProps {
   title: string;
   state: string;
   btnName: string;
-  card?: CardManagementType;
+  card?: CardType;
   onClose: () => void; // New prop for closing dialog
 }
 
@@ -41,21 +41,21 @@ export const CardForm = ({
   onClose,
 }: CardFormProps) => {
   const schema = CardFormSchema;
-  const cardMutation = useCardMutation(state, card?.id);
 
+  const cardMutation = useCardMutation(state, card?.id);
   const form = useForm<CardFormType>({
     resolver: zodResolver(schema),
     defaultValues: {
       cardName: card ? card.cardName : "",
       username: card?.userID ? String(card?.userID) : "",
-      cardType: card?.cardType ? String(card?.cardTypeId) : "",
+      cardType: card?.cardType ? String(card?.cardType) : "",
       status: card?.status ? card?.status : false,
     },
     disabled: cardMutation.isPending,
   });
 
   const onSubmit = async (value: CardFormType) => {
-    console.log("value--->", value);
+    // console.log("value--->", value);
     toast.loading(`Processing....`);
     await cardMutation.mutateAsync(value);
     onClose?.(); // Close the dialog

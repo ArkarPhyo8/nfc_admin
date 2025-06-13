@@ -21,8 +21,6 @@ interface CardTypeSelectProps {
   onChange: (value: string) => void;
 }
 const CardTypeSelect = ({ value, onChange }: CardTypeSelectProps) => {
-  console.log("value--->",value);
-  
   const { data: cardTypes, isFetching } = useCardTypeQuery();
   return (
     <>

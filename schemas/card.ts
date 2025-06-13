@@ -5,7 +5,7 @@ export const CardFormSchema = z.object({
   cardName: z.string().min(1, { message: "card name must be number" }),
   username: z.string({
     required_error: "Username is required",
-  }).min(1,"username must be require!"),
+  }),
   cardType: z.string().min(1, "card type is required"),
   status: z.boolean({
     required_error: "status is required",

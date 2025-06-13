@@ -1,23 +1,26 @@
-
-import { CardFormType } from "@/schemas/cardManagement";
-import { createCard, deleteCard, updateCard } from "@/services/cardManagement.service";
+import { SaleCardFormType } from "@/schemas/saleCard";
+import {
+  createSaleCard,
+  deleteSaleCard,
+  updateSaleCard,
+} from "@/services/saleCard.service";
 import { queryFnResponse } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-const useCardMutation = (state: string, id: string | undefined) => {
+const useSaleCardMutation = (state: string, id: string | undefined) => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: [`card ${state}`],
-    mutationFn: (value: CardFormType) =>
+    mutationKey: [`scale_card ${state}`],
+    mutationFn: (value: SaleCardFormType) =>
       state === "update" && id
-        ? updateCard(id, value)
-        : createCard(value),
+        ? updateSaleCard(id, value)
+        : createSaleCard(value),
     onSuccess: (data: queryFnResponse) => {
       toast.dismiss();
       if (data.success) {
         toast.success(data.message);
-        queryClient.invalidateQueries({ queryKey: ["card"] });
+        queryClient.invalidateQueries({ queryKey: ["scale_card"] });
       } else {
         toast.error(data.message);
       }
@@ -29,16 +32,16 @@ const useCardMutation = (state: string, id: string | undefined) => {
   });
 };
 
-const useCardDeleteMutation = (id: string) => {
+const useSaleCardDeleteMutation = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ["card_delete", id],
-    mutationFn: deleteCard,
+    mutationKey: ["scale_card_delete", id],
+    mutationFn: deleteSaleCard,
     onSuccess: (data: queryFnResponse) => {
       toast.dismiss();
       if (data.success) {
         toast.success(data.message);
-        queryClient.invalidateQueries({ queryKey: ["card"] });
+        queryClient.invalidateQueries({ queryKey: ["scale_card"] });
       } else {
         toast.error(data.message);
       }
@@ -50,4 +53,4 @@ const useCardDeleteMutation = (id: string) => {
   });
 };
 
-export { useCardMutation, useCardDeleteMutation };
+export { useSaleCardMutation, useSaleCardDeleteMutation };

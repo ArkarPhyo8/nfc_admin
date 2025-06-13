@@ -1,22 +1,19 @@
 
-import { UserAccountFormType } from "@/schemas/userManagement";
-import {
-  createUserAccount,
-  deleteUserAccount,
-  updateUserAccount,
-} from "@/services/userManagement.service";
+import { UserFormType } from "@/schemas/user";
+import { createUser, deleteUser, updateUser } from "@/services/user.service";
+
 import { queryFnResponse } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-const useUserAccountsMutation = (state: string, id: string | undefined) => {
+const useUserMutation = (state: string, id: string | undefined) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: [`userAccount ${state}`],
-    mutationFn: (value: UserAccountFormType) =>
+    mutationFn: (value: UserFormType) =>
       state === "update" && id
-        ? updateUserAccount(id, value)
-        : createUserAccount(value),
+        ? updateUser(id, value)
+        : createUser(value),
     onSuccess: (data: queryFnResponse) => {
       toast.dismiss();
       if (data.success) {
@@ -33,11 +30,11 @@ const useUserAccountsMutation = (state: string, id: string | undefined) => {
   });
 };
 
-const useUserAccountsDeleteMutation = (id: string) => {
+const useUserDeleteMutation = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ["userAccountDelete", id],
-    mutationFn: deleteUserAccount,
+    mutationFn: deleteUser,
     onSuccess: (data: queryFnResponse) => {
       toast.dismiss();
       if (data.success) {
@@ -54,4 +51,4 @@ const useUserAccountsDeleteMutation = (id: string) => {
   });
 };
 
-export { useUserAccountsMutation, useUserAccountsDeleteMutation };
+export { useUserMutation, useUserDeleteMutation };

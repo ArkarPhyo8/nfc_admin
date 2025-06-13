@@ -14,23 +14,11 @@ export async function GET(req: NextRequest) {
 
     // If searchKey exists, return ALL matching results without pagination
     if (searchKey) {
-      const results = await prisma.cards.findMany({
+      const cards = await prisma.cards.findMany({
         where: {
           cardName: {
             contains: searchKey,
             mode: "insensitive",
-          },
-        },
-        include: {
-          users: {
-            select: {
-              username: true,
-            },
-          },
-          cardType: {
-            select: {
-              name: true,
-            },
           },
         },
         orderBy: {
@@ -42,12 +30,12 @@ export async function GET(req: NextRequest) {
         {
           success: true,
           message: "Search results found",
-          cards: results,
+          cards,
           pagination: {
-            totalRecords: results.length,
+            totalRecords: cards.length,
             totalPages: 1,
             currentPage: 1,
-            pageSize: results.length,
+            pageSize: cards.length,
           },
         },
         { status: 200 }
@@ -57,18 +45,6 @@ export async function GET(req: NextRequest) {
     //If no searchKey, use normal pagination
     const totalRecords = await prisma.cards.count();
     const cards = await prisma.cards.findMany({
-      include: {
-        users: {
-          select: {
-            username: true,
-          },
-        },
-        cardType: {
-          select: {
-            name: true,
-          },
-        },
-      },
       orderBy: {
         created_at: "desc",
       },
@@ -112,14 +88,12 @@ export async function GET(req: NextRequest) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { username: userID, cardName, cardType: cardTypeId, status } = body;
-    console.log(userID, cardName, cardTypeId, status);
-
+    const { username: userID, cardName, cardType, status } = body;
     const newCard = await prisma.cards.create({
       data: {
         userID,
         cardName,
-        cardTypeId,
+        cardType,
         status,
       },
     });

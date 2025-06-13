@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import DashboardCardWrapper from "./CardWrapper";
-import { useCardQuery } from "@/hooks/cardManagement/useQuery";
+import { useCardQuery } from "@/hooks/card/useQuery";
 import { CardContent } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 

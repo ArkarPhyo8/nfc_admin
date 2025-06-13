@@ -11,12 +11,9 @@ export async function GET(req: NextRequest) {
     const limitParam = searchParams.get("limit") || "10";
     const page = parseInt(pageParam, 10);
     const limit = parseInt(limitParam, 10);
-
-    console.log(searchKey, page, limit);
-
     // If searchKey exists, return ALL matching results without pagination
     if (searchKey) {
-      const results = await prisma.users.findMany({
+      const users = await prisma.users.findMany({
         where: {
           username: {
             contains: searchKey,
@@ -32,13 +29,13 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(
         {
           success: true,
-          message: "Search results found",
-          userAccounts: results,
+          message: "Search users found",
+          users,
           pagination: {
-            totalRecords: results.length,
+            totalRecords: users.length,
             totalPages: 1,
             currentPage: 1,
-            pageSize: results.length,
+            pageSize: users.length,
           },
         },
         { status: 200 }
@@ -47,20 +44,20 @@ export async function GET(req: NextRequest) {
 
     //If no searchKey, use normal pagination
     const totalRecords = await prisma.users.count();
-    const userAccounts = await prisma.users.findMany({
+    const users = await prisma.users.findMany({
       orderBy: {
         created_at: "desc",
       },
       skip: (page - 1) * limit,
       take: limit,
     });
-    const totalPages = Math.ceil(totalRecords / limit);
 
+    const totalPages = Math.ceil(totalRecords / limit);
     return NextResponse.json(
       {
         success: true,
-        message: "User account getting successfully",
-        userAccounts: userAccounts,
+        message: "User getting successfully",
+        users,
         pagination: {
           totalRecords,
           totalPages,
@@ -73,14 +70,14 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     // Optional: Handle known Prisma errors
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      console.error("Prisma error while fetching user accounts:", error);
+      console.error("Prisma error while fetching user:", error);
     } else {
-      console.error("Unexpected error while fetching user accounts:", error);
+      console.error("Unexpected error while fetching user:", error);
     }
     return NextResponse.json(
       {
         success: false,
-        message: "An error occurred while retrieving user accounts.",
+        message: "An error occurred while retrieving user.",
       },
       { status: 500 }
     );
@@ -96,21 +93,21 @@ export async function POST(req: Request) {
     const newUser = await prisma.users.create({
       data: {
         username,
-        phoneNo
+        phoneNo,
       },
     });
     return NextResponse.json(
       {
         success: true,
-        message: "User account created successfully",
-        userAccount: newUser,
+        message: "User created successfully",
+        user: newUser,
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error creating user account:", error);
+    console.error("Error creating user", error);
     return NextResponse.json(
-      { success: false, message: "Failed to create user account" },
+      { success: false, message: "Failed to create user" },
       { status: 500 }
     );
   }

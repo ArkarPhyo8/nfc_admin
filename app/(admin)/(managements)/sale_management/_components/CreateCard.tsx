@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import React, { useState } from "react";
-import { UserAccountForm } from "./Form";
+import { SaleForm } from "./form/Form";
 
 const CreateUserAccount = () => {
   const [openedDialog, setOpenedDialog] = useState<"create" | null>(null);
@@ -24,14 +24,14 @@ const CreateUserAccount = () => {
       >
         <Button className="flex cursor-pointer">
           <Plus />
-          Add User
+          Add Sale Card
         </Button>
       </DialogTrigger>
 
       {openedDialog == "create" && (
-        <UserAccountForm
+        <SaleForm
           key={openedDialog}
-          title={"Create User Account"}
+          title={"Create Sale"}
           state={"create"}
           btnName={"Create"}
           onClose={() => {

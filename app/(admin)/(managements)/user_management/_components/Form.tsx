@@ -18,43 +18,43 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { UserManagementType } from "@/types";
+import { UserType } from "@/types";
 import {
-  UserAccountFormSchema,
-  UserAccountFormType,
-} from "@/schemas/userManagement";
-import { useUserAccountsMutation } from "@/hooks/userManagement/useMutation";
+  UserFormSchema,
+  UserFormType,
+} from "@/schemas/user";
+import { useUserMutation } from "@/hooks/user/useMutation";
 
-interface UserAccountFormProps {
+interface UserFormProps {
   title: string;
   state: string;
   btnName: string;
-  userAccount?: UserManagementType;
+  user?: UserType;
   onClose: () => void; // New prop for closing dialog
 }
-export const UserAccountForm = ({
+export const UserForm = ({
   title,
   state,
   btnName,
-  userAccount,
+  user,
   onClose,
-}: UserAccountFormProps) => {
-  const schema = UserAccountFormSchema;
-  const userAccountsMutation = useUserAccountsMutation(state, userAccount?.id);
+}: UserFormProps) => {
+  const schema = UserFormSchema;
+  const userMutation = useUserMutation(state, user?.id);
 
-  const form = useForm<UserAccountFormType>({
+  const form = useForm<UserFormType>({
     resolver: zodResolver(schema),
     defaultValues: {
-      username: userAccount ? userAccount.username : "",
-      phoneNo: userAccount?.phoneNo ? String(userAccount?.phoneNo) : "",
+      username: user ? user.username : "",
+      phoneNo: user?.phoneNo ? String(user?.phoneNo) : "",
     },
-    disabled: userAccountsMutation.isPending,
+    disabled: userMutation.isPending,
   });
 
-  const onSubmit = async (value: UserAccountFormType) => {
+  const onSubmit = async (value: UserFormType) => {
     // console.log("value--->", value);
-    toast.loading(`User Account ${btnName}....`);
-    await userAccountsMutation.mutateAsync(value);
+    toast.loading("Processing....");
+    await userMutation.mutateAsync(value);
     onClose?.(); // Close the dialog
     form.reset();
   };
@@ -109,10 +109,10 @@ export const UserAccountForm = ({
 
             <Button
               type="submit"
-              disabled={userAccountsMutation.isPending}
+              disabled={userMutation.isPending}
               className="float-right cursor-pointer"
             >
-              {userAccountsMutation.isPending ? `${btnName}...` : `${btnName}`}
+              {userMutation.isPending ? `${btnName}...` : `${btnName}`}
             </Button>
           </form>
         </Form>

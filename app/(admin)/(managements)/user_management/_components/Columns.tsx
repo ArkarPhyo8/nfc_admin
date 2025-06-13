@@ -1,11 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table";
-// import TableAction from "./TableAction";
-import { UserManagementType } from "@/types";
+import { UserType } from "@/types";
 import { Minus } from "lucide-react";
 import { format } from "date-fns";
 import TableAction from "./TableAction";
 
-export const columns: ColumnDef<UserManagementType>[] = [
+export const columns: ColumnDef<UserType>[] = [
   {
     id: "username",
     header: "Username",

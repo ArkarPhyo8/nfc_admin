@@ -24,7 +24,7 @@ const CreateUserAccount = () => {
       >
         <Button className="flex cursor-pointer">
           <Plus />
-          Add Card
+          Create Card
         </Button>
       </DialogTrigger>
 

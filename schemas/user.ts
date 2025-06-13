@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // Create schema
-export const UserAccountFormSchema = z.object({
+export const UserFormSchema = z.object({
   username: z
     .string({
       required_error: "Name is required",
@@ -17,4 +17,4 @@ export const UserAccountFormSchema = z.object({
       message: "Phone number must be valid (digits only, 7 to 15 characters)",
     })
 });
-export type UserAccountFormType = z.infer<typeof UserAccountFormSchema>;
+export type UserFormType = z.infer<typeof UserFormSchema>;

@@ -1,9 +1,11 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import TableAction from "./TableAction";
-import { CardManagementType } from "@/types";
+import { CardType } from "@/types";
+import UsernameCell from "./cells/Username";
+import CardTypeCell from "./cells/CardType";
 
-export const columns: ColumnDef<CardManagementType>[] = [
+export const columns: ColumnDef<CardType>[] = [
   {
     id: "cardName",
     header: "Card Name",
@@ -13,22 +15,22 @@ export const columns: ColumnDef<CardManagementType>[] = [
     id: "username",
     header: "Username",
     cell: ({ row }) => {
-      const username = row.original.users.username;
-      return (
-        <>
-          <span>{username}</span>
-        </>
-      );
+      const userId = row.original.userID;
+      return <>{userId ? <UsernameCell userId={userId} /> : <span>-</span>}</>;
     },
   },
   {
     id: "Card Type",
     header: "Card Type",
     cell: ({ row }) => {
-      const cardType = row.original.cardType.name;
+      const cardTypeId = row.original.cardType;
       return (
         <>
-          <span>{cardType}</span>
+          {cardTypeId ? (
+            <CardTypeCell cardTypeId={cardTypeId} />
+          ) : (
+            <span>-</span>
+          )}
         </>
       );
     },

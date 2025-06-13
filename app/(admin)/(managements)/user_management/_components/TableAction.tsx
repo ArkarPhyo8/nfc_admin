@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { DeleteConfirm } from "@/reusable/DeleteConfirm";
-import { UserAccountForm } from "./Form";
 import { toast } from "sonner";
-import { UserManagementType } from "@/types";
-import { useUserAccountsDeleteMutation } from "@/hooks/userManagement/useMutation";
+import { UserType } from "@/types";
+import {  useUserDeleteMutation } from "@/hooks/user/useMutation";
+import { UserForm } from "./Form";
 
 interface TableActionProps {
-  userInfo: UserManagementType;
+  userInfo: UserType;
 }
 const TableAction = ({ userInfo }: TableActionProps) => {
   const [openedDialog, setOpenedDialog] = useState<"delete" | "update" | null>(
@@ -20,10 +20,10 @@ const TableAction = ({ userInfo }: TableActionProps) => {
   const [open, setOpen] = useState(false);
 
   //delete process
-    const userAccountDeleteMutation= useUserAccountsDeleteMutation(userInfo.id)
+    const userDeleteMutation= useUserDeleteMutation(userInfo.id)
   const handleDeleteProcess = async() => {
     toast.loading("Processing...")
-    await userAccountDeleteMutation.mutateAsync(userInfo.id)
+    await userDeleteMutation.mutateAsync(userInfo.id)
   };
   return (
     <Dialog
@@ -59,12 +59,12 @@ const TableAction = ({ userInfo }: TableActionProps) => {
         </div>
 
         {openedDialog === "update" ? (
-          <UserAccountForm
+          <UserForm
             key={openedDialog}
-            title={"Update User Account"}
+            title={"Update User"}
             state={"update"}
             btnName={"Update"}
-            userAccount={userInfo}
+            user={userInfo}
             onClose={() => {
               setOpenedDialog(null); // Pass function to close dialog
               setOpen(false);

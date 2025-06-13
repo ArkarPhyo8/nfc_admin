@@ -1,22 +1,22 @@
 "use client";
 import { useState } from "react";
 import { columns } from "./Columns";
-import { useUserAccountQuery } from "@/hooks/userManagement/useQuery";
 import { PaginationProps } from "@/types";
 import { DataTable } from "@/reusable/DataTable";
 import { Pagination } from "@/reusable/Pagination";
+import { useUserQuery } from "@/hooks/user/useQuery";
 
-interface UserManagementTableProps {
+interface UserTableProps {
   searchKey: string;
 }
-export const UserManagementTable = ({
+export const UserTable = ({
   searchKey,
-}: UserManagementTableProps) => {
+}: UserTableProps) => {
   const [pagination, setPagination] = useState<PaginationProps>({
     pageIndex: 1,
     pageSize: 5,
   });
-  const { data, isFetching } = useUserAccountQuery({
+  const { data, isFetching } = useUserQuery({
     page: pagination.pageIndex,
     limit: pagination.pageSize,
     searchKey,
@@ -26,7 +26,7 @@ export const UserManagementTable = ({
     <>
       <DataTable
         columns={columns}
-        data={data?.userAccounts || []}
+        data={data?.users || []}
         isFetching={isFetching}
         pagination={{
           page: pagination?.pageIndex,

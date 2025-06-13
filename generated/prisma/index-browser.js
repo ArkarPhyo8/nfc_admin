@@ -144,13 +144,34 @@ exports.Prisma.CardsScalarFieldEnum = {
   userID: 'userID',
   cardName: 'cardName',
   cardUUID: 'cardUUID',
-  cardTypeId: 'cardTypeId',
+  cardType: 'cardType',
   status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.Card_typesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Card_saleScalarFieldEnum = {
+  id: 'id',
+  cardID: 'cardID',
+  customer_name: 'customer_name',
+  address: 'address',
+  phone: 'phone',
+  sale_date: 'sale_date',
+  price: 'price',
+  quantity: 'quantity',
+  payment_status: 'payment_status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Payment_typesScalarFieldEnum = {
   id: 'id',
   name: 'name',
   created_at: 'created_at',
@@ -200,6 +221,8 @@ exports.Prisma.ModelName = {
   users: 'users',
   cards: 'cards',
   card_types: 'card_types',
+  card_sale: 'card_sale',
+  payment_types: 'payment_types',
   reader_device: 'reader_device',
   reader_logs: 'reader_logs'
 };

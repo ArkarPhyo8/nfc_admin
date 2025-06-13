@@ -1,5 +1,5 @@
 import { NFC_APi } from "@/lib/apiInstance";
-import { CardFormType } from "@/schemas/cardManagement";
+import { CardFormType } from "@/schemas/card";
 import axios from "axios";
 
 const getAllCard = async (page: number, limit: number, searchKey: string) => {

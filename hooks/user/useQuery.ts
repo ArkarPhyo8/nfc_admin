@@ -1,4 +1,4 @@
-import { getAllUserAccount } from "@/services/userManagement.service";
+import { getAllUser } from "@/services/user.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 type UserAccountQueryParams = {
@@ -6,18 +6,18 @@ type UserAccountQueryParams = {
   limit?: number;
   searchKey?: string;
 };
-const useUserAccountQuery = ({
+const useUserQuery = ({
   page = 1,
   limit = 10,
   searchKey = "",
 }: UserAccountQueryParams = {}) => {
   return useQuery({
     queryKey: ["userAccount", searchKey, page, limit],
-    queryFn: () => getAllUserAccount(page, limit, searchKey),
+    queryFn: () => getAllUser(page, limit, searchKey),
     placeholderData: keepPreviousData,
     staleTime: 15 * 60 * 1000,
     gcTime: 15 * 60 * 1000,
   });
 };
 
-export { useUserAccountQuery };
+export { useUserQuery };

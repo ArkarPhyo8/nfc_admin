@@ -7,11 +7,11 @@ import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { DeleteConfirm } from "@/reusable/DeleteConfirm";
 import { CardForm } from "./form/Form";
 import { toast } from "sonner";
-import { CardManagementType } from "@/types";
-import { useCardDeleteMutation } from "@/hooks/cardManagement/useMutation";
+import { CardType } from "@/types";
+import { useCardDeleteMutation } from "@/hooks/card/useMutation";
 
 interface TableActionProps {
-  cardInfo: CardManagementType;
+  cardInfo: CardType;
 }
 const TableAction = ({ cardInfo }: TableActionProps) => {
   const [openedDialog, setOpenedDialog] = useState<"delete" | "update" | null>(
@@ -20,10 +20,10 @@ const TableAction = ({ cardInfo }: TableActionProps) => {
   const [open, setOpen] = useState(false);
 
   //delete process
-  const userAccountDeleteMutation = useCardDeleteMutation(cardInfo.id);
+  const cardDeleteMutation = useCardDeleteMutation(cardInfo.id);
   const handleDeleteProcess = async () => {
     toast.loading("Processing...");
-    await userAccountDeleteMutation.mutateAsync(cardInfo.id);
+    await cardDeleteMutation.mutateAsync(cardInfo.id);
   };
   return (
     <Dialog

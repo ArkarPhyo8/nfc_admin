@@ -1,4 +1,4 @@
-import { getAllCard } from "@/services/cardManagement.service";
+import { getAllCard } from "@/services/card.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 type useCardQueryParams = {

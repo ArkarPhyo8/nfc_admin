@@ -1,9 +1,9 @@
 "use client";
 import React, { useMemo, useState } from "react";
-import CreateUserAccount from "./_components/CreateAccount";
+import CreateUserAccount from "./_components/CreateUser";
 import SearchInput from "@/reusable/SearchInput";
 import { debounce } from "lodash";
-import { UserManagementTable } from "./_components/Table";
+import { UserTable } from "./_components/Table";
 
 const UserManagementPage = () => {
   const [searchInputKey, setSearchInputKey] = useState("");
@@ -16,6 +16,7 @@ const UserManagementPage = () => {
       }, 500),
     [setSearchKey]
   );
+  
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInputKey(event.target.value);
     debouncedHandleSearchChange(event.target.value);
@@ -37,7 +38,7 @@ const UserManagementPage = () => {
           <CreateUserAccount />
         </div>
       </div>
-      <UserManagementTable searchKey={searchKey} />
+      <UserTable searchKey={searchKey} />
     </div>
   );
 };
