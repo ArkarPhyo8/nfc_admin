@@ -61,7 +61,7 @@ const TableAction = ({ cardInfo }: TableActionProps) => {
         {openedDialog === "update" ? (
           <CardForm
             key={openedDialog}
-            title={"Update User Account"}
+            title={"Update Card"}
             state={"update"}
             btnName={"Update"}
             card={cardInfo}
