@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Usage
+
+database ----> postgresql
+ORM ----> prisma orm
+authentication and authorization -----> auth.js
+ui framework ----> shadcn ui
+
+## CLI
+->> install prisma, typescript ---> npm install prisma typescript tsx @types/node --save-dev
+->> to create prism schema ---> npx prisma init --db --output ../generated/prisma
+->> migrate prisma schema into db ---> npx prisma migrate dev --name init (or) npx prisma db push
+->> install prisma client ---> npm install @prisma/client
+->> to generate prisma client ---> npx prisma generate
+->> to add initial data(eg: for admin table) ---> npx prisma db seed
+->> install auth.js ---> npm install next-auth@beta
+->> to generate AUTH_SECRET --->npx auth secret

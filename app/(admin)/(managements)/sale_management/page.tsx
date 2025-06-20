@@ -1,0 +1,27 @@
+"use client";
+import React, { useState } from "react";
+import CreateUserAccount from "./_components/CreateCard";
+import SearchInput from "@/reusable/SearchInput";
+import { SaleManagementTable } from "./_components/Table";
+
+const SaleManagementPage = () => {
+  const [searchKey, setSearchKey] = useState("");
+
+  return (
+    <div className="space-y-8">
+      <div className="w-full flex items-center justify-between">
+        <div>
+          <h1 className="font-semibold text-2xl">Sale Management</h1>
+          <p>View adn Manage sale cards in this page</p>
+        </div>
+        <div className="flex items-center gap-5">
+          <SearchInput setSearchKey={setSearchKey} placeholder={"Search..."} />
+          <CreateUserAccount />
+        </div>
+      </div>
+      <SaleManagementTable searchKey={searchKey} />
+    </div>
+  );
+};
+
+export default SaleManagementPage;

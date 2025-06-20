@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id         String   @id @default(uuid()) @db.Uuid
+  email      String   @unique
+  password   String
+  name       String?
+  role       Role     @default(ADMIN)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model users {
+  id             String   @id @default(uuid()) @db.Uuid
+  username       String   @db.VarChar(50)
+  brandLogo      String?
+  brandName      String?
+  fb_link        String?
+  youtube_link   String?
+  instagram_link String?
+  tiktok_link    String?
+  WebUUID        String   @unique @default(uuid())
+  phoneNo        String   @db.VarChar(20)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
+}
+
+model cards {
+  id         String   @id @default(uuid()) @db.Uuid
+  userID     String?  @db.Uuid
+  cardName   String
+  cardUUID   String   @unique @default(uuid())
+  cardType   String   @db.Uuid
+  status     Boolean  @default(true) @db.Boolean
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model card_types {
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model card_sale {
+  id             String   @id @default(uuid()) @db.Uuid
+  cardID         String[]
+  customer_name  String
+  address        String
+  phone          String   @db.VarChar(20)
+  sale_date      DateTime @default(now())
+  price          Decimal  @db.Decimal(10, 2)
+  quantity       Int
+  payment_status String   @db.Uuid
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
+}
+
+model payment_types {
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model cards_loss {
+  id          String     @id @default(uuid()) @db.Uuid
+  cardID      String
+  userID      String
+  description String
+  status      LossStatus @default(PENDING)
+  applyDate   DateTime   @default(now())
+  issueDate   DateTime   @default(now())
+}
+
+model reader_device {
+  id               String   @id @default(uuid()) @db.Uuid
+  userID           String?
+  readerDeviceName String
+  DeviceUUID       String
+  created_at       DateTime @default(now())
+  updated_at       DateTime @default(now())
+}
+
+model reader_logs {
+  id              String   @id @default(uuid()) @db.Uuid
+  cardID          String?
+  reader_deviceID String   @db.Uuid
+  status          Boolean
+  readDate        DateTime @db.Date
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum LossStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
