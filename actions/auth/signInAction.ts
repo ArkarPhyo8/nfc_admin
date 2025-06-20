@@ -23,12 +23,12 @@ export const signInAction = async (value: SignInFormType) => {
       password: value.password,
     });
     if (res?.error) {
-      return { error: res.error || "Invalid username or password." };
+      return { error: res.error || "Invalid username or password...." };
     } else {
       return { success: true };
     }
   } catch (err) {
     console.error("signInError-->", err);
-    return { error: "Invalid email or password.",err };
+    return { error: `Invalid email or password....${err}`};
   }
 };
