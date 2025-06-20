@@ -29,6 +29,6 @@ export const signInAction = async (value: SignInFormType) => {
     }
   } catch (err) {
     console.error("signInError-->", err);
-    return { error: "Invalid email or password." };
+    return { error: "Invalid email or password.",err };
   }
 };
