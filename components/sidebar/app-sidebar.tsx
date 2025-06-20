@@ -48,7 +48,7 @@ const data = {
 
     {
       title: "Lost Cards Information",
-      url: "/lost_card",
+      url: "/card_lost",
       icon: Ban,
     },
     {

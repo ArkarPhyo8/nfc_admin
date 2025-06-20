@@ -16,6 +16,7 @@ import { usePaymentTypeQuery } from "@/hooks/paymentType/useQuery";
 import LoadingUI from "@/reusable/LoadingUI";
 import { PaymentType_Type } from "@/types";
 
+
 interface PaymentTypeSelectProps {
   disabled?: boolean;
   value: string;

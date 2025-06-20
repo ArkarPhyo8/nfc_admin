@@ -1,18 +1,20 @@
 "use client";
-import { Pencil, Trash } from "lucide-react";
+import { Trash, UserPlus } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { DeleteConfirm } from "@/reusable/DeleteConfirm";
-import { CardForm } from "./form/Form";
+
 import { toast } from "sonner";
 import { CardType } from "@/types";
 import { useCardDeleteMutation } from "@/hooks/card/useMutation";
+import { CardForm } from "../form/Form";
 
 interface TableActionProps {
   cardInfo: CardType;
 }
+
 const TableAction = ({ cardInfo }: TableActionProps) => {
   const [openedDialog, setOpenedDialog] = useState<"delete" | "update" | null>(
     null
@@ -43,7 +45,7 @@ const TableAction = ({ cardInfo }: TableActionProps) => {
             }}
           >
             <Button variant={"ghost"} className="cursor-pointer">
-              <Pencil size={20} className="text-blue-500" />
+              <UserPlus size={20} className="text-blue-500" />
             </Button>
           </DialogTrigger>
           <AlertDialogTrigger
@@ -61,9 +63,9 @@ const TableAction = ({ cardInfo }: TableActionProps) => {
         {openedDialog === "update" ? (
           <CardForm
             key={openedDialog}
-            title={"Update Card"}
-            state={"update"}
-            btnName={"Update"}
+            title={"Add user into card"}
+            state={"addUser"}
+            btnName={"Add"}
             card={cardInfo}
             onClose={() => {
               setOpenedDialog(null); // Pass function to close dialog

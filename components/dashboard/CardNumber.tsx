@@ -15,7 +15,7 @@ const DashboardCardNumber = () => {
         <CardContent>
           {isFetching ? (
             <span>
-              <Skeleton className=" bg-gray-400 h-8 w-20" />
+              <Skeleton className=" bg-gray-200 h-8 w-20" />
             </span>
           ) : (
             <span className="text-4xl font-bold text-blue-500">{cardCount}</span>

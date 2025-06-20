@@ -1,4 +1,5 @@
 "use client";
+
 import ProgressBarProvider from "@/context/ProgressBarProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -12,6 +13,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         {children}
         <Toaster richColors />
       </ProgressBarProvider>
+
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   );

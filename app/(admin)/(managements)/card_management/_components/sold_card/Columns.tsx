@@ -1,9 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
-import TableAction from "./TableAction";
 import { CardType } from "@/types";
-import UsernameCell from "./cells/Username";
-import CardTypeCell from "./cells/CardType";
+import CardTypeCell from "../reusable/CardType";
+import StatusChange from "../reusable/StatusChange";
+import { CheckUsername } from "@/reusable/CheckUsername";
 
 export const columns: ColumnDef<CardType>[] = [
   {
@@ -16,7 +16,7 @@ export const columns: ColumnDef<CardType>[] = [
     header: "Username",
     cell: ({ row }) => {
       const userId = row.original.userID;
-      return <>{userId ? <UsernameCell userId={userId} /> : <span>-</span>}</>;
+      return <>{userId ? <CheckUsername userId={userId} /> : <span>-</span>}</>;
     },
   },
   {
@@ -42,32 +42,19 @@ export const columns: ColumnDef<CardType>[] = [
       const active = row.original.status;
       return (
         <>
-          {active && (
-            <span className="bg-green rounded-2xl px-3 py-1 font-bold text-text-color">
-              Active
-            </span>
-          )}
+          <StatusChange cardID={row.original.id} active={active} />
         </>
       );
     },
   },
   {
-    id: "createdAt",
-    header: "Created At",
+    id: "date",
+    header: "Date",
     cell: ({ row }) => (
-      <div>{format(new Date(row.original.created_at), "PP")}</div>
+      <>
+        <div>{format(new Date(row.original.updated_at), "PP")}</div>
+        <div>{format(new Date(row.original.updated_at), "pp")}</div>
+      </>
     ),
-  },
-  {
-    id: "updatedAt",
-    header: "Updated At",
-    cell: ({ row }) => (
-      <div>{format(new Date(row.original.updated_at), "PP")}</div>
-    ),
-  },
-  {
-    id: "action",
-    header: "Action",
-    cell: ({ row }) => <TableAction cardInfo={row.original} />,
   },
 ];

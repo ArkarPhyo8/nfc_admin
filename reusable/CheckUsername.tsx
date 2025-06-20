@@ -1,12 +1,13 @@
+"client"
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUserQuery } from "@/hooks/user/useQuery";
 import { UserType } from "@/types";
 import React from "react";
 
-interface UsernameCellProps {
+interface CheckUsernameProps {
   userId: string;
 }
-const UsernameCell = ({ userId }: UsernameCellProps) => {
+export const CheckUsername = ({ userId }: CheckUsernameProps) => {
   const { data, isFetching } = useUserQuery();
   if (isFetching) {
     return <Skeleton className="w-full h-10 rounded-md" />;
@@ -21,4 +22,3 @@ const UsernameCell = ({ userId }: UsernameCellProps) => {
   return <span>{findUser.username}</span>;
 };
 
-export default UsernameCell;

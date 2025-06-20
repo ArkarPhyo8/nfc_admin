@@ -21,7 +21,7 @@ import { toast } from "sonner";
 import { CardType } from "@/types";
 import CardTypeSelect from "./CardTypeSelect";
 import UsernameSelect from "./UsernameSelect";
-import { Switch } from "@/components/ui/switch";
+// import { Switch } from "@/components/ui/switch";
 import { useCardMutation } from "@/hooks/card/useMutation";
 import { CardFormSchema, CardFormType } from "@/schemas/card";
 
@@ -47,15 +47,18 @@ export const CardForm = ({
     resolver: zodResolver(schema),
     defaultValues: {
       cardName: card ? card.cardName : "",
-      username: card?.userID ? String(card?.userID) : "",
       cardType: card?.cardType ? String(card?.cardType) : "",
-      status: card?.status ? card?.status : false,
     },
     disabled: cardMutation.isPending,
   });
 
   const onSubmit = async (value: CardFormType) => {
-    // console.log("value--->", value);
+    if (state === "addUser") {
+      if (!value.username) {
+        form.setError("username", { message: "user is required!" });
+        return;
+      }
+    }
     toast.loading(`Processing....`);
     await cardMutation.mutateAsync(value);
     onClose?.(); // Close the dialog
@@ -76,11 +79,15 @@ export const CardForm = ({
               control={form.control}
               name="cardName"
               render={({ field }) => (
-                <FormItem className="w-full">
+                <FormItem
+                  className={`w-full ${
+                    state === "addUser" && "cursor-not-allowed"
+                  } `}
+                >
                   <FormLabel>Card Name</FormLabel>
                   <FormControl>
                     <Input
-                      disabled={field.disabled}
+                      disabled={state === "addUser" ? true : field.disabled}
                       {...field}
                       placeholder="card name..."
                     />
@@ -89,27 +96,37 @@ export const CardForm = ({
                 </FormItem>
               )}
             />
-
-            {/* username Field */}
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <UsernameSelect value={field.value} onChange={field.onChange} />
-              )}
-            />
-
             {/* Card Type Field */}
             <FormField
               control={form.control}
               name="cardType"
               render={({ field }) => (
-                <CardTypeSelect onChange={field.onChange} value={field.value} />
+                <CardTypeSelect
+                  disabled={
+                    state === "addUser" ? true : field.disabled ?? false
+                  }
+                  onChange={field.onChange}
+                  value={field.value}
+                />
               )}
             />
 
+            {/* username Field */}
+            {state !== "register" && (
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <UsernameSelect
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
+            )}
+
             {/* Status Field */}
-            <FormField
+            {/* <FormField
               control={form.control}
               name="status"
               render={({ field }) => (
@@ -126,7 +143,7 @@ export const CardForm = ({
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
             <Button
               type="submit"
               disabled={cardMutation.isPending}

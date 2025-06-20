@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import React, { useState } from "react";
 import { CardForm } from "./form/Form";
 
-const CreateUserAccount = () => {
+const CardRegister = () => {
   const [openedDialog, setOpenedDialog] = useState<"create" | null>(null);
   const [open, setOpen] = useState(false);
   return (
@@ -24,16 +24,16 @@ const CreateUserAccount = () => {
       >
         <Button className="flex cursor-pointer">
           <Plus />
-          Create Card
+          Register
         </Button>
       </DialogTrigger>
 
       {openedDialog == "create" && (
         <CardForm
           key={openedDialog}
-          title={"Create Card"}
-          state={"create"}
-          btnName={"Create"}
+          title={"Card Register"}
+          state={"register"}
+          btnName={"Register"}
           onClose={() => {
             setOpenedDialog(null); // Pass function to close dialog
             setOpen(false);
@@ -44,4 +44,4 @@ const CreateUserAccount = () => {
   );
 };
 
-export default CreateUserAccount;
+export default CardRegister;

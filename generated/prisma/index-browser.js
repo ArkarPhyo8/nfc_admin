@@ -133,6 +133,12 @@ exports.Prisma.AdminScalarFieldEnum = {
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   username: 'username',
+  brandLogo: 'brandLogo',
+  brandName: 'brandName',
+  fb_link: 'fb_link',
+  youtube_link: 'youtube_link',
+  instagram_link: 'instagram_link',
+  tiktok_link: 'tiktok_link',
   WebUUID: 'WebUUID',
   phoneNo: 'phoneNo',
   created_at: 'created_at',
@@ -178,6 +184,16 @@ exports.Prisma.Payment_typesScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.Cards_lossScalarFieldEnum = {
+  id: 'id',
+  cardID: 'cardID',
+  userID: 'userID',
+  description: 'description',
+  status: 'status',
+  applyDate: 'applyDate',
+  issueDate: 'issueDate'
+};
+
 exports.Prisma.Reader_deviceScalarFieldEnum = {
   id: 'id',
   userID: 'userID',
@@ -216,6 +232,12 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN'
 };
 
+exports.LossStatus = exports.$Enums.LossStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
 exports.Prisma.ModelName = {
   admin: 'admin',
   users: 'users',
@@ -223,6 +245,7 @@ exports.Prisma.ModelName = {
   card_types: 'card_types',
   card_sale: 'card_sale',
   payment_types: 'payment_types',
+  cards_loss: 'cards_loss',
   reader_device: 'reader_device',
   reader_logs: 'reader_logs'
 };

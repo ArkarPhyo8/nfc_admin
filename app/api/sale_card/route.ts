@@ -14,6 +14,15 @@ export async function GET(req: NextRequest) {
 
     // If searchKey exists, return ALL matching results without pagination
     if (searchKey) {
+      const totalRecords = await prisma.card_sale.count({
+        where: {
+          customer_name: {
+            contains: searchKey,
+            mode: "insensitive",
+          },
+        },
+      });
+
       const sale_cards = await prisma.card_sale.findMany({
         where: {
           customer_name: {
@@ -25,18 +34,20 @@ export async function GET(req: NextRequest) {
         orderBy: {
           created_at: "desc",
         },
+        skip: (page - 1) * limit,
+        take: limit,
       });
-
+      const totalPages = Math.ceil(totalRecords / limit);
       return NextResponse.json(
         {
           success: true,
           message: "Search results found",
           sale_cards,
           pagination: {
-            totalRecords: sale_cards.length,
-            totalPages: 1,
-            currentPage: 1,
-            pageSize: sale_cards.length,
+            totalRecords,
+            totalPages,
+            currentPage: page,
+            pageSize: limit,
           },
         },
         { status: 200 }

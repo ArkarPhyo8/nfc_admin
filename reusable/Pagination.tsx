@@ -16,13 +16,21 @@ export const Pagination: React.FC<PaginationProps> = ({
 }) => {
   return (
     <div className="flex space-x-2 items-center">
-      <Button onClick={previousPage} disabled={currentPage === 1}>
+      <Button
+        className="cursor-pointer"
+        onClick={previousPage}
+        disabled={currentPage === 1}
+      >
         Previous
       </Button>
       <span className="mx-2">
-        Page {currentPage } of {isNaN(pageCount) ? 1 : pageCount}
+        Page {currentPage} of {isNaN(pageCount) ? 1 : pageCount}
       </span>
-      <Button onClick={nextPage} disabled={currentPage === pageCount}>
+      <Button
+        className="cursor-pointer"
+        onClick={nextPage}
+        disabled={currentPage === pageCount}
+      >
         Next
       </Button>
     </div>

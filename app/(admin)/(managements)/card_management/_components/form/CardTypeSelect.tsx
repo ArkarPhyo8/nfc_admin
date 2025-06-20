@@ -17,16 +17,17 @@ import LoadingUI from "@/reusable/LoadingUI";
 import { CardType_Type } from "@/types";
 
 interface CardTypeSelectProps {
+  disabled: boolean;
   value: string;
   onChange: (value: string) => void;
 }
-const CardTypeSelect = ({ value, onChange }: CardTypeSelectProps) => {
+const CardTypeSelect = ({ disabled, value, onChange }: CardTypeSelectProps) => {
   const { data: cardTypes, isFetching } = useCardTypeQuery();
   return (
     <>
       <FormItem>
         <FormLabel>Card Type</FormLabel>
-        <Select onValueChange={onChange} defaultValue={value}>
+        <Select disabled={disabled} onValueChange={onChange} defaultValue={value}>
           <FormControl>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select card type" />

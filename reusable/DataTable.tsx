@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -27,6 +28,7 @@ interface DataTableProps<TData, TValue> {
   paginationMode: "client" | "server";
   setPagination?: (pagination: { page: number; pageSize: number }) => void;
   isFetching?: boolean;
+  className?:string;
 }
 
 export function DataTable<TData, TValue>({
@@ -36,6 +38,7 @@ export function DataTable<TData, TValue>({
   paginationMode = "client",
   setPagination,
   isFetching,
+  className
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -67,7 +70,7 @@ export function DataTable<TData, TValue>({
     manualPagination: paginationMode === "server",
   });
   return (
-    <div className="rounded-md border h-[485px] overflow-scroll w-full">
+    <div className={cn("rounded-md border h-[485px] overflow-scroll w-full", className )}>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

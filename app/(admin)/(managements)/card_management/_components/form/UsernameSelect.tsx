@@ -26,8 +26,8 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface UsernameSelectProps {
-  value: string;
-  onChange: (value: string) => void;
+  value: string | undefined;
+  onChange: (value: string | undefined) => void;
 }
 const UsernameSelect = ({ value, onChange }: UsernameSelectProps) => {
   const triggerRef = useRef<HTMLButtonElement>(null);

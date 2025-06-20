@@ -1,43 +1,57 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import CreateUserAccount from "./_components/CreateCard";
-import SearchInput from "@/reusable/SearchInput";
-import { debounce } from "lodash";
-import { CardManagementTable } from "./_components/Table";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import CardRegister from "./_components/CardRegister";
+import AllCard from "./_components/all_card/AllCard";
+import AvailableCards from "./_components/available_card/AvailableCards";
+import SoldCards from "./_components/sold_card/SoldCards";
 
 const CardManagementPage = () => {
-  const [searchInputKey, setSearchInputKey] = useState("");
-  const [searchKey, setSearchKey] = useState("");
-
-  const debouncedHandleSearchChange = useMemo(
-    () =>
-      debounce((query: string) => {
-        setSearchKey(query);
-      }, 500),
-    [setSearchKey]
-  );
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInputKey(event.target.value);
-    debouncedHandleSearchChange(event.target.value);
-  };
+  const [activeTab, setActiveTab] = useState("allCard");
 
   return (
-    <div className="space-y-8">
-      <div className="w-full flex items-center justify-between">
-        <div>
-          <h1 className="font-semibold text-2xl">Card Management</h1>
-          <p>View adn Manage cards in this page</p>
+    <div>
+      <div className="space-y-8">
+        <div className="w-full flex items-center justify-between">
+          <div>
+            <h1 className="font-semibold text-2xl">Card Management</h1>
+            <p>View adn Manage cards in this page</p>
+          </div>
+
+          <CardRegister />
         </div>
-        <div className="flex items-center gap-5">
-          <SearchInput
-            handleInputChange={handleInputChange}
-            searchInputKey={searchInputKey}
-            placeholder={"Search..."}
-          />
-          <CreateUserAccount />
+        <div className="border-b border-t-border py-2 flex gap-4">
+          <Button
+            variant={activeTab === "allCard" ? "default" : "outline"}
+            onClick={() => setActiveTab("allCard")}
+            className="cursor-pointer"
+          >
+            <span>All Card</span>
+          </Button>
+          <Button
+            variant={activeTab === "available" ? "default" : "outline"}
+            onClick={() => setActiveTab("available")}
+            className="cursor-pointer"
+          >
+            <span>Available Cards</span>
+          </Button>
+          <Button
+            variant={activeTab === "sold" ? "default" : "outline"}
+            onClick={() => setActiveTab("sold")}
+            className="cursor-pointer"
+          >
+            <span>Sold Cards</span>
+          </Button>
         </div>
+
+        {activeTab === "allCard" ? (
+          <AllCard />
+        ) : activeTab === "available" ? (
+          <AvailableCards />
+        ) : (
+          <SoldCards />
+        )}
       </div>
-      <CardManagementTable searchKey={searchKey} />
     </div>
   );
 };

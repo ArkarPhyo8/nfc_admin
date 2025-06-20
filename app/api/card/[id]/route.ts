@@ -1,7 +1,33 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-//PATCH: /api/user/id
+//GET: /card/id
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  try {
+    const card = await prisma.cards.findFirst({
+      where: { id },
+    });
+    return NextResponse.json({
+      success: true,
+      message: "getting card successfully",
+      card,
+      status: 200,
+    });
+  } catch (err) {
+    console.error("error-->", err);
+    return NextResponse.json({
+      success: false,
+      message: "Server Error",
+      status: 500,
+    });
+  }
+}
+
+//PATCH: /api/card/id
 export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -23,7 +49,7 @@ export async function PATCH(
     return NextResponse.json(
       {
         success: true,
-        message: "Card updated successfully",
+        message: "added user into card successfully",
         card: updatedCard,
       },
       { status: 200 }
@@ -50,7 +76,7 @@ export async function PATCH(
   }
 }
 
-//DELETE: /api/user/id
+//DELETE: /api/card/id
 export async function DELETE(
   req: Request,
   { params }: { params: Promise<{ id: string }> }

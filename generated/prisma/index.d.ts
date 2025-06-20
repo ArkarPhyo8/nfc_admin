@@ -44,6 +44,11 @@ export type card_sale = $Result.DefaultSelection<Prisma.$card_salePayload>
  */
 export type payment_types = $Result.DefaultSelection<Prisma.$payment_typesPayload>
 /**
+ * Model cards_loss
+ * 
+ */
+export type cards_loss = $Result.DefaultSelection<Prisma.$cards_lossPayload>
+/**
  * Model reader_device
  * 
  */
@@ -65,11 +70,24 @@ export namespace $Enums {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const LossStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type LossStatus = (typeof LossStatus)[keyof typeof LossStatus]
+
 }
 
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type LossStatus = $Enums.LossStatus
+
+export const LossStatus: typeof $Enums.LossStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -255,6 +273,16 @@ export class PrismaClient<
     * ```
     */
   get payment_types(): Prisma.payment_typesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cards_loss`: Exposes CRUD operations for the **cards_loss** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cards_losses
+    * const cards_losses = await prisma.cards_loss.findMany()
+    * ```
+    */
+  get cards_loss(): Prisma.cards_lossDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.reader_device`: Exposes CRUD operations for the **reader_device** model.
@@ -721,6 +749,7 @@ export namespace Prisma {
     card_types: 'card_types',
     card_sale: 'card_sale',
     payment_types: 'payment_types',
+    cards_loss: 'cards_loss',
     reader_device: 'reader_device',
     reader_logs: 'reader_logs'
   };
@@ -741,7 +770,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "users" | "cards" | "card_types" | "card_sale" | "payment_types" | "reader_device" | "reader_logs"
+      modelProps: "admin" | "users" | "cards" | "card_types" | "card_sale" | "payment_types" | "cards_loss" | "reader_device" | "reader_logs"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1189,6 +1218,80 @@ export namespace Prisma {
           }
         }
       }
+      cards_loss: {
+        payload: Prisma.$cards_lossPayload<ExtArgs>
+        fields: Prisma.cards_lossFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.cards_lossFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.cards_lossFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          findFirst: {
+            args: Prisma.cards_lossFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.cards_lossFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          findMany: {
+            args: Prisma.cards_lossFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>[]
+          }
+          create: {
+            args: Prisma.cards_lossCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          createMany: {
+            args: Prisma.cards_lossCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.cards_lossCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>[]
+          }
+          delete: {
+            args: Prisma.cards_lossDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          update: {
+            args: Prisma.cards_lossUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          deleteMany: {
+            args: Prisma.cards_lossDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.cards_lossUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.cards_lossUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>[]
+          }
+          upsert: {
+            args: Prisma.cards_lossUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cards_lossPayload>
+          }
+          aggregate: {
+            args: Prisma.Cards_lossAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCards_loss>
+          }
+          groupBy: {
+            args: Prisma.cards_lossGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Cards_lossGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.cards_lossCountArgs<ExtArgs>
+            result: $Utils.Optional<Cards_lossCountAggregateOutputType> | number
+          }
+        }
+      }
       reader_device: {
         payload: Prisma.$reader_devicePayload<ExtArgs>
         fields: Prisma.reader_deviceFieldRefs
@@ -1427,6 +1530,7 @@ export namespace Prisma {
     card_types?: card_typesOmit
     card_sale?: card_saleOmit
     payment_types?: payment_typesOmit
+    cards_loss?: cards_lossOmit
     reader_device?: reader_deviceOmit
     reader_logs?: reader_logsOmit
   }
@@ -2557,6 +2661,12 @@ export namespace Prisma {
   export type UsersMinAggregateOutputType = {
     id: string | null
     username: string | null
+    brandLogo: string | null
+    brandName: string | null
+    fb_link: string | null
+    youtube_link: string | null
+    instagram_link: string | null
+    tiktok_link: string | null
     WebUUID: string | null
     phoneNo: string | null
     created_at: Date | null
@@ -2566,6 +2676,12 @@ export namespace Prisma {
   export type UsersMaxAggregateOutputType = {
     id: string | null
     username: string | null
+    brandLogo: string | null
+    brandName: string | null
+    fb_link: string | null
+    youtube_link: string | null
+    instagram_link: string | null
+    tiktok_link: string | null
     WebUUID: string | null
     phoneNo: string | null
     created_at: Date | null
@@ -2575,6 +2691,12 @@ export namespace Prisma {
   export type UsersCountAggregateOutputType = {
     id: number
     username: number
+    brandLogo: number
+    brandName: number
+    fb_link: number
+    youtube_link: number
+    instagram_link: number
+    tiktok_link: number
     WebUUID: number
     phoneNo: number
     created_at: number
@@ -2586,6 +2708,12 @@ export namespace Prisma {
   export type UsersMinAggregateInputType = {
     id?: true
     username?: true
+    brandLogo?: true
+    brandName?: true
+    fb_link?: true
+    youtube_link?: true
+    instagram_link?: true
+    tiktok_link?: true
     WebUUID?: true
     phoneNo?: true
     created_at?: true
@@ -2595,6 +2723,12 @@ export namespace Prisma {
   export type UsersMaxAggregateInputType = {
     id?: true
     username?: true
+    brandLogo?: true
+    brandName?: true
+    fb_link?: true
+    youtube_link?: true
+    instagram_link?: true
+    tiktok_link?: true
     WebUUID?: true
     phoneNo?: true
     created_at?: true
@@ -2604,6 +2738,12 @@ export namespace Prisma {
   export type UsersCountAggregateInputType = {
     id?: true
     username?: true
+    brandLogo?: true
+    brandName?: true
+    fb_link?: true
+    youtube_link?: true
+    instagram_link?: true
+    tiktok_link?: true
     WebUUID?: true
     phoneNo?: true
     created_at?: true
@@ -2686,6 +2826,12 @@ export namespace Prisma {
   export type UsersGroupByOutputType = {
     id: string
     username: string
+    brandLogo: string | null
+    brandName: string | null
+    fb_link: string | null
+    youtube_link: string | null
+    instagram_link: string | null
+    tiktok_link: string | null
     WebUUID: string
     phoneNo: string
     created_at: Date
@@ -2712,6 +2858,12 @@ export namespace Prisma {
   export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
+    brandLogo?: boolean
+    brandName?: boolean
+    fb_link?: boolean
+    youtube_link?: boolean
+    instagram_link?: boolean
+    tiktok_link?: boolean
     WebUUID?: boolean
     phoneNo?: boolean
     created_at?: boolean
@@ -2721,6 +2873,12 @@ export namespace Prisma {
   export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
+    brandLogo?: boolean
+    brandName?: boolean
+    fb_link?: boolean
+    youtube_link?: boolean
+    instagram_link?: boolean
+    tiktok_link?: boolean
     WebUUID?: boolean
     phoneNo?: boolean
     created_at?: boolean
@@ -2730,6 +2888,12 @@ export namespace Prisma {
   export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
+    brandLogo?: boolean
+    brandName?: boolean
+    fb_link?: boolean
+    youtube_link?: boolean
+    instagram_link?: boolean
+    tiktok_link?: boolean
     WebUUID?: boolean
     phoneNo?: boolean
     created_at?: boolean
@@ -2739,13 +2903,19 @@ export namespace Prisma {
   export type usersSelectScalar = {
     id?: boolean
     username?: boolean
+    brandLogo?: boolean
+    brandName?: boolean
+    fb_link?: boolean
+    youtube_link?: boolean
+    instagram_link?: boolean
+    tiktok_link?: boolean
     WebUUID?: boolean
     phoneNo?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "WebUUID" | "phoneNo" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "brandLogo" | "brandName" | "fb_link" | "youtube_link" | "instagram_link" | "tiktok_link" | "WebUUID" | "phoneNo" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
@@ -2753,6 +2923,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       username: string
+      brandLogo: string | null
+      brandName: string | null
+      fb_link: string | null
+      youtube_link: string | null
+      instagram_link: string | null
+      tiktok_link: string | null
       WebUUID: string
       phoneNo: string
       created_at: Date
@@ -3182,6 +3358,12 @@ export namespace Prisma {
   interface usersFieldRefs {
     readonly id: FieldRef<"users", 'String'>
     readonly username: FieldRef<"users", 'String'>
+    readonly brandLogo: FieldRef<"users", 'String'>
+    readonly brandName: FieldRef<"users", 'String'>
+    readonly fb_link: FieldRef<"users", 'String'>
+    readonly youtube_link: FieldRef<"users", 'String'>
+    readonly instagram_link: FieldRef<"users", 'String'>
+    readonly tiktok_link: FieldRef<"users", 'String'>
     readonly WebUUID: FieldRef<"users", 'String'>
     readonly phoneNo: FieldRef<"users", 'String'>
     readonly created_at: FieldRef<"users", 'DateTime'>
@@ -7658,6 +7840,1027 @@ export namespace Prisma {
 
 
   /**
+   * Model cards_loss
+   */
+
+  export type AggregateCards_loss = {
+    _count: Cards_lossCountAggregateOutputType | null
+    _min: Cards_lossMinAggregateOutputType | null
+    _max: Cards_lossMaxAggregateOutputType | null
+  }
+
+  export type Cards_lossMinAggregateOutputType = {
+    id: string | null
+    cardID: string | null
+    userID: string | null
+    description: string | null
+    status: $Enums.LossStatus | null
+    applyDate: Date | null
+    issueDate: Date | null
+  }
+
+  export type Cards_lossMaxAggregateOutputType = {
+    id: string | null
+    cardID: string | null
+    userID: string | null
+    description: string | null
+    status: $Enums.LossStatus | null
+    applyDate: Date | null
+    issueDate: Date | null
+  }
+
+  export type Cards_lossCountAggregateOutputType = {
+    id: number
+    cardID: number
+    userID: number
+    description: number
+    status: number
+    applyDate: number
+    issueDate: number
+    _all: number
+  }
+
+
+  export type Cards_lossMinAggregateInputType = {
+    id?: true
+    cardID?: true
+    userID?: true
+    description?: true
+    status?: true
+    applyDate?: true
+    issueDate?: true
+  }
+
+  export type Cards_lossMaxAggregateInputType = {
+    id?: true
+    cardID?: true
+    userID?: true
+    description?: true
+    status?: true
+    applyDate?: true
+    issueDate?: true
+  }
+
+  export type Cards_lossCountAggregateInputType = {
+    id?: true
+    cardID?: true
+    userID?: true
+    description?: true
+    status?: true
+    applyDate?: true
+    issueDate?: true
+    _all?: true
+  }
+
+  export type Cards_lossAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cards_loss to aggregate.
+     */
+    where?: cards_lossWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cards_losses to fetch.
+     */
+    orderBy?: cards_lossOrderByWithRelationInput | cards_lossOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: cards_lossWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cards_losses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cards_losses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned cards_losses
+    **/
+    _count?: true | Cards_lossCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Cards_lossMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Cards_lossMaxAggregateInputType
+  }
+
+  export type GetCards_lossAggregateType<T extends Cards_lossAggregateArgs> = {
+        [P in keyof T & keyof AggregateCards_loss]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCards_loss[P]>
+      : GetScalarType<T[P], AggregateCards_loss[P]>
+  }
+
+
+
+
+  export type cards_lossGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: cards_lossWhereInput
+    orderBy?: cards_lossOrderByWithAggregationInput | cards_lossOrderByWithAggregationInput[]
+    by: Cards_lossScalarFieldEnum[] | Cards_lossScalarFieldEnum
+    having?: cards_lossScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Cards_lossCountAggregateInputType | true
+    _min?: Cards_lossMinAggregateInputType
+    _max?: Cards_lossMaxAggregateInputType
+  }
+
+  export type Cards_lossGroupByOutputType = {
+    id: string
+    cardID: string
+    userID: string
+    description: string
+    status: $Enums.LossStatus
+    applyDate: Date
+    issueDate: Date
+    _count: Cards_lossCountAggregateOutputType | null
+    _min: Cards_lossMinAggregateOutputType | null
+    _max: Cards_lossMaxAggregateOutputType | null
+  }
+
+  type GetCards_lossGroupByPayload<T extends cards_lossGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Cards_lossGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Cards_lossGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Cards_lossGroupByOutputType[P]>
+            : GetScalarType<T[P], Cards_lossGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type cards_lossSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    userID?: boolean
+    description?: boolean
+    status?: boolean
+    applyDate?: boolean
+    issueDate?: boolean
+  }, ExtArgs["result"]["cards_loss"]>
+
+  export type cards_lossSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    userID?: boolean
+    description?: boolean
+    status?: boolean
+    applyDate?: boolean
+    issueDate?: boolean
+  }, ExtArgs["result"]["cards_loss"]>
+
+  export type cards_lossSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardID?: boolean
+    userID?: boolean
+    description?: boolean
+    status?: boolean
+    applyDate?: boolean
+    issueDate?: boolean
+  }, ExtArgs["result"]["cards_loss"]>
+
+  export type cards_lossSelectScalar = {
+    id?: boolean
+    cardID?: boolean
+    userID?: boolean
+    description?: boolean
+    status?: boolean
+    applyDate?: boolean
+    issueDate?: boolean
+  }
+
+  export type cards_lossOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cardID" | "userID" | "description" | "status" | "applyDate" | "issueDate", ExtArgs["result"]["cards_loss"]>
+
+  export type $cards_lossPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "cards_loss"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      cardID: string
+      userID: string
+      description: string
+      status: $Enums.LossStatus
+      applyDate: Date
+      issueDate: Date
+    }, ExtArgs["result"]["cards_loss"]>
+    composites: {}
+  }
+
+  type cards_lossGetPayload<S extends boolean | null | undefined | cards_lossDefaultArgs> = $Result.GetResult<Prisma.$cards_lossPayload, S>
+
+  type cards_lossCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<cards_lossFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Cards_lossCountAggregateInputType | true
+    }
+
+  export interface cards_lossDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['cards_loss'], meta: { name: 'cards_loss' } }
+    /**
+     * Find zero or one Cards_loss that matches the filter.
+     * @param {cards_lossFindUniqueArgs} args - Arguments to find a Cards_loss
+     * @example
+     * // Get one Cards_loss
+     * const cards_loss = await prisma.cards_loss.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends cards_lossFindUniqueArgs>(args: SelectSubset<T, cards_lossFindUniqueArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Cards_loss that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {cards_lossFindUniqueOrThrowArgs} args - Arguments to find a Cards_loss
+     * @example
+     * // Get one Cards_loss
+     * const cards_loss = await prisma.cards_loss.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends cards_lossFindUniqueOrThrowArgs>(args: SelectSubset<T, cards_lossFindUniqueOrThrowArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Cards_loss that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossFindFirstArgs} args - Arguments to find a Cards_loss
+     * @example
+     * // Get one Cards_loss
+     * const cards_loss = await prisma.cards_loss.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends cards_lossFindFirstArgs>(args?: SelectSubset<T, cards_lossFindFirstArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Cards_loss that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossFindFirstOrThrowArgs} args - Arguments to find a Cards_loss
+     * @example
+     * // Get one Cards_loss
+     * const cards_loss = await prisma.cards_loss.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends cards_lossFindFirstOrThrowArgs>(args?: SelectSubset<T, cards_lossFindFirstOrThrowArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Cards_losses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cards_losses
+     * const cards_losses = await prisma.cards_loss.findMany()
+     * 
+     * // Get first 10 Cards_losses
+     * const cards_losses = await prisma.cards_loss.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cards_lossWithIdOnly = await prisma.cards_loss.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends cards_lossFindManyArgs>(args?: SelectSubset<T, cards_lossFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Cards_loss.
+     * @param {cards_lossCreateArgs} args - Arguments to create a Cards_loss.
+     * @example
+     * // Create one Cards_loss
+     * const Cards_loss = await prisma.cards_loss.create({
+     *   data: {
+     *     // ... data to create a Cards_loss
+     *   }
+     * })
+     * 
+     */
+    create<T extends cards_lossCreateArgs>(args: SelectSubset<T, cards_lossCreateArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Cards_losses.
+     * @param {cards_lossCreateManyArgs} args - Arguments to create many Cards_losses.
+     * @example
+     * // Create many Cards_losses
+     * const cards_loss = await prisma.cards_loss.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends cards_lossCreateManyArgs>(args?: SelectSubset<T, cards_lossCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Cards_losses and returns the data saved in the database.
+     * @param {cards_lossCreateManyAndReturnArgs} args - Arguments to create many Cards_losses.
+     * @example
+     * // Create many Cards_losses
+     * const cards_loss = await prisma.cards_loss.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Cards_losses and only return the `id`
+     * const cards_lossWithIdOnly = await prisma.cards_loss.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends cards_lossCreateManyAndReturnArgs>(args?: SelectSubset<T, cards_lossCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Cards_loss.
+     * @param {cards_lossDeleteArgs} args - Arguments to delete one Cards_loss.
+     * @example
+     * // Delete one Cards_loss
+     * const Cards_loss = await prisma.cards_loss.delete({
+     *   where: {
+     *     // ... filter to delete one Cards_loss
+     *   }
+     * })
+     * 
+     */
+    delete<T extends cards_lossDeleteArgs>(args: SelectSubset<T, cards_lossDeleteArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Cards_loss.
+     * @param {cards_lossUpdateArgs} args - Arguments to update one Cards_loss.
+     * @example
+     * // Update one Cards_loss
+     * const cards_loss = await prisma.cards_loss.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends cards_lossUpdateArgs>(args: SelectSubset<T, cards_lossUpdateArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Cards_losses.
+     * @param {cards_lossDeleteManyArgs} args - Arguments to filter Cards_losses to delete.
+     * @example
+     * // Delete a few Cards_losses
+     * const { count } = await prisma.cards_loss.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends cards_lossDeleteManyArgs>(args?: SelectSubset<T, cards_lossDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cards_losses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cards_losses
+     * const cards_loss = await prisma.cards_loss.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends cards_lossUpdateManyArgs>(args: SelectSubset<T, cards_lossUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cards_losses and returns the data updated in the database.
+     * @param {cards_lossUpdateManyAndReturnArgs} args - Arguments to update many Cards_losses.
+     * @example
+     * // Update many Cards_losses
+     * const cards_loss = await prisma.cards_loss.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Cards_losses and only return the `id`
+     * const cards_lossWithIdOnly = await prisma.cards_loss.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends cards_lossUpdateManyAndReturnArgs>(args: SelectSubset<T, cards_lossUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Cards_loss.
+     * @param {cards_lossUpsertArgs} args - Arguments to update or create a Cards_loss.
+     * @example
+     * // Update or create a Cards_loss
+     * const cards_loss = await prisma.cards_loss.upsert({
+     *   create: {
+     *     // ... data to create a Cards_loss
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Cards_loss we want to update
+     *   }
+     * })
+     */
+    upsert<T extends cards_lossUpsertArgs>(args: SelectSubset<T, cards_lossUpsertArgs<ExtArgs>>): Prisma__cards_lossClient<$Result.GetResult<Prisma.$cards_lossPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Cards_losses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossCountArgs} args - Arguments to filter Cards_losses to count.
+     * @example
+     * // Count the number of Cards_losses
+     * const count = await prisma.cards_loss.count({
+     *   where: {
+     *     // ... the filter for the Cards_losses we want to count
+     *   }
+     * })
+    **/
+    count<T extends cards_lossCountArgs>(
+      args?: Subset<T, cards_lossCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Cards_lossCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Cards_loss.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Cards_lossAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Cards_lossAggregateArgs>(args: Subset<T, Cards_lossAggregateArgs>): Prisma.PrismaPromise<GetCards_lossAggregateType<T>>
+
+    /**
+     * Group by Cards_loss.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cards_lossGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends cards_lossGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: cards_lossGroupByArgs['orderBy'] }
+        : { orderBy?: cards_lossGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, cards_lossGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCards_lossGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the cards_loss model
+   */
+  readonly fields: cards_lossFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for cards_loss.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__cards_lossClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the cards_loss model
+   */
+  interface cards_lossFieldRefs {
+    readonly id: FieldRef<"cards_loss", 'String'>
+    readonly cardID: FieldRef<"cards_loss", 'String'>
+    readonly userID: FieldRef<"cards_loss", 'String'>
+    readonly description: FieldRef<"cards_loss", 'String'>
+    readonly status: FieldRef<"cards_loss", 'LossStatus'>
+    readonly applyDate: FieldRef<"cards_loss", 'DateTime'>
+    readonly issueDate: FieldRef<"cards_loss", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * cards_loss findUnique
+   */
+  export type cards_lossFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter, which cards_loss to fetch.
+     */
+    where: cards_lossWhereUniqueInput
+  }
+
+  /**
+   * cards_loss findUniqueOrThrow
+   */
+  export type cards_lossFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter, which cards_loss to fetch.
+     */
+    where: cards_lossWhereUniqueInput
+  }
+
+  /**
+   * cards_loss findFirst
+   */
+  export type cards_lossFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter, which cards_loss to fetch.
+     */
+    where?: cards_lossWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cards_losses to fetch.
+     */
+    orderBy?: cards_lossOrderByWithRelationInput | cards_lossOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cards_losses.
+     */
+    cursor?: cards_lossWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cards_losses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cards_losses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cards_losses.
+     */
+    distinct?: Cards_lossScalarFieldEnum | Cards_lossScalarFieldEnum[]
+  }
+
+  /**
+   * cards_loss findFirstOrThrow
+   */
+  export type cards_lossFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter, which cards_loss to fetch.
+     */
+    where?: cards_lossWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cards_losses to fetch.
+     */
+    orderBy?: cards_lossOrderByWithRelationInput | cards_lossOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cards_losses.
+     */
+    cursor?: cards_lossWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cards_losses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cards_losses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cards_losses.
+     */
+    distinct?: Cards_lossScalarFieldEnum | Cards_lossScalarFieldEnum[]
+  }
+
+  /**
+   * cards_loss findMany
+   */
+  export type cards_lossFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter, which cards_losses to fetch.
+     */
+    where?: cards_lossWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cards_losses to fetch.
+     */
+    orderBy?: cards_lossOrderByWithRelationInput | cards_lossOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing cards_losses.
+     */
+    cursor?: cards_lossWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cards_losses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cards_losses.
+     */
+    skip?: number
+    distinct?: Cards_lossScalarFieldEnum | Cards_lossScalarFieldEnum[]
+  }
+
+  /**
+   * cards_loss create
+   */
+  export type cards_lossCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * The data needed to create a cards_loss.
+     */
+    data: XOR<cards_lossCreateInput, cards_lossUncheckedCreateInput>
+  }
+
+  /**
+   * cards_loss createMany
+   */
+  export type cards_lossCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many cards_losses.
+     */
+    data: cards_lossCreateManyInput | cards_lossCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cards_loss createManyAndReturn
+   */
+  export type cards_lossCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * The data used to create many cards_losses.
+     */
+    data: cards_lossCreateManyInput | cards_lossCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cards_loss update
+   */
+  export type cards_lossUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * The data needed to update a cards_loss.
+     */
+    data: XOR<cards_lossUpdateInput, cards_lossUncheckedUpdateInput>
+    /**
+     * Choose, which cards_loss to update.
+     */
+    where: cards_lossWhereUniqueInput
+  }
+
+  /**
+   * cards_loss updateMany
+   */
+  export type cards_lossUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update cards_losses.
+     */
+    data: XOR<cards_lossUpdateManyMutationInput, cards_lossUncheckedUpdateManyInput>
+    /**
+     * Filter which cards_losses to update
+     */
+    where?: cards_lossWhereInput
+    /**
+     * Limit how many cards_losses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * cards_loss updateManyAndReturn
+   */
+  export type cards_lossUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * The data used to update cards_losses.
+     */
+    data: XOR<cards_lossUpdateManyMutationInput, cards_lossUncheckedUpdateManyInput>
+    /**
+     * Filter which cards_losses to update
+     */
+    where?: cards_lossWhereInput
+    /**
+     * Limit how many cards_losses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * cards_loss upsert
+   */
+  export type cards_lossUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * The filter to search for the cards_loss to update in case it exists.
+     */
+    where: cards_lossWhereUniqueInput
+    /**
+     * In case the cards_loss found by the `where` argument doesn't exist, create a new cards_loss with this data.
+     */
+    create: XOR<cards_lossCreateInput, cards_lossUncheckedCreateInput>
+    /**
+     * In case the cards_loss was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<cards_lossUpdateInput, cards_lossUncheckedUpdateInput>
+  }
+
+  /**
+   * cards_loss delete
+   */
+  export type cards_lossDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+    /**
+     * Filter which cards_loss to delete.
+     */
+    where: cards_lossWhereUniqueInput
+  }
+
+  /**
+   * cards_loss deleteMany
+   */
+  export type cards_lossDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cards_losses to delete
+     */
+    where?: cards_lossWhereInput
+    /**
+     * Limit how many cards_losses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * cards_loss without action
+   */
+  export type cards_lossDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cards_loss
+     */
+    select?: cards_lossSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cards_loss
+     */
+    omit?: cards_lossOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model reader_device
    */
 
@@ -9716,6 +10919,12 @@ export namespace Prisma {
   export const UsersScalarFieldEnum: {
     id: 'id',
     username: 'username',
+    brandLogo: 'brandLogo',
+    brandName: 'brandName',
+    fb_link: 'fb_link',
+    youtube_link: 'youtube_link',
+    instagram_link: 'instagram_link',
+    tiktok_link: 'tiktok_link',
     WebUUID: 'WebUUID',
     phoneNo: 'phoneNo',
     created_at: 'created_at',
@@ -9774,6 +10983,19 @@ export namespace Prisma {
   };
 
   export type Payment_typesScalarFieldEnum = (typeof Payment_typesScalarFieldEnum)[keyof typeof Payment_typesScalarFieldEnum]
+
+
+  export const Cards_lossScalarFieldEnum: {
+    id: 'id',
+    cardID: 'cardID',
+    userID: 'userID',
+    description: 'description',
+    status: 'status',
+    applyDate: 'applyDate',
+    issueDate: 'issueDate'
+  };
+
+  export type Cards_lossScalarFieldEnum = (typeof Cards_lossScalarFieldEnum)[keyof typeof Cards_lossScalarFieldEnum]
 
 
   export const Reader_deviceScalarFieldEnum: {
@@ -9908,6 +11130,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'LossStatus'
+   */
+  export type EnumLossStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LossStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'LossStatus[]'
+   */
+  export type ListEnumLossStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LossStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -9992,6 +11228,12 @@ export namespace Prisma {
     NOT?: usersWhereInput | usersWhereInput[]
     id?: UuidFilter<"users"> | string
     username?: StringFilter<"users"> | string
+    brandLogo?: StringNullableFilter<"users"> | string | null
+    brandName?: StringNullableFilter<"users"> | string | null
+    fb_link?: StringNullableFilter<"users"> | string | null
+    youtube_link?: StringNullableFilter<"users"> | string | null
+    instagram_link?: StringNullableFilter<"users"> | string | null
+    tiktok_link?: StringNullableFilter<"users"> | string | null
     WebUUID?: StringFilter<"users"> | string
     phoneNo?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
@@ -10001,6 +11243,12 @@ export namespace Prisma {
   export type usersOrderByWithRelationInput = {
     id?: SortOrder
     username?: SortOrder
+    brandLogo?: SortOrderInput | SortOrder
+    brandName?: SortOrderInput | SortOrder
+    fb_link?: SortOrderInput | SortOrder
+    youtube_link?: SortOrderInput | SortOrder
+    instagram_link?: SortOrderInput | SortOrder
+    tiktok_link?: SortOrderInput | SortOrder
     WebUUID?: SortOrder
     phoneNo?: SortOrder
     created_at?: SortOrder
@@ -10014,6 +11262,12 @@ export namespace Prisma {
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     username?: StringFilter<"users"> | string
+    brandLogo?: StringNullableFilter<"users"> | string | null
+    brandName?: StringNullableFilter<"users"> | string | null
+    fb_link?: StringNullableFilter<"users"> | string | null
+    youtube_link?: StringNullableFilter<"users"> | string | null
+    instagram_link?: StringNullableFilter<"users"> | string | null
+    tiktok_link?: StringNullableFilter<"users"> | string | null
     phoneNo?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     updated_at?: DateTimeFilter<"users"> | Date | string
@@ -10022,6 +11276,12 @@ export namespace Prisma {
   export type usersOrderByWithAggregationInput = {
     id?: SortOrder
     username?: SortOrder
+    brandLogo?: SortOrderInput | SortOrder
+    brandName?: SortOrderInput | SortOrder
+    fb_link?: SortOrderInput | SortOrder
+    youtube_link?: SortOrderInput | SortOrder
+    instagram_link?: SortOrderInput | SortOrder
+    tiktok_link?: SortOrderInput | SortOrder
     WebUUID?: SortOrder
     phoneNo?: SortOrder
     created_at?: SortOrder
@@ -10037,6 +11297,12 @@ export namespace Prisma {
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"users"> | string
     username?: StringWithAggregatesFilter<"users"> | string
+    brandLogo?: StringNullableWithAggregatesFilter<"users"> | string | null
+    brandName?: StringNullableWithAggregatesFilter<"users"> | string | null
+    fb_link?: StringNullableWithAggregatesFilter<"users"> | string | null
+    youtube_link?: StringNullableWithAggregatesFilter<"users"> | string | null
+    instagram_link?: StringNullableWithAggregatesFilter<"users"> | string | null
+    tiktok_link?: StringNullableWithAggregatesFilter<"users"> | string | null
     WebUUID?: StringWithAggregatesFilter<"users"> | string
     phoneNo?: StringWithAggregatesFilter<"users"> | string
     created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
@@ -10048,7 +11314,7 @@ export namespace Prisma {
     OR?: cardsWhereInput[]
     NOT?: cardsWhereInput | cardsWhereInput[]
     id?: UuidFilter<"cards"> | string
-    userID?: StringNullableFilter<"cards"> | string | null
+    userID?: UuidNullableFilter<"cards"> | string | null
     cardName?: StringFilter<"cards"> | string
     cardUUID?: StringFilter<"cards"> | string
     cardType?: UuidFilter<"cards"> | string
@@ -10074,7 +11340,7 @@ export namespace Prisma {
     AND?: cardsWhereInput | cardsWhereInput[]
     OR?: cardsWhereInput[]
     NOT?: cardsWhereInput | cardsWhereInput[]
-    userID?: StringNullableFilter<"cards"> | string | null
+    userID?: UuidNullableFilter<"cards"> | string | null
     cardName?: StringFilter<"cards"> | string
     cardType?: UuidFilter<"cards"> | string
     status?: BoolFilter<"cards"> | boolean
@@ -10101,7 +11367,7 @@ export namespace Prisma {
     OR?: cardsScalarWhereWithAggregatesInput[]
     NOT?: cardsScalarWhereWithAggregatesInput | cardsScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"cards"> | string
-    userID?: StringNullableWithAggregatesFilter<"cards"> | string | null
+    userID?: UuidNullableWithAggregatesFilter<"cards"> | string | null
     cardName?: StringWithAggregatesFilter<"cards"> | string
     cardUUID?: StringWithAggregatesFilter<"cards"> | string
     cardType?: UuidWithAggregatesFilter<"cards"> | string
@@ -10286,6 +11552,68 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"payment_types"> | string
     created_at?: DateTimeWithAggregatesFilter<"payment_types"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"payment_types"> | Date | string
+  }
+
+  export type cards_lossWhereInput = {
+    AND?: cards_lossWhereInput | cards_lossWhereInput[]
+    OR?: cards_lossWhereInput[]
+    NOT?: cards_lossWhereInput | cards_lossWhereInput[]
+    id?: UuidFilter<"cards_loss"> | string
+    cardID?: StringFilter<"cards_loss"> | string
+    userID?: StringFilter<"cards_loss"> | string
+    description?: StringFilter<"cards_loss"> | string
+    status?: EnumLossStatusFilter<"cards_loss"> | $Enums.LossStatus
+    applyDate?: DateTimeFilter<"cards_loss"> | Date | string
+    issueDate?: DateTimeFilter<"cards_loss"> | Date | string
+  }
+
+  export type cards_lossOrderByWithRelationInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    userID?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    applyDate?: SortOrder
+    issueDate?: SortOrder
+  }
+
+  export type cards_lossWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: cards_lossWhereInput | cards_lossWhereInput[]
+    OR?: cards_lossWhereInput[]
+    NOT?: cards_lossWhereInput | cards_lossWhereInput[]
+    cardID?: StringFilter<"cards_loss"> | string
+    userID?: StringFilter<"cards_loss"> | string
+    description?: StringFilter<"cards_loss"> | string
+    status?: EnumLossStatusFilter<"cards_loss"> | $Enums.LossStatus
+    applyDate?: DateTimeFilter<"cards_loss"> | Date | string
+    issueDate?: DateTimeFilter<"cards_loss"> | Date | string
+  }, "id">
+
+  export type cards_lossOrderByWithAggregationInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    userID?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    applyDate?: SortOrder
+    issueDate?: SortOrder
+    _count?: cards_lossCountOrderByAggregateInput
+    _max?: cards_lossMaxOrderByAggregateInput
+    _min?: cards_lossMinOrderByAggregateInput
+  }
+
+  export type cards_lossScalarWhereWithAggregatesInput = {
+    AND?: cards_lossScalarWhereWithAggregatesInput | cards_lossScalarWhereWithAggregatesInput[]
+    OR?: cards_lossScalarWhereWithAggregatesInput[]
+    NOT?: cards_lossScalarWhereWithAggregatesInput | cards_lossScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"cards_loss"> | string
+    cardID?: StringWithAggregatesFilter<"cards_loss"> | string
+    userID?: StringWithAggregatesFilter<"cards_loss"> | string
+    description?: StringWithAggregatesFilter<"cards_loss"> | string
+    status?: EnumLossStatusWithAggregatesFilter<"cards_loss"> | $Enums.LossStatus
+    applyDate?: DateTimeWithAggregatesFilter<"cards_loss"> | Date | string
+    issueDate?: DateTimeWithAggregatesFilter<"cards_loss"> | Date | string
   }
 
   export type reader_deviceWhereInput = {
@@ -10480,6 +11808,12 @@ export namespace Prisma {
   export type usersCreateInput = {
     id?: string
     username: string
+    brandLogo?: string | null
+    brandName?: string | null
+    fb_link?: string | null
+    youtube_link?: string | null
+    instagram_link?: string | null
+    tiktok_link?: string | null
     WebUUID?: string
     phoneNo: string
     created_at?: Date | string
@@ -10489,6 +11823,12 @@ export namespace Prisma {
   export type usersUncheckedCreateInput = {
     id?: string
     username: string
+    brandLogo?: string | null
+    brandName?: string | null
+    fb_link?: string | null
+    youtube_link?: string | null
+    instagram_link?: string | null
+    tiktok_link?: string | null
     WebUUID?: string
     phoneNo: string
     created_at?: Date | string
@@ -10498,6 +11838,12 @@ export namespace Prisma {
   export type usersUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    brandLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    brandName?: NullableStringFieldUpdateOperationsInput | string | null
+    fb_link?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube_link?: NullableStringFieldUpdateOperationsInput | string | null
+    instagram_link?: NullableStringFieldUpdateOperationsInput | string | null
+    tiktok_link?: NullableStringFieldUpdateOperationsInput | string | null
     WebUUID?: StringFieldUpdateOperationsInput | string
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10507,6 +11853,12 @@ export namespace Prisma {
   export type usersUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    brandLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    brandName?: NullableStringFieldUpdateOperationsInput | string | null
+    fb_link?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube_link?: NullableStringFieldUpdateOperationsInput | string | null
+    instagram_link?: NullableStringFieldUpdateOperationsInput | string | null
+    tiktok_link?: NullableStringFieldUpdateOperationsInput | string | null
     WebUUID?: StringFieldUpdateOperationsInput | string
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10516,6 +11868,12 @@ export namespace Prisma {
   export type usersCreateManyInput = {
     id?: string
     username: string
+    brandLogo?: string | null
+    brandName?: string | null
+    fb_link?: string | null
+    youtube_link?: string | null
+    instagram_link?: string | null
+    tiktok_link?: string | null
     WebUUID?: string
     phoneNo: string
     created_at?: Date | string
@@ -10525,6 +11883,12 @@ export namespace Prisma {
   export type usersUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    brandLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    brandName?: NullableStringFieldUpdateOperationsInput | string | null
+    fb_link?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube_link?: NullableStringFieldUpdateOperationsInput | string | null
+    instagram_link?: NullableStringFieldUpdateOperationsInput | string | null
+    tiktok_link?: NullableStringFieldUpdateOperationsInput | string | null
     WebUUID?: StringFieldUpdateOperationsInput | string
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10534,6 +11898,12 @@ export namespace Prisma {
   export type usersUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    brandLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    brandName?: NullableStringFieldUpdateOperationsInput | string | null
+    fb_link?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube_link?: NullableStringFieldUpdateOperationsInput | string | null
+    instagram_link?: NullableStringFieldUpdateOperationsInput | string | null
+    tiktok_link?: NullableStringFieldUpdateOperationsInput | string | null
     WebUUID?: StringFieldUpdateOperationsInput | string
     phoneNo?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10546,7 +11916,7 @@ export namespace Prisma {
     cardName: string
     cardUUID?: string
     cardType: string
-    status: boolean
+    status?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -10557,7 +11927,7 @@ export namespace Prisma {
     cardName: string
     cardUUID?: string
     cardType: string
-    status: boolean
+    status?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -10590,7 +11960,7 @@ export namespace Prisma {
     cardName: string
     cardUUID?: string
     cardType: string
-    status: boolean
+    status?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -10811,6 +12181,76 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type cards_lossCreateInput = {
+    id?: string
+    cardID: string
+    userID: string
+    description: string
+    status?: $Enums.LossStatus
+    applyDate?: Date | string
+    issueDate?: Date | string
+  }
+
+  export type cards_lossUncheckedCreateInput = {
+    id?: string
+    cardID: string
+    userID: string
+    description: string
+    status?: $Enums.LossStatus
+    applyDate?: Date | string
+    issueDate?: Date | string
+  }
+
+  export type cards_lossUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: StringFieldUpdateOperationsInput | string
+    userID?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumLossStatusFieldUpdateOperationsInput | $Enums.LossStatus
+    applyDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    issueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type cards_lossUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: StringFieldUpdateOperationsInput | string
+    userID?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumLossStatusFieldUpdateOperationsInput | $Enums.LossStatus
+    applyDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    issueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type cards_lossCreateManyInput = {
+    id?: string
+    cardID: string
+    userID: string
+    description: string
+    status?: $Enums.LossStatus
+    applyDate?: Date | string
+    issueDate?: Date | string
+  }
+
+  export type cards_lossUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: StringFieldUpdateOperationsInput | string
+    userID?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumLossStatusFieldUpdateOperationsInput | $Enums.LossStatus
+    applyDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    issueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type cards_lossUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cardID?: StringFieldUpdateOperationsInput | string
+    userID?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumLossStatusFieldUpdateOperationsInput | $Enums.LossStatus
+    applyDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    issueDate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type reader_deviceCreateInput = {
@@ -11119,6 +12559,12 @@ export namespace Prisma {
   export type usersCountOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
+    brandLogo?: SortOrder
+    brandName?: SortOrder
+    fb_link?: SortOrder
+    youtube_link?: SortOrder
+    instagram_link?: SortOrder
+    tiktok_link?: SortOrder
     WebUUID?: SortOrder
     phoneNo?: SortOrder
     created_at?: SortOrder
@@ -11128,6 +12574,12 @@ export namespace Prisma {
   export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
+    brandLogo?: SortOrder
+    brandName?: SortOrder
+    fb_link?: SortOrder
+    youtube_link?: SortOrder
+    instagram_link?: SortOrder
+    tiktok_link?: SortOrder
     WebUUID?: SortOrder
     phoneNo?: SortOrder
     created_at?: SortOrder
@@ -11137,10 +12589,28 @@ export namespace Prisma {
   export type usersMinOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
+    brandLogo?: SortOrder
+    brandName?: SortOrder
+    fb_link?: SortOrder
+    youtube_link?: SortOrder
+    instagram_link?: SortOrder
+    tiktok_link?: SortOrder
     WebUUID?: SortOrder
     phoneNo?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+  }
+
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -11179,6 +12649,21 @@ export namespace Prisma {
     status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+  }
+
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11343,6 +12828,53 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type EnumLossStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.LossStatus | EnumLossStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLossStatusFilter<$PrismaModel> | $Enums.LossStatus
+  }
+
+  export type cards_lossCountOrderByAggregateInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    userID?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    applyDate?: SortOrder
+    issueDate?: SortOrder
+  }
+
+  export type cards_lossMaxOrderByAggregateInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    userID?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    applyDate?: SortOrder
+    issueDate?: SortOrder
+  }
+
+  export type cards_lossMinOrderByAggregateInput = {
+    id?: SortOrder
+    cardID?: SortOrder
+    userID?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    applyDate?: SortOrder
+    issueDate?: SortOrder
+  }
+
+  export type EnumLossStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LossStatus | EnumLossStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLossStatusWithAggregatesFilter<$PrismaModel> | $Enums.LossStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLossStatusFilter<$PrismaModel>
+    _max?: NestedEnumLossStatusFilter<$PrismaModel>
+  }
+
   export type reader_deviceCountOrderByAggregateInput = {
     id?: SortOrder
     userID?: SortOrder
@@ -11443,6 +12975,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type EnumLossStatusFieldUpdateOperationsInput = {
+    set?: $Enums.LossStatus
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -11596,9 +13132,34 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11661,6 +13222,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumLossStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.LossStatus | EnumLossStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLossStatusFilter<$PrismaModel> | $Enums.LossStatus
+  }
+
+  export type NestedEnumLossStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LossStatus | EnumLossStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LossStatus[] | ListEnumLossStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLossStatusWithAggregatesFilter<$PrismaModel> | $Enums.LossStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLossStatusFilter<$PrismaModel>
+    _max?: NestedEnumLossStatusFilter<$PrismaModel>
   }
 
 

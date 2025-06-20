@@ -25,21 +25,27 @@ model admin {
 }
 
 model users {
-  id         String   @id @default(uuid()) @db.Uuid
-  username   String   @db.VarChar(50)
-  WebUUID    String   @unique @default(uuid())
-  phoneNo    String   @db.VarChar(20)
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  id             String   @id @default(uuid()) @db.Uuid
+  username       String   @db.VarChar(50)
+  brandLogo      String?
+  brandName      String?
+  fb_link        String?
+  youtube_link   String?
+  instagram_link String?
+  tiktok_link    String?
+  WebUUID        String   @unique @default(uuid())
+  phoneNo        String   @db.VarChar(20)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
 }
 
 model cards {
   id         String   @id @default(uuid()) @db.Uuid
-  userID     String?
+  userID     String?  @db.Uuid
   cardName   String
   cardUUID   String   @unique @default(uuid())
   cardType   String   @db.Uuid
-  status     Boolean
+  status     Boolean  @default(true) @db.Boolean
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 }
@@ -72,6 +78,16 @@ model payment_types {
   updated_at DateTime @default(now())
 }
 
+model cards_loss {
+  id          String     @id @default(uuid()) @db.Uuid
+  cardID      String
+  userID      String
+  description String
+  status      LossStatus @default(PENDING)
+  applyDate   DateTime   @default(now())
+  issueDate   DateTime   @default(now())
+}
+
 model reader_device {
   id               String   @id @default(uuid()) @db.Uuid
   userID           String?
@@ -94,4 +110,10 @@ model reader_logs {
 enum Role {
   USER
   ADMIN
+}
+
+enum LossStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
